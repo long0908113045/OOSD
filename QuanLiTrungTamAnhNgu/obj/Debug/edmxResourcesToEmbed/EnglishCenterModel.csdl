@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnglishCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HocVien">
+    <Key>
+      <PropertyRef Name="HocVienId" />
+    </Key>
+    <Property Name="HocVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_HV" FromRole="HocVien" ToRole="PhieuThu" />
+    <NavigationProperty Name="TaiKhoanHocVien" Relationship="Self.fk_TK_HV" FromRole="HocVien" ToRole="TaiKhoanHocVien" />
+  </EntityType>
+  <EntityType Name="KhoaHoc">
+    <Key>
+      <PropertyRef Name="KhoaHocId" />
+    </Key>
+    <Property Name="KhoaHocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_KH" FromRole="KhoaHoc" ToRole="LopHoc" />
+  </EntityType>
+  <EntityType Name="Level">
+    <Key>
+      <PropertyRef Name="LevelsId" />
+    </Key>
+    <Property Name="LevelsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_LV" FromRole="Levels" ToRole="LopHoc" />
+  </EntityType>
+  <EntityType Name="LopHoc">
+    <Key>
+      <PropertyRef Name="LopHocId" />
+    </Key>
+    <Property Name="LopHocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianBatDau_LH" Type="DateTime" Precision="0" />
+    <Property Name="ThoiGianKetThuc_LH" Type="DateTime" Precision="0" />
+    <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NhanVienId" Type="Int32" />
+    <Property Name="KhoaHocId" Type="Int32" />
+    <Property Name="LevelsId" Type="Int32" />
+    <Property Name="SoBuoiHoc" Type="Int32" />
+    <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KhoaHoc" Relationship="Self.fk_LH_KH" FromRole="LopHoc" ToRole="KhoaHoc" />
+    <NavigationProperty Name="Level" Relationship="Self.fk_LH_LV" FromRole="LopHoc" ToRole="Levels" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_LH_NV" FromRole="LopHoc" ToRole="NhanVien" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_LH" FromRole="LopHoc" ToRole="PhieuThu" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="NhanVienId" />
+    </Key>
+    <Property Name="NhanVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_NV" FromRole="NhanVien" ToRole="LopHoc" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_NV" FromRole="NhanVien" ToRole="PhieuThu" />
+    <NavigationProperty Name="TaikhoanGiaoViens" Relationship="Self.fk_TKGV_GV" FromRole="NhanVien" ToRole="TaikhoanGiaoVien" />
+  </EntityType>
+  <EntityType Name="NhanVien_audits">
+    <Key>
+      <PropertyRef Name="Change_id" />
+    </Key>
+    <Property Name="Change_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ma_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChucVu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CMND_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Update_at" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Operation" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="PhanQuyenId" />
+    </Key>
+    <Property Name="PhanQuyenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_PhanQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TaikhoanGiaoViens" Relationship="EnglishCenterModel.fk_PQ_GV" FromRole="PhanQuyen" ToRole="TaikhoanGiaoVien" />
+    <NavigationProperty Name="TaiKhoanHocViens" Relationship="EnglishCenterModel.fk_PQ_HV" FromRole="PhanQuyen" ToRole="TaiKhoanHocVien" />
+  </EntityType>
+  <EntityType Name="PhieuThu">
+    <Key>
+      <PropertyRef Name="PhieuThuId" />
+    </Key>
+    <Property Name="PhieuThuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayThanhToan" Type="DateTime" Precision="0" />
+    <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HocVienId" Type="Int32" Nullable="false" />
+    <Property Name="LopHocId" Type="Int32" Nullable="false" />
+    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NhanVienId" Type="Int32" />
+    <NavigationProperty Name="HocVien" Relationship="Self.fk_PT_HV" FromRole="PhieuThu" ToRole="HocVien" />
+    <NavigationProperty Name="LopHoc" Relationship="Self.fk_PT_LH" FromRole="PhieuThu" ToRole="LopHoc" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_PT_NV" FromRole="PhieuThu" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="TaikhoanGiaoVien">
+    <Key>
+      <PropertyRef Name="TaiKhoanGiaoVienId" />
+    </Key>
+    <Property Name="TaiKhoanGiaoVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NhanVienId" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_TKGV_GV" FromRole="TaikhoanGiaoVien" ToRole="NhanVien" />
+    <Property Name="PhanQuyenId" Type="Int32" />
+    <NavigationProperty Name="PhanQuyen" Relationship="EnglishCenterModel.fk_PQ_GV" FromRole="TaikhoanGiaoVien" ToRole="PhanQuyen" />
+  </EntityType>
+  <EntityType Name="TaiKhoanHocVien">
+    <Key>
+      <PropertyRef Name="HocVienId" />
+    </Key>
+    <Property Name="TaiKhoanHocVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HocVienId" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="HocVien" Relationship="Self.fk_TK_HV" FromRole="TaiKhoanHocVien" ToRole="HocVien" />
+    <Property Name="PhanQuyenId" Type="Int32" />
+    <NavigationProperty Name="PhanQuyen" Relationship="EnglishCenterModel.fk_PQ_HV" FromRole="TaiKhoanHocVien" ToRole="PhanQuyen" />
+  </EntityType>
+  <Association Name="fk_PT_HV">
+    <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocVien">
+        <PropertyRef Name="HocVienId" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="HocVienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TK_HV">
+    <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
+    <End Role="TaiKhoanHocVien" Type="Self.TaiKhoanHocVien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HocVien">
+        <PropertyRef Name="HocVienId" />
+      </Principal>
+      <Dependent Role="TaiKhoanHocVien">
+        <PropertyRef Name="HocVienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="KhoaHocId" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="KhoaHocId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_LV">
+    <End Role="Levels" Type="Self.Level" Multiplicity="0..1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Levels">
+        <PropertyRef Name="LevelsId" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="LevelsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="NhanVienId" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="NhanVienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_LH">
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LopHoc">
+        <PropertyRef Name="LopHocId" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="LopHocId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="NhanVienId" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="NhanVienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TKGV_GV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="TaikhoanGiaoVien" Type="Self.TaikhoanGiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="NhanVienId" />
+      </Principal>
+      <Dependent Role="TaikhoanGiaoVien">
+        <PropertyRef Name="NhanVienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EnglishCenterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HocViens" EntityType="Self.HocVien" />
+    <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
+    <EntitySet Name="Levels" EntityType="Self.Level" />
+    <EntitySet Name="LopHocs" EntityType="Self.LopHoc" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="NhanVien_audits" EntityType="Self.NhanVien_audits" />
+    <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
+    <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
+    <EntitySet Name="TaikhoanGiaoViens" EntityType="Self.TaikhoanGiaoVien" />
+    <EntitySet Name="TaiKhoanHocViens" EntityType="Self.TaiKhoanHocVien" />
+    <AssociationSet Name="fk_PT_HV" Association="Self.fk_PT_HV">
+      <End Role="HocVien" EntitySet="HocViens" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TK_HV" Association="Self.fk_TK_HV">
+      <End Role="HocVien" EntitySet="HocViens" />
+      <End Role="TaiKhoanHocVien" EntitySet="TaiKhoanHocViens" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_KH" Association="Self.fk_LH_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHocs" />
+      <End Role="LopHoc" EntitySet="LopHocs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_LV" Association="Self.fk_LH_LV">
+      <End Role="Levels" EntitySet="Levels" />
+      <End Role="LopHoc" EntitySet="LopHocs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_NV" Association="Self.fk_LH_NV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="LopHoc" EntitySet="LopHocs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_LH" Association="Self.fk_PT_LH">
+      <End Role="LopHoc" EntitySet="LopHocs" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_NV" Association="Self.fk_PT_NV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TKGV_GV" Association="Self.fk_TKGV_GV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoViens" />
+    </AssociationSet>
+    <FunctionImport Name="sp_SuaLevel">
+      <Parameter Name="idlv" Mode="In" Type="Int32" />
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+      <Parameter Name="tenlv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemLevel">
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="tenlv" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaLevel">
+      <Parameter Name="idlv" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_LoadLevel1" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel1_Result1)" />
+    <FunctionImport Name="fn_ListNhanVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListNhanVien_Result)" />
+    <FunctionImport Name="sp_SuaNhanVien">
+      <Parameter Name="id_nv" Mode="In" Type="Int32" />
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="cmnd" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemNhanVien">
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="cmnd" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaNhanVien">
+      <Parameter Name="id_nv" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TimNhanVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimNhanVienTheoTen_Result)">
+      <Parameter Name="ten" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListKhoaHoc_Result)" />
+    <FunctionImport Name="sp_SuaKhoaHoc">
+      <Parameter Name="id_KH" Mode="In" Type="Int32" />
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="tenkh" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemKhoaHoc">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="tenkh" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaKhoaHoc">
+      <Parameter Name="id_kh" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="view_ListGiaoVien" EntityType="EnglishCenterModel.view_ListGiaoVien" />
+    <FunctionImport Name="sp_SuaLopHoc">
+      <Parameter Name="malh" Mode="In" Type="String" />
+      <Parameter Name="tenlh" Mode="In" Type="String" />
+      <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+      <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+      <Parameter Name="idnv" Mode="In" Type="Int32" />
+      <Parameter Name="idkh" Mode="In" Type="Int32" />
+      <Parameter Name="idlv" Mode="In" Type="Int32" />
+      <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+      <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemLopHoc">
+      <Parameter Name="malh" Mode="In" Type="String" />
+      <Parameter Name="tenlh" Mode="In" Type="String" />
+      <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+      <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+      <Parameter Name="idnv" Mode="In" Type="Int32" />
+      <Parameter Name="idkh" Mode="In" Type="Int32" />
+      <Parameter Name="idlv" Mode="In" Type="Int32" />
+      <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+      <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaLopHoc">
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_LoadLevel" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel_Result)" />
+    <FunctionImport Name="fn_ListLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHoc_Result1)" />
+    <FunctionImport Name="fn_TimLopTheoGiaoVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimLopTheoGiaoVien_Result)">
+      <Parameter Name="idgv" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SuaHocVien">
+      <Parameter Name="idhv" Mode="In" Type="Int32" />
+      <Parameter Name="mahv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaHocVien">
+      <Parameter Name="id_hv" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListHocVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVien_Result1)" />
+    <FunctionImport Name="sp_TimHocVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimHocVienTheoTen_Result)">
+      <Parameter Name="ten" Mode="In" Type="String" />
+    </FunctionImport>
+    <AssociationSet Name="fk_PQ_GV" Association="EnglishCenterModel.fk_PQ_GV">
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+      <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoViens" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PQ_HV" Association="EnglishCenterModel.fk_PQ_HV">
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+      <End Role="TaiKhoanHocVien" EntitySet="TaiKhoanHocViens" />
+    </AssociationSet>
+    <FunctionImport Name="sp_ThemHocVien">
+      <Parameter Name="mahv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_KiemTraTaiKhoanNV">
+      <Parameter Name="idpq" Mode="InOut" Type="Int32" />
+      <Parameter Name="idnv" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListLopHocTheoKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHocTheoKhoaHoc_Result)">
+      <Parameter Name="idkh" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListHocVienCuaLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result)">
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemPhieuThu">
+      <Parameter Name="idhv" Mode="In" Type="Int32" />
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+      <Parameter Name="idnv" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CapNhatPhieuThu">
+      <Parameter Name="idpt" Mode="In" Type="Int32" />
+      <Parameter Name="ngaythanhtoan" Mode="In" Type="DateTime" />
+      <Parameter Name="phuongthucthanhtoan" Mode="In" Type="String" />
+      <Parameter Name="sotien" Mode="In" Type="Decimal" />
+      <Parameter Name="idhv" Mode="In" Type="Int32" />
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+      <Parameter Name="idnv" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListPhieuThu_Result2)">
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_TimTenTrenPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimTenTrenPhieuThu_Result)">
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+      <Parameter Name="ten" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_KiemTraTaiKhoanHV">
+      <Parameter Name="idpq" Mode="InOut" Type="Int32" />
+      <Parameter Name="idhv" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="fn_LoadLevel1_Result">
+    <Property Type="Int32" Name="LevelsId" Nullable="false" />
+    <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="fn_LoadLevel1_Result1">
+    <Property Type="Int32" Name="LevelsId" Nullable="false" />
+    <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="fn_ListNhanVien_Result">
+    <Property Type="Int32" Name="NhanVienId" Nullable="false" />
+    <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_TimNhanVienTheoTen_Result">
+    <Property Type="Int32" Name="NhanVienId" Nullable="false" />
+    <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="fn_ListKhoaHoc_Result">
+    <Property Type="Int32" Name="KhoaHocId" Nullable="false" />
+    <Property Type="String" Name="Ma_KH" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="view_ListGiaoVien">
+    <Key>
+      <PropertyRef Name="NhanVienId" />
+    </Key>
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ma_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NhanVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <ComplexType Name="fn_LoadLevel_Result">
+    <Property Type="Int32" Name="LevelsId" Nullable="false" />
+    <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="fn_ListLopHoc_Result">
+    <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
+    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
+    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="fn_ListLopHoc_Result1">
+    <Property Type="Int32" Name="LopHocId" Nullable="false" />
+    <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
+    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
+    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="fn_TimLopTheoGiaoVien_Result">
+    <Property Type="Int32" Name="LopHocId" Nullable="false" />
+    <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
+    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
+    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="fn_ListHocVien_Result">
+    <Property Type="Int32" Name="HocVienId" Nullable="false" />
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PassWords" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="fn_ListHocVien_Result1">
+    <Property Type="Int32" Name="HocVienId" Nullable="false" />
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_TimHocVienTheoTen_Result">
+    <Property Type="Int32" Name="HocVienId" Nullable="false" />
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <Association Name="fk_PQ_GV">
+    <End Type="EnglishCenterModel.PhanQuyen" Role="PhanQuyen" Multiplicity="0..1" />
+    <End Type="EnglishCenterModel.TaikhoanGiaoVien" Role="TaikhoanGiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="PhanQuyenId" />
+      </Principal>
+      <Dependent Role="TaikhoanGiaoVien">
+        <PropertyRef Name="PhanQuyenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PQ_HV">
+    <End Type="EnglishCenterModel.PhanQuyen" Role="PhanQuyen" Multiplicity="0..1" />
+    <End Type="EnglishCenterModel.TaiKhoanHocVien" Role="TaiKhoanHocVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="PhanQuyenId" />
+      </Principal>
+      <Dependent Role="TaiKhoanHocVien">
+        <PropertyRef Name="PhanQuyenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="fn_ListLopHocTheoKhoaHoc_Result">
+    <Property Type="Int32" Name="LopHocId" Nullable="false" />
+    <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
+    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
+    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="fn_ListHocVienCuaLopHoc_Result">
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="fn_ListPhieuThu_Result">
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
+    <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="fn_ListPhieuThu_Result1">
+    <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
+    <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="fn_ListPhieuThu_Result2">
+    <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
+    <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
+    <Property Type="Int32" Name="HocVienId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fn_TimTenTrenPhieuThu_Result">
+    <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
+    <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
+    <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
+    <Property Type="Int32" Name="HocVienId" Nullable="false" />
+  </ComplexType>
+</Schema>

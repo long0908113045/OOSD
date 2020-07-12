@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnglishCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChuongTrinhKhuyenMai">
+    <Key>
+      <PropertyRef Name="Ma_CTKM" />
+    </Key>
+    <Property Name="Ma_CTKM" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ten_CTKM" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_KH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ThoiGianBatDau_CTKM" Type="date" />
+    <Property Name="ThoiGianKetThuc_CTKM" Type="date" />
+    <Property Name="MoTa_CTKM" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HocVien">
+    <Key>
+      <PropertyRef Name="Ma_HV" />
+    </Key>
+    <Property Name="Ma_HV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi_HV" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email_HV" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT_HV" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="KhoaHoc">
+    <Key>
+      <PropertyRef Name="Ma_KH" />
+    </Key>
+    <Property Name="Ma_KH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ten_KH" Type="nvarchar" MaxLength="100" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Levels">
+    <Key>
+      <PropertyRef Name="Ma_Level" />
+    </Key>
+    <Property Name="Ma_Level" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ten_Level" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LopHoc">
+    <Key>
+      <PropertyRef Name="Ma_LH" />
+    </Key>
+    <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThoiGianBatDau_LH" Type="date" />
+    <Property Name="ThoiGianKetThuc_LH" Type="date" />
+    <Property Name="HocPhi" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ma_KH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ma_Level" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SoBuoiHoc" Type="int" />
+    <Property Name="KhungGioHoc" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="Ma_NV" />
+    </Key>
+    <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT_NV" Type="nvarchar" MaxLength="50" />
+    <Property Name="CMND" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NhomTaiLieu">
+    <Key>
+      <PropertyRef Name="Ma_NTL" />
+    </Key>
+    <Property Name="Ma_NTL" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ten_NTL" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_KH" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="ID_PhanQuyen" />
+    </Key>
+    <Property Name="ID_PhanQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten_PhanQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuThu">
+    <Key>
+      <PropertyRef Name="Ma_PT" />
+    </Key>
+    <Property Name="Ma_PT" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NgayThanhToan" Type="date" />
+    <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_HV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SoTien" Type="money" />
+    <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaikhoanGiaoVien">
+    <Key>
+      <PropertyRef Name="Ma_GV_TK" />
+    </Key>
+    <Property Name="Ma_GV_TK" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoanHocVien">
+    <Key>
+      <PropertyRef Name="Ma_TKHV" />
+    </Key>
+    <Property Name="Ma_TKHV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ma_HV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_CTKM_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+    <End Role="ChuongTrinhKhuyenMai" Type="Self.ChuongTrinhKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="ChuongTrinhKhuyenMai">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_LV">
+    <End Role="Levels" Type="Self.Levels" Multiplicity="1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Levels">
+        <PropertyRef Name="Ma_Level" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="Ma_Level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="Ma_NV" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="Ma_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_NTL_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1" />
+    <End Role="NhomTaiLieu" Type="Self.NhomTaiLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="NhomTaiLieu">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_HV">
+    <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocVien">
+        <PropertyRef Name="Ma_HV" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="Ma_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_LH">
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LopHoc">
+        <PropertyRef Name="Ma_LH" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="Ma_LH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="Ma_NV" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="Ma_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TK_HV">
+    <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
+    <End Role="TaiKhoanHocVien" Type="Self.TaiKhoanHocVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocVien">
+        <PropertyRef Name="Ma_HV" />
+      </Principal>
+      <Dependent Role="TaiKhoanHocVien">
+        <PropertyRef Name="Ma_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TKGV_GV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="TaikhoanGiaoVien" Type="Self.TaikhoanGiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="Ma_NV" />
+      </Principal>
+      <Dependent Role="TaikhoanGiaoVien">
+        <PropertyRef Name="Ma_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_KiemTraIDKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_KiemTraIDLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_KiemTraIDNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_KiemTraKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_KiemTraLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenlv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_KiemTraLopHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="malh" Type="nvarchar" Mode="In" />
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_KiemTraNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+    <Parameter Name="cmnd" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_ListGiaoVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_ListLopHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThoiGianBatDau_LH" Type="date" />
+          <Property Name="ThoiGianKetThuc_LH" Type="date" />
+          <Property Name="HocPhi" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ma_KH" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ma_Level" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SoBuoiHoc" Type="int" />
+          <Property Name="KhungGioHoc" Type="nvarchar(max)" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="sp_ListKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ListNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_LoadLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_SuaKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+    <Parameter Name="mota" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SuaLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+    <Parameter Name="mota" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenlv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SuaLopHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="malh" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenlh" Type="nvarchar" Mode="In" />
+    <Parameter Name="thoigianbatdau" Type="date" Mode="In" />
+    <Parameter Name="thoigianketthuc" Type="date" Mode="In" />
+    <Parameter Name="hocphi" Type="numeric" Mode="In" />
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+    <Parameter Name="sobuoihoc" Type="int" Mode="In" />
+    <Parameter Name="khunggiohoc" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_SuaNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
+    <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="nvarchar" Mode="In" />
+    <Parameter Name="cmnd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
+    <Parameter Name="mota" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenlv" Type="nvarchar" Mode="In" />
+    <Parameter Name="mota" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemLopHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="malh" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenlh" Type="nvarchar" Mode="In" />
+    <Parameter Name="thoigianbatdau" Type="date" Mode="In" />
+    <Parameter Name="thoigianketthuc" Type="date" Mode="In" />
+    <Parameter Name="hocphi" Type="numeric" Mode="In" />
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+    <Parameter Name="sobuoihoc" Type="int" Mode="In" />
+    <Parameter Name="khunggiohoc" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
+    <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="nvarchar" Mode="In" />
+    <Parameter Name="cmnd" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="makh" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="malv" Type="nvarchar" Mode="In" />
+    <Parameter Name="mota" Type="nvarchar" Mode="In" />
+    <Parameter Name="tenlv" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_XoaNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="EnglishCenterModelStoreContainer">
+    <EntitySet Name="ChuongTrinhKhuyenMai" EntityType="Self.ChuongTrinhKhuyenMai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HocVien" EntityType="Self.HocVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhoaHoc" EntityType="Self.KhoaHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhomTaiLieu" EntityType="Self.NhomTaiLieu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuThu" EntityType="Self.PhieuThu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaikhoanGiaoVien" EntityType="Self.TaikhoanGiaoVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoanHocVien" EntityType="Self.TaiKhoanHocVien" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_CTKM_KH" Association="Self.fk_CTKM_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHoc" />
+      <End Role="ChuongTrinhKhuyenMai" EntitySet="ChuongTrinhKhuyenMai" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_KH" Association="Self.fk_LH_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHoc" />
+      <End Role="LopHoc" EntitySet="LopHoc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_LV" Association="Self.fk_LH_LV">
+      <End Role="Levels" EntitySet="Levels" />
+      <End Role="LopHoc" EntitySet="LopHoc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_NV" Association="Self.fk_LH_NV">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="LopHoc" EntitySet="LopHoc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_NTL_KH" Association="Self.fk_NTL_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHoc" />
+      <End Role="NhomTaiLieu" EntitySet="NhomTaiLieu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_HV" Association="Self.fk_PT_HV">
+      <End Role="HocVien" EntitySet="HocVien" />
+      <End Role="PhieuThu" EntitySet="PhieuThu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_LH" Association="Self.fk_PT_LH">
+      <End Role="LopHoc" EntitySet="LopHoc" />
+      <End Role="PhieuThu" EntitySet="PhieuThu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_NV" Association="Self.fk_PT_NV">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="PhieuThu" EntitySet="PhieuThu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TK_HV" Association="Self.fk_TK_HV">
+      <End Role="HocVien" EntitySet="HocVien" />
+      <End Role="TaiKhoanHocVien" EntitySet="TaiKhoanHocVien" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TKGV_GV" Association="Self.fk_TKGV_GV">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnglishCenterModelStoreContainer" CdmEntityContainer="EnglishCenterEntities">
+    <EntitySetMapping Name="HocViens">
+      <EntityTypeMapping TypeName="EnglishCenterModel.HocVien">
+        <MappingFragment StoreEntitySet="HocVien">
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+          <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+          <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+          <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+          <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+          <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhoaHocs">
+      <EntityTypeMapping TypeName="EnglishCenterModel.KhoaHoc">
+        <MappingFragment StoreEntitySet="KhoaHoc">
+          <ScalarProperty Name="KhoaHocId" ColumnName="KhoaHocId" />
+          <ScalarProperty Name="Ma_KH" ColumnName="Ma_KH" />
+          <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Levels">
+      <EntityTypeMapping TypeName="EnglishCenterModel.Level">
+        <MappingFragment StoreEntitySet="Levels">
+          <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
+          <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
+          <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LopHocs">
+      <EntityTypeMapping TypeName="EnglishCenterModel.LopHoc">
+        <MappingFragment StoreEntitySet="LopHoc">
+          <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
+          <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
+          <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
+          <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
+          <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+          <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+          <ScalarProperty Name="KhoaHocId" ColumnName="KhoaHocId" />
+          <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
+          <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
+          <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="EnglishCenterModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+          <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanVien_audits">
+      <EntityTypeMapping TypeName="EnglishCenterModel.NhanVien_audits">
+        <MappingFragment StoreEntitySet="NhanVien_audits">
+          <ScalarProperty Name="Change_id" ColumnName="Change_id" />
+          <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+          <ScalarProperty Name="CMND_NV" ColumnName="CMND_NV" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Update_at" ColumnName="Update_at" />
+          <ScalarProperty Name="Operation" ColumnName="Operation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhanQuyens">
+      <EntityTypeMapping TypeName="EnglishCenterModel.PhanQuyen">
+        <MappingFragment StoreEntitySet="PhanQuyen">
+          <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
+          <ScalarProperty Name="Ten_PhanQuyen" ColumnName="Ten_PhanQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuThus">
+      <EntityTypeMapping TypeName="EnglishCenterModel.PhieuThu">
+        <MappingFragment StoreEntitySet="PhieuThu">
+          <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
+          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+          <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+          <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
+          <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaikhoanGiaoViens">
+      <EntityTypeMapping TypeName="EnglishCenterModel.TaikhoanGiaoVien">
+        <MappingFragment StoreEntitySet="TaikhoanGiaoVien">
+          <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
+          <ScalarProperty Name="TaiKhoanGiaoVienId" ColumnName="TaiKhoanGiaoVienId" />
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="PassWords" ColumnName="PassWords" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoanHocViens">
+      <EntityTypeMapping TypeName="EnglishCenterModel.TaiKhoanHocVien">
+        <MappingFragment StoreEntitySet="TaiKhoanHocVien">
+          <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
+          <ScalarProperty Name="TaiKhoanHocVienId" ColumnName="TaiKhoanHocVienId" />
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="PassWords" ColumnName="PassWords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SuaLevel" FunctionName="EnglishCenterModel.Store.sp_SuaLevel" />
+    <FunctionImportMapping FunctionImportName="sp_ThemLevel" FunctionName="EnglishCenterModel.Store.sp_ThemLevel" />
+    <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
+    <FunctionImportMapping FunctionImportName="fn_ListNhanVien" FunctionName="EnglishCenterModel.Store.fn_ListNhanVien">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListNhanVien_Result">
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+          <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SuaNhanVien" FunctionName="EnglishCenterModel.Store.sp_SuaNhanVien" />
+    <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
+    <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
+    <FunctionImportMapping FunctionImportName="sp_TimNhanVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimNhanVienTheoTen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimNhanVienTheoTen_Result">
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+          <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fn_ListKhoaHoc" FunctionName="EnglishCenterModel.Store.fn_ListKhoaHoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListKhoaHoc_Result">
+          <ScalarProperty Name="KhoaHocId" ColumnName="KhoaHocId" />
+          <ScalarProperty Name="Ma_KH" ColumnName="Ma_KH" />
+          <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SuaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_SuaKhoaHoc" />
+    <FunctionImportMapping FunctionImportName="sp_ThemKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_ThemKhoaHoc" />
+    <FunctionImportMapping FunctionImportName="sp_XoaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_XoaKhoaHoc" />
+    <EntitySetMapping Name="view_ListGiaoVien">
+      <EntityTypeMapping TypeName="EnglishCenterModel.view_ListGiaoVien">
+        <MappingFragment StoreEntitySet="view_ListGiaoVien">
+          <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+          <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_SuaLopHoc" FunctionName="EnglishCenterModel.Store.sp_SuaLopHoc" />
+    <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
+    <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
+    <FunctionImportMapping FunctionImportName="fn_LoadLevel" FunctionName="EnglishCenterModel.Store.fn_LoadLevel">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_LoadLevel_Result">
+          <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
+          <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
+          <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fn_LoadLevel1" FunctionName="EnglishCenterModel.Store.fn_LoadLevel">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_LoadLevel1_Result1">
+          <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
+          <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
+          <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fn_ListLopHoc" FunctionName="EnglishCenterModel.Store.fn_ListLopHoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListLopHoc_Result1">
+          <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
+          <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
+          <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+          <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+          <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+          <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
+          <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
+          <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
+          <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fn_TimLopTheoGiaoVien" FunctionName="EnglishCenterModel.Store.fn_TimLopTheoGiaoVien">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_TimLopTheoGiaoVien_Result">
+          <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
+          <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
+          <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+          <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+          <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+          <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
+          <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
+          <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
+          <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
+    <FunctionImportMapping FunctionImportName="sp_XoaHocVien" FunctionName="EnglishCenterModel.Store.sp_XoaHocVien" />
+    <FunctionImportMapping FunctionImportName="fn_ListHocVien" FunctionName="EnglishCenterModel.Store.fn_ListHocVien">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListHocVien_Result1">
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+          <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+          <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+          <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+          <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+          <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimHocVienTheoTen_Result">
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+          <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+          <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+          <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+          <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+          <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThemHocVien" FunctionName="EnglishCenterModel.Store.sp_ThemHocVien" />
+    <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
+    <FunctionImportMapping FunctionImportName="fn_ListLopHocTheoKhoaHoc" FunctionName="EnglishCenterModel.Store.fn_ListLopHocTheoKhoaHoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListLopHocTheoKhoaHoc_Result">
+          <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
+          <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
+          <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+          <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+          <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+          <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
+          <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
+          <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
+          <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fn_ListHocVienCuaLopHoc" FunctionName="EnglishCenterModel.Store.fn_ListHocVienCuaLopHoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result">
+          <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+          <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+          <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
+          <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+          <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
+    <FunctionImportMapping FunctionImportName="sp_CapNhatPhieuThu" FunctionName="EnglishCenterModel.Store.sp_CapNhatPhieuThu" />
+    <FunctionImportMapping FunctionImportName="fn_ListPhieuThu" FunctionName="EnglishCenterModel.Store.fn_ListPhieuThu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListPhieuThu_Result2">
+          <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
+          <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+          <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+          <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
+          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fn_TimTenTrenPhieuThu" FunctionName="EnglishCenterModel.Store.fn_TimTenTrenPhieuThu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_TimTenTrenPhieuThu_Result">
+          <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
+          <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+          <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+          <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+          <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+          <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
+          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+          <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanHV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanHV" />
+  </EntityContainerMapping>
+</Mapping>

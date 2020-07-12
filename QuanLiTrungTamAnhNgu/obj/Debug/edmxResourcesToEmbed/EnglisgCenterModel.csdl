@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnglishCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChuongTrinhKhuyenMai">
+    <Key>
+      <PropertyRef Name="Ma_CTKM" />
+    </Key>
+    <Property Name="Ma_CTKM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_CTKM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ma_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ThoiGianBatDau_CTKM" Type="DateTime" Precision="0" />
+    <Property Name="ThoiGianKetThuc_CTKM" Type="DateTime" Precision="0" />
+    <Property Name="MoTa_CTKM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="KhoaHoc" Relationship="Self.fk_CTKM_KH" FromRole="ChuongTrinhKhuyenMai" ToRole="KhoaHoc" />
+  </EntityType>
+  <EntityType Name="HocVien">
+    <Key>
+      <PropertyRef Name="Ma_HV" />
+    </Key>
+    <Property Name="Ma_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_HV" FromRole="HocVien" ToRole="PhieuThu" />
+    <NavigationProperty Name="TaiKhoanHocViens" Relationship="Self.fk_TK_HV" FromRole="HocVien" ToRole="TaiKhoanHocVien" />
+  </EntityType>
+  <EntityType Name="KhoaHoc">
+    <Key>
+      <PropertyRef Name="Ma_KH" />
+    </Key>
+    <Property Name="Ma_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChuongTrinhKhuyenMais" Relationship="Self.fk_CTKM_KH" FromRole="KhoaHoc" ToRole="ChuongTrinhKhuyenMai" />
+    <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_KH" FromRole="KhoaHoc" ToRole="LopHoc" />
+    <NavigationProperty Name="NhomTaiLieux" Relationship="Self.fk_NTL_KH" FromRole="KhoaHoc" ToRole="NhomTaiLieu" />
+  </EntityType>
+  <EntityType Name="Level">
+    <Key>
+      <PropertyRef Name="Ma_Level" />
+    </Key>
+    <Property Name="Ma_Level" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_LV" FromRole="Levels" ToRole="LopHoc" />
+  </EntityType>
+  <EntityType Name="LopHoc">
+    <Key>
+      <PropertyRef Name="Ma_LH" />
+    </Key>
+    <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianBatDau_LH" Type="DateTime" Precision="0" />
+    <Property Name="ThoiGianKetThuc_LH" Type="DateTime" Precision="0" />
+    <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Ma_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ma_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ma_Level" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoBuoiHoc" Type="Int32" />
+    <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KhoaHoc" Relationship="Self.fk_LH_KH" FromRole="LopHoc" ToRole="KhoaHoc" />
+    <NavigationProperty Name="Level" Relationship="Self.fk_LH_LV" FromRole="LopHoc" ToRole="Levels" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_LH_NV" FromRole="LopHoc" ToRole="NhanVien" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_LH" FromRole="LopHoc" ToRole="PhieuThu" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="Ma_NV" />
+    </Key>
+    <Property Name="Ma_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_NV" FromRole="NhanVien" ToRole="LopHoc" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_NV" FromRole="NhanVien" ToRole="PhieuThu" />
+    <NavigationProperty Name="TaikhoanGiaoViens" Relationship="Self.fk_TKGV_GV" FromRole="NhanVien" ToRole="TaikhoanGiaoVien" />
+  </EntityType>
+  <EntityType Name="NhomTaiLieu">
+    <Key>
+      <PropertyRef Name="Ma_NTL" />
+    </Key>
+    <Property Name="Ma_NTL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ten_NTL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ma_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KhoaHoc" Relationship="Self.fk_NTL_KH" FromRole="NhomTaiLieu" ToRole="KhoaHoc" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="ID_PhanQuyen" />
+    </Key>
+    <Property Name="ID_PhanQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_PhanQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuThu">
+    <Key>
+      <PropertyRef Name="Ma_PT" />
+    </Key>
+    <Property Name="Ma_PT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgayThanhToan" Type="DateTime" Precision="0" />
+    <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ma_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Ma_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="HocVien" Relationship="Self.fk_PT_HV" FromRole="PhieuThu" ToRole="HocVien" />
+    <NavigationProperty Name="LopHoc" Relationship="Self.fk_PT_LH" FromRole="PhieuThu" ToRole="LopHoc" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_PT_NV" FromRole="PhieuThu" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="TaikhoanGiaoVien">
+    <Key>
+      <PropertyRef Name="Ma_GV_TK" />
+    </Key>
+    <Property Name="Ma_GV_TK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ma_NV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_TKGV_GV" FromRole="TaikhoanGiaoVien" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="TaiKhoanHocVien">
+    <Key>
+      <PropertyRef Name="Ma_TKHV" />
+    </Key>
+    <Property Name="Ma_TKHV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ma_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="HocVien" Relationship="Self.fk_TK_HV" FromRole="TaiKhoanHocVien" ToRole="HocVien" />
+  </EntityType>
+  <Association Name="fk_CTKM_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+    <End Role="ChuongTrinhKhuyenMai" Type="Self.ChuongTrinhKhuyenMai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="ChuongTrinhKhuyenMai">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_HV">
+    <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocVien">
+        <PropertyRef Name="Ma_HV" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="Ma_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TK_HV">
+    <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
+    <End Role="TaiKhoanHocVien" Type="Self.TaiKhoanHocVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocVien">
+        <PropertyRef Name="Ma_HV" />
+      </Principal>
+      <Dependent Role="TaiKhoanHocVien">
+        <PropertyRef Name="Ma_HV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_NTL_KH">
+    <End Role="KhoaHoc" Type="Self.KhoaHoc" Multiplicity="0..1" />
+    <End Role="NhomTaiLieu" Type="Self.NhomTaiLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhoaHoc">
+        <PropertyRef Name="Ma_KH" />
+      </Principal>
+      <Dependent Role="NhomTaiLieu">
+        <PropertyRef Name="Ma_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_LV">
+    <End Role="Levels" Type="Self.Level" Multiplicity="1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Levels">
+        <PropertyRef Name="Ma_Level" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="Ma_Level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LH_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="Ma_NV" />
+      </Principal>
+      <Dependent Role="LopHoc">
+        <PropertyRef Name="Ma_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_LH">
+    <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LopHoc">
+        <PropertyRef Name="Ma_LH" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="Ma_LH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PT_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="Ma_NV" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="Ma_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TKGV_GV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="TaikhoanGiaoVien" Type="Self.TaikhoanGiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="Ma_NV" />
+      </Principal>
+      <Dependent Role="TaikhoanGiaoVien">
+        <PropertyRef Name="Ma_NV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EnglishCenterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChuongTrinhKhuyenMais" EntityType="Self.ChuongTrinhKhuyenMai" />
+    <EntitySet Name="HocViens" EntityType="Self.HocVien" />
+    <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
+    <EntitySet Name="Levels" EntityType="Self.Level" />
+    <EntitySet Name="LopHocs" EntityType="Self.LopHoc" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="NhomTaiLieux" EntityType="Self.NhomTaiLieu" />
+    <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
+    <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
+    <EntitySet Name="TaikhoanGiaoViens" EntityType="Self.TaikhoanGiaoVien" />
+    <EntitySet Name="TaiKhoanHocViens" EntityType="Self.TaiKhoanHocVien" />
+    <AssociationSet Name="fk_CTKM_KH" Association="Self.fk_CTKM_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHocs" />
+      <End Role="ChuongTrinhKhuyenMai" EntitySet="ChuongTrinhKhuyenMais" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_HV" Association="Self.fk_PT_HV">
+      <End Role="HocVien" EntitySet="HocViens" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TK_HV" Association="Self.fk_TK_HV">
+      <End Role="HocVien" EntitySet="HocViens" />
+      <End Role="TaiKhoanHocVien" EntitySet="TaiKhoanHocViens" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_KH" Association="Self.fk_LH_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHocs" />
+      <End Role="LopHoc" EntitySet="LopHocs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_NTL_KH" Association="Self.fk_NTL_KH">
+      <End Role="KhoaHoc" EntitySet="KhoaHocs" />
+      <End Role="NhomTaiLieu" EntitySet="NhomTaiLieux" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_LV" Association="Self.fk_LH_LV">
+      <End Role="Levels" EntitySet="Levels" />
+      <End Role="LopHoc" EntitySet="LopHocs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LH_NV" Association="Self.fk_LH_NV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="LopHoc" EntitySet="LopHocs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_LH" Association="Self.fk_PT_LH">
+      <End Role="LopHoc" EntitySet="LopHocs" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PT_NV" Association="Self.fk_PT_NV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TKGV_GV" Association="Self.fk_TKGV_GV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoViens" />
+    </AssociationSet>
+    <FunctionImport Name="sp_ThemLevel">
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="tenlv" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SuaLevel">
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+      <Parameter Name="tenlv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LoadLevel" ReturnType="Collection(EnglishCenterModel.sp_LoadLevel_Result)" />
+    <FunctionImport Name="sp_XoaLevel">
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+      <Parameter Name="tenlv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ListNhanVien" ReturnType="Collection(EnglishCenterModel.sp_ListNhanVien_Result)" />
+    <FunctionImport Name="sp_SuaNhanVien">
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="cmnd" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemNhanVien">
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="cmnd" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaNhanVien">
+      <Parameter Name="manv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ListKhoaHoc" ReturnType="Collection(EnglishCenterModel.sp_ListKhoaHoc_Result)" />
+    <FunctionImport Name="sp_SuaKhoaHoc">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="tenkh" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemKhoaHoc">
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="tenkh" Mode="In" Type="String" />
+      <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XoaKhoaHoc">
+      <Parameter Name="makh" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHoc_Result)" />
+    <FunctionImport Name="sp_ThemLopHoc">
+      <Parameter Name="malh" Mode="In" Type="String" />
+      <Parameter Name="tenlh" Mode="In" Type="String" />
+      <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+      <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+      <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_ListGiaoVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListGiaoVien_Result)" />
+    <FunctionImport Name="sp_SuaLopHoc">
+      <Parameter Name="malh" Mode="In" Type="String" />
+      <Parameter Name="tenlh" Mode="In" Type="String" />
+      <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+      <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="makh" Mode="In" Type="String" />
+      <Parameter Name="malv" Mode="In" Type="String" />
+      <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+      <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_LoadLevel_Result">
+    <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_ListNhanVien_Result">
+    <Property Type="String" Name="Ma_NV" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_ListKhoaHoc_Result">
+    <Property Type="String" Name="Ma_KH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="fn_ListLopHoc_Result">
+    <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
+    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
+    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="Ma_NV" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ma_KH" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
+    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="fn_ListGiaoVien_Result">
+    <Property Type="String" Name="Ma_NV" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>
