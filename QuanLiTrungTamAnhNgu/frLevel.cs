@@ -29,16 +29,16 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttThemLv_Click(object sender, EventArgs e)
         {
-            maLevel = txtMaLV.Text;
+          
             tenLevel = txtTenLevel.Text;
             moTa = txtMoTaLevel.Text;
 
-            if (txtTenLevel.Text != "" && txtMoTaLevel.Text != "" && txtMaLV.Text != "")
+            if (txtTenLevel.Text != "" && txtMoTaLevel.Text != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn thêm level này chứ!", "Thêm level", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    if (context.sp_ThemLevel(maLevel, tenLevel, moTa)==1)
+                    if (context.sp_ThemLevel(tenLevel, moTa)==1)
                     {
                         MessageBox.Show("Đã thêm level!");
                         Load_Level();
@@ -58,17 +58,17 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttSuaLv_Click(object sender, EventArgs e)
         {
-            maLevel = txtMaLV.Text;
+            
             tenLevel = txtTenLevel.Text;
             moTa = txtMoTaLevel.Text;
             int idLevel = int.Parse(gvLevel.GetRowCellValue(gvLevel.FocusedRowHandle, gvLevel.Columns[0]).ToString());
 
-            if (txtTenLevel.Text != "" && txtMoTaLevel.Text != "" && txtMaLV.Text != "")
+            if (txtTenLevel.Text != "" && txtMoTaLevel.Text != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa thông tin level này chứ!", "Sửa level", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    if (context.sp_SuaLevel(idLevel,maLevel,moTa, tenLevel)==1)
+                    if (context.sp_SuaLevel(idLevel,moTa, tenLevel)==1)
                     {
                         MessageBox.Show("Đã Sửa Thông Tin level!");
                         Load_Level();
@@ -90,8 +90,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             if (gvLevel.RowCount > 0)
             {
-                txtMaLV.Enabled = false;
-                txtMaLV.EditValue = gvLevel.GetRowCellValue(gvLevel.FocusedRowHandle, gvLevel.Columns[1]).ToString();
+               
                 txtTenLevel.EditValue = gvLevel.GetRowCellValue(gvLevel.FocusedRowHandle, gvLevel.Columns[2]).ToString();
                 txtMoTaLevel.Text = gvLevel.GetRowCellValue(gvLevel.FocusedRowHandle, gvLevel.Columns[3]).ToString();
             }
@@ -101,12 +100,12 @@ namespace QuanLiTrungTamAnhNgu
 
     private void bttXoaLv_Click(object sender, EventArgs e)
         {
-            maLevel = txtMaLV.Text;
+            
             tenLevel = txtTenLevel.Text;
             moTa = txtMoTaLevel.Text;
             int idLevel = int.Parse(gvLevel.GetRowCellValue(gvLevel.FocusedRowHandle, gvLevel.Columns[0]).ToString());
 
-            if (txtTenLevel.Text != "" && txtMoTaLevel.Text != "" && txtMaLV.Text != "")
+            if (txtTenLevel.Text != "" && txtMoTaLevel.Text != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thông tin level này chứ!", "Xóa level", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
@@ -129,10 +128,10 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void Load_Level()
         {
-            gcLevel.DataSource = (from level in context.fn_LoadLevel1()
+            gcLevel.DataSource = (from level in context.fn_LoadLevel()
                                   select level).ToList();
             gvLevel.Columns[0].Visible = false;
-            gvLevel.Columns[1].Caption = "Mã Level";
+            gvLevel.Columns[1].Visible = false;
             gvLevel.Columns[2].Caption = "Tên Level";
             gvLevel.Columns[3].Caption = "Mô Tả Level";
             gvLevel.Columns[4].Visible = false;
@@ -151,14 +150,14 @@ namespace QuanLiTrungTamAnhNgu
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            txtMaLV.Text = "";
+            
             txtTenLevel.Text = "";
             txtMoTaLevel.Text = "";
 
         }
         private void clearinfor()
         {
-            txtMaLV.Text = "";
+           
             txtTenLevel.Text = "";
             txtMoTaLevel.Text = "";
         }

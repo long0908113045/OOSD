@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frListLopHoc));
             this.gcsListHV = new DevExpress.XtraGrid.GridControl();
             this.gvListHocVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lbSoLuong = new System.Windows.Forms.Label();
-            this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
-            this.txtHocVien = new DevExpress.XtraEditors.TextEdit();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtKhungGioHoc = new DevExpress.XtraEditors.TextEdit();
             this.txtSoBuoiHoc = new DevExpress.XtraEditors.TextEdit();
@@ -52,7 +48,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvListHocVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKhungGioHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoBuoiHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKH.Properties)).BeginInit();
@@ -85,9 +80,6 @@
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.lbSoLuong);
-            this.panelControl1.Controls.Add(this.btnTimKiem);
-            this.panelControl1.Controls.Add(this.txtHocVien);
-            this.panelControl1.Controls.Add(this.label7);
             this.panelControl1.Controls.Add(this.label6);
             this.panelControl1.Controls.Add(this.txtKhungGioHoc);
             this.panelControl1.Controls.Add(this.txtSoBuoiHoc);
@@ -111,37 +103,6 @@
             this.lbSoLuong.Name = "lbSoLuong";
             this.lbSoLuong.Size = new System.Drawing.Size(0, 27);
             this.lbSoLuong.TabIndex = 13;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Appearance.Options.UseFont = true;
-            this.btnTimKiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiem.ImageOptions.SvgImage")));
-            this.btnTimKiem.Location = new System.Drawing.Point(674, 115);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(147, 37);
-            this.btnTimKiem.TabIndex = 12;
-            this.btnTimKiem.Text = "Tìm Kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtHocVien
-            // 
-            this.txtHocVien.Location = new System.Drawing.Point(545, 119);
-            this.txtHocVien.Name = "txtHocVien";
-            this.txtHocVien.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHocVien.Properties.Appearance.Options.UseFont = true;
-            this.txtHocVien.Size = new System.Drawing.Size(123, 32);
-            this.txtHocVien.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(348, 125);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(191, 27);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Tìm kiếm học viên";
             // 
             // label6
             // 
@@ -275,7 +236,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHocVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKhungGioHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoBuoiHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKH.Properties)).EndInit();
@@ -300,9 +260,6 @@
         private DevExpress.XtraEditors.TextEdit txtSoBuoiHoc;
         private DevExpress.XtraEditors.TextEdit txtKH;
         private DevExpress.XtraEditors.TextEdit txtGV;
-        private DevExpress.XtraEditors.SimpleButton btnTimKiem;
-        private DevExpress.XtraEditors.TextEdit txtHocVien;
-        private System.Windows.Forms.Label label7;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private System.Windows.Forms.TreeView treeViewListLH;
         private System.Windows.Forms.Label lbSoLuong;

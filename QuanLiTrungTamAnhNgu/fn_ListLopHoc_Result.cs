@@ -13,7 +13,7 @@ namespace QuanLiTrungTamAnhNgu
     
     public partial class fn_ListLopHoc_Result
     {
-        public string Ma_LH { get; set; }
+        public int LopHocId { get; set; }
         public string Ten_LH { get; set; }
         public string HoTen_NV { get; set; }
         public string Ten_KH { get; set; }

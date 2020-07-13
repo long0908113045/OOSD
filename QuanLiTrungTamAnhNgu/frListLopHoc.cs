@@ -51,7 +51,7 @@ namespace QuanLiTrungTamAnhNgu
             
             Global.LopHocID= Convert.ToInt32(e.Node.Tag);
             gcsListHV.DataSource = context.fn_ListHocVienCuaLopHoc(Global.LopHocID).ToList();
-            gvListHocVien.Columns[0].Caption = "Mã học viên";
+            gvListHocVien.Columns[0].Visible = false;
             gvListHocVien.Columns[1].Caption = "Họ tên";
             gvListHocVien.Columns[2].Caption =  "Địa chỉ";
             gvListHocVien.Columns[3].Caption = "Email";
@@ -75,18 +75,6 @@ namespace QuanLiTrungTamAnhNgu
             lbSoLuong.Text = (gvListHocVien.RowCount).ToString();
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            gcsListHV.DataSource = context.sp_TimHocVienTheoTen(txtHocVien.Text).ToList();
-            gvListHocVien.Columns[0].Visible = false;
-            gvListHocVien.Columns[1].Caption = "Mã học viên";
-            gvListHocVien.Columns[2].Caption = "Họ tên";
-            gvListHocVien.Columns[3].Caption = "Địa chỉ";
-            gvListHocVien.Columns[4].Caption = "Email";
-            gvListHocVien.Columns[5].Caption = "Số điện thoại";
-            gvListHocVien.Columns[6].Visible = false;
-            if (gvListHocVien.RowCount == 0)
-                MessageBox.Show("Không tìm thấy học viên");
-        }
+       
     }
 }

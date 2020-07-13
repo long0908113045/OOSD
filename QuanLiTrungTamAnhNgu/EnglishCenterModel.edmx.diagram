@@ -4,17 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2f4b8b62da5942e096f979716cccfa29" Name="Diagram1" ZoomLevel="97">
-        <EntityTypeShape EntityType="EnglishCenterModel.HocVien" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.KhoaHoc" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.Level" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.LopHoc" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.NhanVien" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.NhanVien_audits" Width="1.5" PointX="7.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.PhanQuyen" Width="1.5" PointX="7.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.PhieuThu" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.TaikhoanGiaoVien" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.TaiKhoanHocVien" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+      <Diagram DiagramId="478d4e53992146449baf3b1bebaa7c9b" Name="Diagram1">
+        <EntityTypeShape EntityType="EnglishCenterModel.HocVien" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.KhoaHoc" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.Level" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.LopHoc" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.NhanVien" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.NhanVien_audits" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.PhanQuyen" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.PhieuThu" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.TaikhoanGiaoVien" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.TaiKhoanHocVien" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.view_ListGiaoVien" Width="1.5" PointX="7.75" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="EnglishCenterModel.fk_PT_HV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_TK_HV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_LH_KH" ManuallyRouted="false" />
@@ -23,9 +24,8 @@
         <AssociationConnector Association="EnglishCenterModel.fk_PT_LH" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_PT_NV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_TKGV_GV" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EnglishCenterModel.view_ListGiaoVien" Width="1.5" PointX="5.375" PointY="9.75" />
-        <AssociationConnector Association="EnglishCenterModel.fk_PQ_GV" />
-        <AssociationConnector Association="EnglishCenterModel.fk_PQ_HV" />
+        <AssociationConnector Association="EnglishCenterModel.fk_PQ_GV" ManuallyRouted="false" />
+        <AssociationConnector Association="EnglishCenterModel.fk_PQ_HV" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

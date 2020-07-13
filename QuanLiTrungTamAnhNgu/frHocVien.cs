@@ -18,14 +18,12 @@ namespace QuanLiTrungTamAnhNgu
             this.WindowState = FormWindowState.Maximized;
         }
         EnglishCenterEntities context = new EnglishCenterEntities();
-        string mahv;
         string hoTen;
         string diaChi;
         string email;
         string soDienThoai;
         private void bttThemHV_Click(object sender, EventArgs e)
         {
-            mahv = txtMaHV.Text;
             hoTen = txtHoTenHV.Text;
             diaChi = txtDiaChiHV.Text;
             email = txtEmailHV.Text;
@@ -33,8 +31,7 @@ namespace QuanLiTrungTamAnhNgu
             if (txtHoTenHV.Text == null ||
               txtDiaChiHV.Text == null ||
               txtEmailHV.Text == null ||
-              txtSoDienThoaiHV.Text == null ||
-              txtMaHV.Text == null
+              txtSoDienThoaiHV.Text == null
               )
             {
                 MessageBox.Show("Bạn chưa điền đủ thông tin!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -45,7 +42,7 @@ namespace QuanLiTrungTamAnhNgu
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    if (context.sp_ThemHocVien(mahv, hoTen, diaChi, email, soDienThoai) !=-1 )
+                    if (context.sp_ThemHocVien(hoTen, diaChi, email, soDienThoai) != -1 )
                     {
                         MessageBox.Show("Bạn đã thêm học viên thành công!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_HocVien();
@@ -59,9 +56,7 @@ namespace QuanLiTrungTamAnhNgu
         }
 
         private void bttSuaHV_Click(object sender, EventArgs e)
-        {
-
-            mahv = txtMaHV.Text;
+        {  
             hoTen = txtHoTenHV.Text;
             diaChi = txtDiaChiHV.Text;
             email = txtEmailHV.Text;
@@ -80,7 +75,7 @@ namespace QuanLiTrungTamAnhNgu
                 {
                     int id = Convert.ToInt32(gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[0]).ToString());
 
-                    if (context.sp_SuaHocVien(id, mahv, hoTen, diaChi, email, soDienThoai) !=0)
+                    if (context.sp_SuaHocVien(id, hoTen, diaChi, email, soDienThoai) !=0)
                     {
                         MessageBox.Show("Bạn đã sửa học viên thành công!", "Sửa học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_HocVien();
@@ -129,8 +124,6 @@ namespace QuanLiTrungTamAnhNgu
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            txtMaHV.Text = "";
-            txtMaHV.Enabled = true;
             txtHoTenHV.Text = "";
             txtEmailHV.Text = "";
             txtDiaChiHV.Text = "";
@@ -143,9 +136,9 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void Load_HocVien()
         {
-            gcHocVien.DataSource = (context.fn_ListHocVien()).ToList();
+            gcHocVien.DataSource = context.fn_ListHocVien().ToList();
             gvHocVien.Columns[0].Visible = false;
-            gvHocVien.Columns[1].Caption = "Mã học viên";
+            gvHocVien.Columns[1].Visible = false;
             gvHocVien.Columns[2].Caption = "Họ tên";
             gvHocVien.Columns[3].Caption = "Địa chỉ";
             gvHocVien.Columns[4].Caption = "Email";
@@ -157,9 +150,6 @@ namespace QuanLiTrungTamAnhNgu
         {
             if (gvHocVien.RowCount > 0)
             {
-
-                txtMaHV.EditValue = gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[1]).ToString();
-                txtMaHV.Enabled = false;
                 txtHoTenHV.EditValue = gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[2]).ToString();
                 txtDiaChiHV.Text = gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[3]).ToString();
                 txtEmailHV.EditValue = gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[4]).ToString();
@@ -171,7 +161,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             gcHocVien.DataSource = context.sp_TimHocVienTheoTen(txtTimTen.Text).ToList();
             gvHocVien.Columns[0].Visible = false;
-            gvHocVien.Columns[1].Caption = "Mã học viên";
+            gvHocVien.Columns[1].Visible = false;
             gvHocVien.Columns[2].Caption = "Họ tên";
             gvHocVien.Columns[3].Caption = "Địa chỉ";
             gvHocVien.Columns[4].Caption = "Email";
@@ -180,5 +170,6 @@ namespace QuanLiTrungTamAnhNgu
             if (gvHocVien.RowCount == 0)
                 MessageBox.Show("Không tìm thấy học viên");
         }
+
     }
 }

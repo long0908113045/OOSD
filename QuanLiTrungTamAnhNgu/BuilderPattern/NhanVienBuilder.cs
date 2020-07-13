@@ -13,6 +13,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
         {
             nhanvien = new NhanVien();
             nhanvien.chucvu = "Nhân Viên";
+
         }
         public NhanVien GetNhanVien()
         {

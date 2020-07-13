@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frKhoaHoc));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.txtMaKH = new DevExpress.XtraEditors.TextEdit();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtTenKhoaHoc = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
@@ -46,7 +44,6 @@
             this.gvKhoaHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaKH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhoaHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoaHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvKhoaHoc)).BeginInit();
@@ -54,8 +51,6 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.txtMaKH);
-            this.panelControl1.Controls.Add(this.label2);
             this.panelControl1.Controls.Add(this.txtTenKhoaHoc);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Controls.Add(this.btnRefresh);
@@ -71,25 +66,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(405, 468);
             this.panelControl1.TabIndex = 0;
-            // 
-            // txtMaKH
-            // 
-            this.txtMaKH.Location = new System.Drawing.Point(176, 57);
-            this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaKH.Properties.Appearance.Options.UseFont = true;
-            this.txtMaKH.Size = new System.Drawing.Size(209, 36);
-            this.txtMaKH.TabIndex = 56;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 29);
-            this.label2.TabIndex = 55;
-            this.label2.Text = "Mã Khóa Học:";
             // 
             // txtTenKhoaHoc
             // 
@@ -120,7 +96,7 @@
             this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(208, 371);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(122, 38);
+            this.btnRefresh.Size = new System.Drawing.Size(120, 36);
             this.btnRefresh.TabIndex = 52;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -135,7 +111,7 @@
             this.bttLHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttLHuy.ImageOptions.Image")));
             this.bttLHuy.Location = new System.Drawing.Point(85, 371);
             this.bttLHuy.Name = "bttLHuy";
-            this.bttLHuy.Size = new System.Drawing.Size(100, 38);
+            this.bttLHuy.Size = new System.Drawing.Size(86, 36);
             this.bttLHuy.TabIndex = 51;
             this.bttLHuy.Text = "Hủy";
             this.bttLHuy.Click += new System.EventHandler(this.bttLHuy_Click);
@@ -150,7 +126,7 @@
             this.bttXoaKH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttXoaKH.ImageOptions.Image")));
             this.bttXoaKH.Location = new System.Drawing.Point(280, 316);
             this.bttXoaKH.Name = "bttXoaKH";
-            this.bttXoaKH.Size = new System.Drawing.Size(105, 38);
+            this.bttXoaKH.Size = new System.Drawing.Size(85, 36);
             this.bttXoaKH.TabIndex = 50;
             this.bttXoaKH.Text = "Xóa";
             this.bttXoaKH.Click += new System.EventHandler(this.bttXoaKH_Click);
@@ -165,7 +141,7 @@
             this.bttSuaKH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttSuaKH.ImageOptions.Image")));
             this.bttSuaKH.Location = new System.Drawing.Point(150, 316);
             this.bttSuaKH.Name = "bttSuaKH";
-            this.bttSuaKH.Size = new System.Drawing.Size(124, 38);
+            this.bttSuaKH.Size = new System.Drawing.Size(81, 36);
             this.bttSuaKH.TabIndex = 49;
             this.bttSuaKH.Text = "Sửa";
             this.bttSuaKH.Click += new System.EventHandler(this.bttSuaKH_Click);
@@ -180,7 +156,7 @@
             this.bttThemKH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttThemKH.ImageOptions.Image")));
             this.bttThemKH.Location = new System.Drawing.Point(17, 316);
             this.bttThemKH.Name = "bttThemKH";
-            this.bttThemKH.Size = new System.Drawing.Size(127, 38);
+            this.bttThemKH.Size = new System.Drawing.Size(100, 36);
             this.bttThemKH.TabIndex = 48;
             this.bttThemKH.Text = "Thêm";
             this.bttThemKH.Click += new System.EventHandler(this.bttThemKH_Click);
@@ -244,7 +220,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaKH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKhoaHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoaHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvKhoaHoc)).EndInit();
@@ -265,8 +240,6 @@
         private DevExpress.XtraEditors.SimpleButton bttSuaKH;
         private DevExpress.XtraEditors.SimpleButton bttThemKH;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
-        private DevExpress.XtraEditors.TextEdit txtMaKH;
-        private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.TextEdit txtTenKhoaHoc;
         private System.Windows.Forms.Label label1;
     }

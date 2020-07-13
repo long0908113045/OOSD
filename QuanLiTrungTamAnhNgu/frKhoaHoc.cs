@@ -20,18 +20,18 @@ namespace QuanLiTrungTamAnhNgu
         EnglishCenterEntities context = new EnglishCenterEntities();
         string ten_KH;
         string mota;
-        string ma_KH;
+        
         private void bttThemKH_Click(object sender, EventArgs e)
         {
-            if (txtTenKhoaHoc.Text != "" && txtMota.Text != "" && txtMaKH.Text != "")
+            if (txtTenKhoaHoc.Text != "" && txtMota.Text != "" )
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn thêm khóa học này chứ!", "Thêm Khóa Học", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    ma_KH = txtMaKH.Text;
+                    
                     ten_KH = txtTenKhoaHoc.Text;
                     mota = txtMota.Text;
-                    if (context.sp_ThemKhoaHoc(ma_KH, ten_KH, mota) == 1)
+                    if (context.sp_ThemKhoaHoc(ten_KH, mota) == 1)
                     {
                         MessageBox.Show("Đã thêm khóa học", "Thêm khóa học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_KH();
@@ -49,16 +49,16 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttSuaKH_Click(object sender, EventArgs e)
         {
-            if (txtMota.Text != "" && txtTenKhoaHoc.Text != "" && txtMaKH.Text != "")
+            if (txtMota.Text != "" && txtTenKhoaHoc.Text != "" )
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa thông tin khóa học này chứ!", "Sửa Khóa Học", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     int idkh = Convert.ToInt32(gvKhoaHoc.GetRowCellValue(gvKhoaHoc.FocusedRowHandle, gvKhoaHoc.Columns[0]).ToString());
-                    ma_KH = txtMaKH.Text;
+                   
                     ten_KH = txtTenKhoaHoc.Text;
                     mota = txtMota.Text;
-                    if (context.sp_SuaKhoaHoc(idkh, ma_KH, ten_KH, mota) == 1)
+                    if (context.sp_SuaKhoaHoc(idkh, ten_KH, mota) == 1)
                     {
                         MessageBox.Show("Đã Sửa khóa học", "Sửa khóa học", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_KH();
@@ -76,7 +76,7 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttXoaKH_Click(object sender, EventArgs e)
         {
-            if (txtTenKhoaHoc.Text != "" && txtMota.Text != "" && txtMaKH.Text != "")
+            if (txtTenKhoaHoc.Text != "" && txtMota.Text != "" )
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa thông tin khóa học này chứ!", "Xóa Khóa Học", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
@@ -109,8 +109,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             if (gvKhoaHoc.RowCount > 0)
             {
-                txtMaKH.EditValue = gvKhoaHoc.GetRowCellValue(gvKhoaHoc.FocusedRowHandle, gvKhoaHoc.Columns[1]).ToString();
-                txtMaKH.Enabled = false;
+               
                 txtTenKhoaHoc.EditValue = gvKhoaHoc.GetRowCellValue(gvKhoaHoc.FocusedRowHandle, gvKhoaHoc.Columns[2]).ToString();
                 txtMota.Text = gvKhoaHoc.GetRowCellValue(gvKhoaHoc.FocusedRowHandle, gvKhoaHoc.Columns[3]).ToString();
             }
@@ -120,7 +119,7 @@ namespace QuanLiTrungTamAnhNgu
 
             gcKhoaHoc.DataSource = context.fn_ListKhoaHoc();
             gvKhoaHoc.Columns[0].Visible = false;
-            gvKhoaHoc.Columns[1].Caption = "Mã Khóa Học";
+            gvKhoaHoc.Columns[1].Visible = false;
             gvKhoaHoc.Columns[2].Caption = "Tên Khoa Học ";
             gvKhoaHoc.Columns[3].Caption = "Mô Tả Khóa Học";
             gvKhoaHoc.Columns[4].Visible = false;
@@ -139,8 +138,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void refresh()
         {
-            txtMaKH.Text = "";
-            txtMaKH.Enabled = true;
+            
             txtTenKhoaHoc.Text = "";
             txtMota.Text = "";
         }

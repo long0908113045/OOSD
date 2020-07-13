@@ -10,7 +10,7 @@
             <PropertyRef Name="HocVienId" />
           </Key>
           <Property Name="HocVienId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="DiaChi_HV" Type="nvarchar" MaxLength="100" />
           <Property Name="Email_HV" Type="nvarchar" MaxLength="50" />
@@ -22,7 +22,7 @@
             <PropertyRef Name="KhoaHocId" />
           </Key>
           <Property Name="KhoaHocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ma_KH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ma_KH" Type="nvarchar" MaxLength="50" />
           <Property Name="Ten_KH" Type="nvarchar" MaxLength="100" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
@@ -32,7 +32,7 @@
             <PropertyRef Name="LevelsId" />
           </Key>
           <Property Name="LevelsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ma_Level" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ma_Level" Type="nvarchar" MaxLength="50" />
           <Property Name="Ten_Level" Type="nvarchar" MaxLength="50" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
@@ -42,7 +42,7 @@
             <PropertyRef Name="LopHocId" />
           </Key>
           <Property Name="LopHocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" />
           <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
           <Property Name="ThoiGianBatDau_LH" Type="date" />
           <Property Name="ThoiGianKetThuc_LH" Type="date" />
@@ -255,12 +255,15 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_demSoLuongHocSinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="lopHocId" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_ListHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <ReturnType>
             <CollectionType>
               <RowType>
                 <Property Name="HocVienId" Type="int" Nullable="false" />
-                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="DiaChi_HV" Type="nvarchar" MaxLength="100" />
                 <Property Name="Email_HV" Type="nvarchar" MaxLength="50" />
@@ -275,7 +278,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="DiaChi_HV" Type="nvarchar" MaxLength="100" />
                 <Property Name="Email_HV" Type="nvarchar" MaxLength="50" />
@@ -289,7 +292,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="KhoaHocId" Type="int" Nullable="false" />
-                <Property Name="Ma_KH" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Ma_KH" Type="nvarchar" MaxLength="50" />
                 <Property Name="Ten_KH" Type="nvarchar" MaxLength="100" />
                 <Property Name="MoTa" Type="nvarchar" MaxLength="100" />
                 <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
@@ -302,7 +305,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="LopHocId" Type="int" Nullable="false" />
-                <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
                 <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
                 <Property Name="Ten_KH" Type="nvarchar" MaxLength="100" />
@@ -322,7 +324,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="LopHocId" Type="int" Nullable="false" />
-                <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" />
                 <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
                 <Property Name="Ten_KH" Type="nvarchar" MaxLength="100" />
@@ -359,7 +361,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="PhieuThuId" Type="int" Nullable="false" />
-                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
                 <Property Name="SoTien" Type="money" />
@@ -375,7 +377,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="LevelsId" Type="int" Nullable="false" />
-                <Property Name="Ma_Level" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Ma_Level" Type="nvarchar" MaxLength="50" />
                 <Property Name="Ten_Level" Type="nvarchar" MaxLength="50" />
                 <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
                 <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
@@ -389,7 +391,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="LopHocId" Type="int" Nullable="false" />
-                <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" />
                 <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
                 <Property Name="Ten_KH" Type="nvarchar" MaxLength="100" />
@@ -410,7 +412,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <CollectionType>
               <RowType>
                 <Property Name="PhieuThuId" Type="int" Nullable="false" />
-                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
                 <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
                 <Property Name="SoTien" Type="money" />
@@ -430,6 +432,9 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="idlh" Type="int" Mode="In" />
           <Parameter Name="idnv" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_demSoLuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lopHocId" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_KiemTraTaiKhoanHV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idpq" Type="int" Mode="InOut" />
           <Parameter Name="idhv" Type="int" Mode="InOut" />
@@ -443,9 +448,16 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
           <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_KTTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="manv" Type="nvarchar" Mode="In" />
+          <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ListKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ListNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_LoadLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_SuaHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idhv" Type="int" Mode="In" />
-          <Parameter Name="mahv" Type="nvarchar" Mode="In" />
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
           <Parameter Name="diachi" Type="nvarchar" Mode="In" />
           <Parameter Name="email" Type="nvarchar" Mode="In" />
@@ -453,18 +465,16 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
         </Function>
         <Function Name="sp_SuaKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_KH" Type="int" Mode="In" />
-          <Parameter Name="makh" Type="nvarchar" Mode="In" />
           <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
           <Parameter Name="mota" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_SuaLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idlv" Type="int" Mode="In" />
-          <Parameter Name="malv" Type="nvarchar" Mode="In" />
           <Parameter Name="mota" Type="nvarchar" Mode="In" />
           <Parameter Name="tenlv" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_SuaLopHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="malh" Type="nvarchar" Mode="In" />
+          <Parameter Name="lopHocID" Type="int" Mode="In" />
           <Parameter Name="tenlh" Type="nvarchar" Mode="In" />
           <Parameter Name="thoigianbatdau" Type="smalldatetime" Mode="In" />
           <Parameter Name="thoigianketthuc" Type="smalldatetime" Mode="In" />
@@ -477,7 +487,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
         </Function>
         <Function Name="sp_SuaNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_nv" Type="int" Mode="In" />
-          <Parameter Name="manv" Type="nvarchar" Mode="In" />
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
           <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
           <Parameter Name="email" Type="nvarchar" Mode="In" />
@@ -486,24 +495,20 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_ThemHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="mahv" Type="nvarchar" Mode="In" />
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
           <Parameter Name="diachi" Type="nvarchar" Mode="In" />
           <Parameter Name="email" Type="nvarchar" Mode="In" />
           <Parameter Name="sdt" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_ThemKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="makh" Type="nvarchar" Mode="In" />
           <Parameter Name="tenkh" Type="nvarchar" Mode="In" />
           <Parameter Name="mota" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_ThemLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="malv" Type="nvarchar" Mode="In" />
           <Parameter Name="tenlv" Type="nvarchar" Mode="In" />
           <Parameter Name="mota" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_ThemLopHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="malh" Type="nvarchar" Mode="In" />
           <Parameter Name="tenlh" Type="nvarchar" Mode="In" />
           <Parameter Name="thoigianbatdau" Type="smalldatetime" Mode="In" />
           <Parameter Name="thoigianketthuc" Type="smalldatetime" Mode="In" />
@@ -515,13 +520,15 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="khunggiohoc" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="sp_ThemNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="manv" Type="nvarchar" Mode="In" />
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
           <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
           <Parameter Name="email" Type="nvarchar" Mode="In" />
           <Parameter Name="sdt" Type="nvarchar" Mode="In" />
           <Parameter Name="cmnd" Type="nvarchar" Mode="In" />
           <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ten" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_ThemPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idhv" Type="int" Mode="In" />
@@ -613,12 +620,111 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EnglishCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fn_ListHocVien_Result">
+          <Property Name="HocVienId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fn_ListHocVienCuaLopHoc_Result">
+          <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fn_ListKhoaHoc_Result">
+          <Property Name="KhoaHocId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fn_ListLopHoc_Result">
+          <Property Name="LopHocId" Type="Int32" Nullable="false" />
+          <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SoBuoiHoc" Type="Int32" />
+          <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianBatDau_LH" Type="DateTime" />
+          <Property Name="ThoiGianKetThuc_LH" Type="DateTime" />
+        </ComplexType>
+        <ComplexType Name="fn_ListLopHocTheoKhoaHoc_Result">
+          <Property Name="LopHocId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SoBuoiHoc" Type="Int32" />
+          <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianBatDau_LH" Type="DateTime" />
+          <Property Name="ThoiGianKetThuc_LH" Type="DateTime" />
+        </ComplexType>
+        <ComplexType Name="fn_ListNhanVien_Result">
+          <Property Name="NhanVienId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fn_ListPhieuThu_Result">
+          <Property Name="PhieuThuId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayThanhToan" Type="DateTime" />
+          <Property Name="HocVienId" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="fn_LoadLevel_Result">
+          <Property Name="LevelsId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fn_TimLopTheoGiaoVien_Result">
+          <Property Name="LopHocId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SoBuoiHoc" Type="Int32" />
+          <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianBatDau_LH" Type="DateTime" />
+          <Property Name="ThoiGianKetThuc_LH" Type="DateTime" />
+        </ComplexType>
+        <ComplexType Name="fn_TimTenTrenPhieuThu_Result">
+          <Property Name="PhieuThuId" Type="Int32" Nullable="false" />
+          <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayThanhToan" Type="DateTime" />
+          <Property Name="HocVienId" Type="Int32" Nullable="false" />
+        </ComplexType>
         <EntityType Name="HocVien">
           <Key>
             <PropertyRef Name="HocVienId" />
           </Key>
           <Property Name="HocVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -632,7 +738,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <PropertyRef Name="KhoaHocId" />
           </Key>
           <Property Name="KhoaHocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ma_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ma_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -643,7 +749,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <PropertyRef Name="LevelsId" />
           </Key>
           <Property Name="LevelsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ma_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ma_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -654,7 +760,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <PropertyRef Name="LopHocId" />
           </Key>
           <Property Name="LopHocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianBatDau_LH" Type="DateTime" Precision="0" />
           <Property Name="ThoiGianKetThuc_LH" Type="DateTime" Precision="0" />
@@ -708,8 +814,8 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           </Key>
           <Property Name="PhanQuyenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ten_PhanQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="TaikhoanGiaoViens" Relationship="EnglishCenterModel.fk_PQ_GV" FromRole="PhanQuyen" ToRole="TaikhoanGiaoVien" />
-          <NavigationProperty Name="TaiKhoanHocViens" Relationship="EnglishCenterModel.fk_PQ_HV" FromRole="PhanQuyen" ToRole="TaiKhoanHocVien" />
+          <NavigationProperty Name="TaikhoanGiaoViens" Relationship="Self.fk_PQ_GV" FromRole="PhanQuyen" ToRole="TaikhoanGiaoVien" />
+          <NavigationProperty Name="TaiKhoanHocViens" Relationship="Self.fk_PQ_HV" FromRole="PhanQuyen" ToRole="TaiKhoanHocVien" />
         </EntityType>
         <EntityType Name="PhieuThu">
           <Key>
@@ -736,9 +842,9 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PassWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.fk_TKGV_GV" FromRole="TaikhoanGiaoVien" ToRole="NhanVien" />
           <Property Name="PhanQuyenId" Type="Int32" />
-          <NavigationProperty Name="PhanQuyen" Relationship="EnglishCenterModel.fk_PQ_GV" FromRole="TaikhoanGiaoVien" ToRole="PhanQuyen" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.fk_TKGV_GV" FromRole="TaikhoanGiaoVien" ToRole="NhanVien" />
+          <NavigationProperty Name="PhanQuyen" Relationship="Self.fk_PQ_GV" FromRole="TaikhoanGiaoVien" ToRole="PhanQuyen" />
         </EntityType>
         <EntityType Name="TaiKhoanHocVien">
           <Key>
@@ -749,9 +855,17 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PassWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="HocVien" Relationship="Self.fk_TK_HV" FromRole="TaiKhoanHocVien" ToRole="HocVien" />
           <Property Name="PhanQuyenId" Type="Int32" />
-          <NavigationProperty Name="PhanQuyen" Relationship="EnglishCenterModel.fk_PQ_HV" FromRole="TaiKhoanHocVien" ToRole="PhanQuyen" />
+          <NavigationProperty Name="HocVien" Relationship="Self.fk_TK_HV" FromRole="TaiKhoanHocVien" ToRole="HocVien" />
+          <NavigationProperty Name="PhanQuyen" Relationship="Self.fk_PQ_HV" FromRole="TaiKhoanHocVien" ToRole="PhanQuyen" />
+        </EntityType>
+        <EntityType Name="view_ListGiaoVien">
+          <Key>
+            <PropertyRef Name="NhanVienId" />
+          </Key>
+          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NhanVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="fk_PT_HV">
           <End Role="HocVien" Type="Self.HocVien" Multiplicity="1" />
@@ -849,6 +963,30 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_PQ_GV">
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="0..1" />
+          <End Role="TaikhoanGiaoVien" Type="Self.TaikhoanGiaoVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhanQuyen">
+              <PropertyRef Name="PhanQuyenId" />
+            </Principal>
+            <Dependent Role="TaikhoanGiaoVien">
+              <PropertyRef Name="PhanQuyenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PQ_HV">
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="0..1" />
+          <End Role="TaiKhoanHocVien" Type="Self.TaiKhoanHocVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhanQuyen">
+              <PropertyRef Name="PhanQuyenId" />
+            </Principal>
+            <Dependent Role="TaiKhoanHocVien">
+              <PropertyRef Name="PhanQuyenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EnglishCenterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HocViens" EntityType="Self.HocVien" />
           <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
@@ -860,6 +998,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
           <EntitySet Name="TaikhoanGiaoViens" EntityType="Self.TaikhoanGiaoVien" />
           <EntitySet Name="TaiKhoanHocViens" EntityType="Self.TaiKhoanHocVien" />
+          <EntitySet Name="view_ListGiaoVien" EntityType="Self.view_ListGiaoVien" />
           <AssociationSet Name="fk_PT_HV" Association="Self.fk_PT_HV">
             <End Role="HocVien" EntitySet="HocViens" />
             <End Role="PhieuThu" EntitySet="PhieuThus" />
@@ -892,143 +1031,34 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoViens" />
           </AssociationSet>
-          <FunctionImport Name="sp_SuaLevel">
-            <Parameter Name="idlv" Mode="In" Type="Int32" />
-            <Parameter Name="malv" Mode="In" Type="String" />
-            <Parameter Name="mota" Mode="In" Type="String" />
-            <Parameter Name="tenlv" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ThemLevel">
-            <Parameter Name="malv" Mode="In" Type="String" />
-            <Parameter Name="tenlv" Mode="In" Type="String" />
-            <Parameter Name="mota" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XoaLevel">
-          <Parameter Name="idlv" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="fn_LoadLevel1" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel1_Result1)" />
-          <FunctionImport Name="fn_ListNhanVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListNhanVien_Result)" />
-          <FunctionImport Name="sp_SuaNhanVien">
-            <Parameter Name="id_nv" Mode="In" Type="Int32" />
-            <Parameter Name="manv" Mode="In" Type="String" />
-            <Parameter Name="hoten" Mode="In" Type="String" />
-            <Parameter Name="chucvu" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="sdt" Mode="In" Type="String" />
-            <Parameter Name="cmnd" Mode="In" Type="String" />
-            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ThemNhanVien">
-            <Parameter Name="manv" Mode="In" Type="String" />
-            <Parameter Name="hoten" Mode="In" Type="String" />
-            <Parameter Name="chucvu" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="sdt" Mode="In" Type="String" />
-            <Parameter Name="cmnd" Mode="In" Type="String" />
-            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XoaNhanVien">
-          <Parameter Name="id_nv" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_TimNhanVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimNhanVienTheoTen_Result)">
-            <Parameter Name="ten" Mode="In" Type="String" />
-            <Parameter Name="chucvu" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="fn_ListKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListKhoaHoc_Result)" />
-          <FunctionImport Name="sp_SuaKhoaHoc">
-            <Parameter Name="id_KH" Mode="In" Type="Int32" />
-            <Parameter Name="makh" Mode="In" Type="String" />
-            <Parameter Name="tenkh" Mode="In" Type="String" />
-            <Parameter Name="mota" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ThemKhoaHoc">
-            <Parameter Name="makh" Mode="In" Type="String" />
-            <Parameter Name="tenkh" Mode="In" Type="String" />
-            <Parameter Name="mota" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XoaKhoaHoc">
-          <Parameter Name="id_kh" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="view_ListGiaoVien" EntityType="EnglishCenterModel.view_ListGiaoVien" />
-          <FunctionImport Name="sp_SuaLopHoc">
-            <Parameter Name="malh" Mode="In" Type="String" />
-            <Parameter Name="tenlh" Mode="In" Type="String" />
-            <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
-            <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
-            <Parameter Name="hocphi" Mode="In" Type="Decimal" />
-            <Parameter Name="idnv" Mode="In" Type="Int32" />
-            <Parameter Name="idkh" Mode="In" Type="Int32" />
-            <Parameter Name="idlv" Mode="In" Type="Int32" />
-            <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
-            <Parameter Name="khunggiohoc" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_ThemLopHoc">
-            <Parameter Name="malh" Mode="In" Type="String" />
-            <Parameter Name="tenlh" Mode="In" Type="String" />
-            <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
-            <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
-            <Parameter Name="hocphi" Mode="In" Type="Decimal" />
-            <Parameter Name="idnv" Mode="In" Type="Int32" />
-            <Parameter Name="idkh" Mode="In" Type="Int32" />
-            <Parameter Name="idlv" Mode="In" Type="Int32" />
-            <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
-            <Parameter Name="khunggiohoc" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XoaLopHoc">
-          <Parameter Name="idlh" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="fn_LoadLevel" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel_Result)" />
-          <FunctionImport Name="fn_ListLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHoc_Result1)" />
-          <FunctionImport Name="fn_TimLopTheoGiaoVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimLopTheoGiaoVien_Result)">
-          <Parameter Name="idgv" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_SuaHocVien">
-            <Parameter Name="idhv" Mode="In" Type="Int32" />
-            <Parameter Name="mahv" Mode="In" Type="String" />
-            <Parameter Name="hoten" Mode="In" Type="String" />
-            <Parameter Name="diachi" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="sdt" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_XoaHocVien">
-          <Parameter Name="id_hv" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="fn_ListHocVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVien_Result1)" />
-          <FunctionImport Name="sp_TimHocVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimHocVienTheoTen_Result)">
-          <Parameter Name="ten" Mode="In" Type="String" />
-          </FunctionImport>
-          <AssociationSet Name="fk_PQ_GV" Association="EnglishCenterModel.fk_PQ_GV">
+          <AssociationSet Name="fk_PQ_GV" Association="Self.fk_PQ_GV">
             <End Role="PhanQuyen" EntitySet="PhanQuyens" />
             <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoViens" />
           </AssociationSet>
-          <AssociationSet Name="fk_PQ_HV" Association="EnglishCenterModel.fk_PQ_HV">
+          <AssociationSet Name="fk_PQ_HV" Association="Self.fk_PQ_HV">
             <End Role="PhanQuyen" EntitySet="PhanQuyens" />
             <End Role="TaiKhoanHocVien" EntitySet="TaiKhoanHocViens" />
           </AssociationSet>
-          <FunctionImport Name="sp_ThemHocVien">
-            <Parameter Name="mahv" Mode="In" Type="String" />
-            <Parameter Name="hoten" Mode="In" Type="String" />
-            <Parameter Name="diachi" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="sdt" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_KiemTraTaiKhoanNV">
-            <Parameter Name="idpq" Mode="InOut" Type="Int32" />
-            <Parameter Name="idnv" Mode="InOut" Type="Int32" />
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="pass" Mode="In" Type="String" />
-            <Parameter Name="chucvu" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="fn_ListLopHocTheoKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHocTheoKhoaHoc_Result)">
-          <Parameter Name="idkh" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <FunctionImport Name="fn_ListHocVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVien_Result)" />
           <FunctionImport Name="fn_ListHocVienCuaLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result)">
           <Parameter Name="idlh" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_ThemPhieuThu">
-            <Parameter Name="idhv" Mode="In" Type="Int32" />
+          <FunctionImport Name="fn_ListKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListKhoaHoc_Result)" />
+          <FunctionImport Name="fn_ListLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHoc_Result)" />
+          <FunctionImport Name="fn_ListLopHocTheoKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHocTheoKhoaHoc_Result)">
+          <Parameter Name="idkh" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_ListNhanVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListNhanVien_Result)" />
+          <FunctionImport Name="fn_ListPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListPhieuThu_Result)">
+          <Parameter Name="idlh" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_LoadLevel" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel_Result)" />
+          <FunctionImport Name="fn_TimLopTheoGiaoVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimLopTheoGiaoVien_Result)">
+          <Parameter Name="idgv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_TimTenTrenPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimTenTrenPhieuThu_Result)">
             <Parameter Name="idlh" Mode="In" Type="Int32" />
-            <Parameter Name="idnv" Mode="In" Type="Int32" />
+            <Parameter Name="ten" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_CapNhatPhieuThu">
             <Parameter Name="idpt" Mode="In" Type="Int32" />
@@ -1039,12 +1069,8 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="idlh" Mode="In" Type="Int32" />
             <Parameter Name="idnv" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="fn_ListPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListPhieuThu_Result2)">
-          <Parameter Name="idlh" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="fn_TimTenTrenPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimTenTrenPhieuThu_Result)">
-            <Parameter Name="idlh" Mode="In" Type="Int32" />
-            <Parameter Name="ten" Mode="In" Type="String" />
+          <FunctionImport Name="sp_demSoLuong" ReturnType="Collection(Int32)">
+          <Parameter Name="lopHocId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_KiemTraTaiKhoanHV">
             <Parameter Name="idpq" Mode="InOut" Type="Int32" />
@@ -1052,22 +1078,126 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_KiemTraTaiKhoanNV">
+            <Parameter Name="idpq" Mode="InOut" Type="Int32" />
+            <Parameter Name="idnv" Mode="InOut" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListKhoaHoc" ReturnType="Collection(EnglishCenterModel.sp_ListKhoaHoc_Result)" />
+          <FunctionImport Name="sp_ListNhanVien" ReturnType="Collection(EnglishCenterModel.sp_ListNhanVien_Result)" />
+          <FunctionImport Name="sp_LoadLevel" ReturnType="Collection(EnglishCenterModel.sp_LoadLevel_Result)" />
+          <FunctionImport Name="sp_SuaHocVien">
+            <Parameter Name="idhv" Mode="In" Type="Int32" />
+            <Parameter Name="hoten" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SuaKhoaHoc">
+            <Parameter Name="id_KH" Mode="In" Type="Int32" />
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SuaLevel">
+            <Parameter Name="idlv" Mode="In" Type="Int32" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+            <Parameter Name="tenlv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SuaLopHoc">
+            <Parameter Name="lopHocID" Mode="In" Type="Int32" />
+            <Parameter Name="tenlh" Mode="In" Type="String" />
+            <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+            <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+            <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+            <Parameter Name="idnv" Mode="In" Type="Int32" />
+            <Parameter Name="idkh" Mode="In" Type="Int32" />
+            <Parameter Name="idlv" Mode="In" Type="Int32" />
+            <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+            <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SuaNhanVien">
+            <Parameter Name="id_nv" Mode="In" Type="Int32" />
+            <Parameter Name="hoten" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="cmnd" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemKhoaHoc">
+            <Parameter Name="tenkh" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemLevel">
+            <Parameter Name="tenlv" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemNhanVien">
+            <Parameter Name="hoten" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="cmnd" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemPhanQuyen">
+          <Parameter Name="ten" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemPhieuThu">
+            <Parameter Name="idhv" Mode="In" Type="Int32" />
+            <Parameter Name="idlh" Mode="In" Type="Int32" />
+            <Parameter Name="idnv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TimHocVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimHocVienTheoTen_Result)">
+          <Parameter Name="ten" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TimNhanVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimNhanVienTheoTen_Result)">
+            <Parameter Name="ten" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaHocVien">
+          <Parameter Name="id_hv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaKhoaHoc">
+          <Parameter Name="id_kh" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaLevel">
+          <Parameter Name="idlv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaLopHoc">
+          <Parameter Name="idlh" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaNhanVien">
+          <Parameter Name="id_nv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemHocVien">
+            <Parameter Name="hoten" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemLopHoc">
+            <Parameter Name="tenlh" Mode="In" Type="String" />
+            <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+            <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+            <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+            <Parameter Name="idnv" Mode="In" Type="Int32" />
+            <Parameter Name="idkh" Mode="In" Type="Int32" />
+            <Parameter Name="idlv" Mode="In" Type="Int32" />
+            <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+            <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="fn_LoadLevel1_Result">
-          <Property Type="Int32" Name="LevelsId" Nullable="false" />
-          <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
+        <ComplexType Name="sp_ListKhoaHoc_Result">
+          <Property Type="Int32" Name="KhoaHocId" Nullable="false" />
+          <Property Type="String" Name="Ma_KH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="fn_LoadLevel1_Result1">
-          <Property Type="Int32" Name="LevelsId" Nullable="false" />
-          <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="fn_ListNhanVien_Result">
+        <ComplexType Name="sp_ListNhanVien_Result">
           <Property Type="Int32" Name="NhanVienId" Nullable="false" />
           <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
@@ -1076,6 +1206,22 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_LoadLevel_Result">
+          <Property Type="Int32" Name="LevelsId" Nullable="false" />
+          <Property Type="String" Name="Ma_Level" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_TimHocVienTheoTen_Result">
+          <Property Type="Int32" Name="HocVienId" Nullable="false" />
+          <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_TimNhanVienTheoTen_Result">
@@ -1088,175 +1234,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
           <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="fn_ListKhoaHoc_Result">
-          <Property Type="Int32" Name="KhoaHocId" Nullable="false" />
-          <Property Type="String" Name="Ma_KH" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <EntityType Name="view_ListGiaoVien">
-          <Key>
-            <PropertyRef Name="NhanVienId" />
-          </Key>
-          <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Ma_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NhanVienId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <ComplexType Name="fn_LoadLevel_Result">
-          <Property Type="Int32" Name="LevelsId" Nullable="false" />
-          <Property Type="String" Name="Ma_Level" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="fn_ListLopHoc_Result">
-          <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-          <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-          <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-          <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-        </ComplexType>
-        <ComplexType Name="fn_ListLopHoc_Result1">
-          <Property Type="Int32" Name="LopHocId" Nullable="false" />
-          <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-          <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-          <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-          <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-        </ComplexType>
-        <ComplexType Name="fn_TimLopTheoGiaoVien_Result">
-          <Property Type="Int32" Name="LopHocId" Nullable="false" />
-          <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-          <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-          <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-          <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-        </ComplexType>
-        <ComplexType Name="fn_ListHocVien_Result">
-          <Property Type="Int32" Name="HocVienId" Nullable="false" />
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="PassWords" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="fn_ListHocVien_Result1">
-          <Property Type="Int32" Name="HocVienId" Nullable="false" />
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_TimHocVienTheoTen_Result">
-          <Property Type="Int32" Name="HocVienId" Nullable="false" />
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <Association Name="fk_PQ_GV">
-          <End Type="EnglishCenterModel.PhanQuyen" Role="PhanQuyen" Multiplicity="0..1" />
-          <End Type="EnglishCenterModel.TaikhoanGiaoVien" Role="TaikhoanGiaoVien" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PhanQuyen">
-              <PropertyRef Name="PhanQuyenId" />
-            </Principal>
-            <Dependent Role="TaikhoanGiaoVien">
-              <PropertyRef Name="PhanQuyenId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_PQ_HV">
-          <End Type="EnglishCenterModel.PhanQuyen" Role="PhanQuyen" Multiplicity="0..1" />
-          <End Type="EnglishCenterModel.TaiKhoanHocVien" Role="TaiKhoanHocVien" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PhanQuyen">
-              <PropertyRef Name="PhanQuyenId" />
-            </Principal>
-            <Dependent Role="TaiKhoanHocVien">
-              <PropertyRef Name="PhanQuyenId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="fn_ListLopHocTheoKhoaHoc_Result">
-          <Property Type="Int32" Name="LopHocId" Nullable="false" />
-          <Property Type="String" Name="Ma_LH" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-          <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-          <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-          <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-        </ComplexType>
-        <ComplexType Name="fn_ListHocVienCuaLopHoc_Result">
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="fn_ListPhieuThu_Result">
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-          <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-        </ComplexType>
-        <ComplexType Name="fn_ListPhieuThu_Result1">
-          <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-          <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-        </ComplexType>
-        <ComplexType Name="fn_ListPhieuThu_Result2">
-          <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-          <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-          <Property Type="Int32" Name="HocVienId" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="fn_TimTenTrenPhieuThu_Result">
-          <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
-          <Property Type="String" Name="Ma_HV" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-          <Property Type="String" Name="PhuongThucThanhToan" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-          <Property Type="Int32" Name="HocVienId" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1366,71 +1343,68 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
                 <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
                 <ScalarProperty Name="SoTien" ColumnName="SoTien" />
                 <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
-                </MappingFragment>
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaikhoanGiaoViens">
             <EntityTypeMapping TypeName="EnglishCenterModel.TaikhoanGiaoVien">
               <MappingFragment StoreEntitySet="TaikhoanGiaoVien">
-                <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
                 <ScalarProperty Name="TaiKhoanGiaoVienId" ColumnName="TaiKhoanGiaoVienId" />
                 <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
                 <ScalarProperty Name="PassWords" ColumnName="PassWords" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoanHocViens">
             <EntityTypeMapping TypeName="EnglishCenterModel.TaiKhoanHocVien">
               <MappingFragment StoreEntitySet="TaiKhoanHocVien">
-                <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
                 <ScalarProperty Name="TaiKhoanHocVienId" ColumnName="TaiKhoanHocVienId" />
                 <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="PassWords" ColumnName="PassWords" />
+                <ScalarProperty Name="PhanQuyenId" ColumnName="PhanQuyenId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_SuaLevel" FunctionName="EnglishCenterModel.Store.sp_SuaLevel" />
-          <FunctionImportMapping FunctionImportName="sp_ThemLevel" FunctionName="EnglishCenterModel.Store.sp_ThemLevel" />
-          <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
-          <FunctionImportMapping FunctionImportName="fn_ListNhanVien" FunctionName="EnglishCenterModel.Store.fn_ListNhanVien">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListNhanVien_Result">
-                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
-                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+          <EntitySetMapping Name="view_ListGiaoVien">
+            <EntityTypeMapping TypeName="EnglishCenterModel.view_ListGiaoVien">
+              <MappingFragment StoreEntitySet="view_ListGiaoVien">
                 <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
-                <ScalarProperty Name="CMND" ColumnName="CMND" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListHocVien" FunctionImportName="fn_ListHocVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListHocVien_Result">
+                <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+                <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+                <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+                <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+                <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+                <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_SuaNhanVien" FunctionName="EnglishCenterModel.Store.sp_SuaNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_TimNhanVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimNhanVienTheoTen">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListHocVienCuaLopHoc" FunctionImportName="fn_ListHocVienCuaLopHoc">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimNhanVienTheoTen_Result">
-                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
-                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
-                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
-                <ScalarProperty Name="CMND" ColumnName="CMND" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result">
+                <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+                <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+                <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+                <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+                <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_ListKhoaHoc" FunctionName="EnglishCenterModel.Store.fn_ListKhoaHoc">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListKhoaHoc" FunctionImportName="fn_ListKhoaHoc">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListKhoaHoc_Result">
                 <ScalarProperty Name="KhoaHocId" ColumnName="KhoaHocId" />
@@ -1441,48 +1415,10 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_SuaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_SuaKhoaHoc" />
-          <FunctionImportMapping FunctionImportName="sp_ThemKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_ThemKhoaHoc" />
-          <FunctionImportMapping FunctionImportName="sp_XoaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_XoaKhoaHoc" />
-          <EntitySetMapping Name="view_ListGiaoVien">
-            <EntityTypeMapping TypeName="EnglishCenterModel.view_ListGiaoVien">
-              <MappingFragment StoreEntitySet="view_ListGiaoVien">
-                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
-                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
-                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_SuaLopHoc" FunctionName="EnglishCenterModel.Store.sp_SuaLopHoc" />
-          <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
-          <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
-          <FunctionImportMapping FunctionImportName="fn_LoadLevel" FunctionName="EnglishCenterModel.Store.fn_LoadLevel">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListLopHoc" FunctionImportName="fn_ListLopHoc">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_LoadLevel_Result">
-                <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
-                <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
-                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_LoadLevel1" FunctionName="EnglishCenterModel.Store.fn_LoadLevel">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_LoadLevel1_Result1">
-                <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
-                <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
-                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_ListLopHoc" FunctionName="EnglishCenterModel.Store.fn_ListLopHoc">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListLopHoc_Result1">
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListLopHoc_Result">
                 <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
-                <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
                 <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
                 <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
                 <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
@@ -1495,54 +1431,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_TimLopTheoGiaoVien" FunctionName="EnglishCenterModel.Store.fn_TimLopTheoGiaoVien">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_TimLopTheoGiaoVien_Result">
-                <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
-                <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
-                <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
-                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-                <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
-                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
-                <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
-                <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
-                <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
-                <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
-                <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
-          <FunctionImportMapping FunctionImportName="sp_XoaHocVien" FunctionName="EnglishCenterModel.Store.sp_XoaHocVien" />
-          <FunctionImportMapping FunctionImportName="fn_ListHocVien" FunctionName="EnglishCenterModel.Store.fn_ListHocVien">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListHocVien_Result1">
-                <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
-                <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
-                <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
-                <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
-                <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
-                <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimHocVienTheoTen_Result">
-                <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
-                <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
-                <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
-                <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
-                <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
-                <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ThemHocVien" FunctionName="EnglishCenterModel.Store.sp_ThemHocVien" />
-          <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
-          <FunctionImportMapping FunctionImportName="fn_ListLopHocTheoKhoaHoc" FunctionName="EnglishCenterModel.Store.fn_ListLopHocTheoKhoaHoc">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListLopHocTheoKhoaHoc" FunctionImportName="fn_ListLopHocTheoKhoaHoc">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListLopHocTheoKhoaHoc_Result">
                 <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
@@ -1559,22 +1448,24 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_ListHocVienCuaLopHoc" FunctionName="EnglishCenterModel.Store.fn_ListHocVienCuaLopHoc">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListNhanVien" FunctionImportName="fn_ListNhanVien">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result">
-                <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
-                <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
-                <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
-                <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
-                <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListNhanVien_Result">
+                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
-          <FunctionImportMapping FunctionImportName="sp_CapNhatPhieuThu" FunctionName="EnglishCenterModel.Store.sp_CapNhatPhieuThu" />
-          <FunctionImportMapping FunctionImportName="fn_ListPhieuThu" FunctionName="EnglishCenterModel.Store.fn_ListPhieuThu">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_ListPhieuThu" FunctionImportName="fn_ListPhieuThu">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListPhieuThu_Result2">
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListPhieuThu_Result">
                 <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
                 <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
                 <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
@@ -1586,7 +1477,35 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fn_TimTenTrenPhieuThu" FunctionName="EnglishCenterModel.Store.fn_TimTenTrenPhieuThu">
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_LoadLevel" FunctionImportName="fn_LoadLevel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_LoadLevel_Result">
+                <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
+                <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
+                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_TimLopTheoGiaoVien" FunctionImportName="fn_TimLopTheoGiaoVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_TimLopTheoGiaoVien_Result">
+                <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
+                <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
+                <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
+                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+                <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+                <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+                <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
+                <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
+                <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
+                <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="EnglishCenterModel.Store.fn_TimTenTrenPhieuThu" FunctionImportName="fn_TimTenTrenPhieuThu">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EnglishCenterModel.fn_TimTenTrenPhieuThu_Result">
                 <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
@@ -1600,7 +1519,92 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CapNhatPhieuThu" FunctionName="EnglishCenterModel.Store.sp_CapNhatPhieuThu" />
+          <FunctionImportMapping FunctionImportName="sp_demSoLuong" FunctionName="EnglishCenterModel.Store.sp_demSoLuong" />
           <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanHV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanHV" />
+          <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
+          <FunctionImportMapping FunctionImportName="sp_ListKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_ListKhoaHoc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_ListKhoaHoc_Result">
+                <ScalarProperty Name="KhoaHocId" ColumnName="KhoaHocId" />
+                <ScalarProperty Name="Ma_KH" ColumnName="Ma_KH" />
+                <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListNhanVien" FunctionName="EnglishCenterModel.Store.sp_ListNhanVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_ListNhanVien_Result">
+                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LoadLevel" FunctionName="EnglishCenterModel.Store.sp_LoadLevel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_LoadLevel_Result">
+                <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
+                <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
+                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
+          <FunctionImportMapping FunctionImportName="sp_SuaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_SuaKhoaHoc" />
+          <FunctionImportMapping FunctionImportName="sp_SuaLevel" FunctionName="EnglishCenterModel.Store.sp_SuaLevel" />
+          <FunctionImportMapping FunctionImportName="sp_SuaLopHoc" FunctionName="EnglishCenterModel.Store.sp_SuaLopHoc" />
+          <FunctionImportMapping FunctionImportName="sp_SuaNhanVien" FunctionName="EnglishCenterModel.Store.sp_SuaNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_ThemKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_ThemKhoaHoc" />
+          <FunctionImportMapping FunctionImportName="sp_ThemLevel" FunctionName="EnglishCenterModel.Store.sp_ThemLevel" />
+          <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_ThemPhanQuyen" FunctionName="EnglishCenterModel.Store.sp_ThemPhanQuyen" />
+          <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
+          <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimHocVienTheoTen_Result">
+                <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
+                <ScalarProperty Name="Ma_HV" ColumnName="Ma_HV" />
+                <ScalarProperty Name="HoTen_HV" ColumnName="HoTen_HV" />
+                <ScalarProperty Name="DiaChi_HV" ColumnName="DiaChi_HV" />
+                <ScalarProperty Name="Email_HV" ColumnName="Email_HV" />
+                <ScalarProperty Name="SDT_HV" ColumnName="SDT_HV" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TimNhanVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimNhanVienTheoTen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimNhanVienTheoTen_Result">
+                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
+                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_XoaHocVien" FunctionName="EnglishCenterModel.Store.sp_XoaHocVien" />
+          <FunctionImportMapping FunctionImportName="sp_XoaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_XoaKhoaHoc" />
+          <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
+          <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
+          <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_ThemHocVien" FunctionName="EnglishCenterModel.Store.sp_ThemHocVien" />
+          <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

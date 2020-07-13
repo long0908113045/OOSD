@@ -17,7 +17,6 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
         public string cmnd { get; set; }
 
         public DateTime ngaysinh { get; set; }
-      //  EnglishCenterEntities context = new EnglishCenterEntities();
-       // public void 
+      
     }
 }

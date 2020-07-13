@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLiTrungTamAnhNgu.BuilderPattern
 {
-    class GiaoVienBuilder:INhanVienBuilder
+    class GiaoVienBuilder : INhanVienBuilder
     {
         private NhanVien nhanvien;
         public GiaoVienBuilder()

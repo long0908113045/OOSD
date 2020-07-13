@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -123,9 +126,6 @@
     <Compile Include="fn_ListHocVien_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="fn_ListHocVien_Result1.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="fn_ListKhoaHoc_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -135,25 +135,10 @@
     <Compile Include="fn_ListLopHoc_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="fn_ListLopHoc_Result1.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="fn_ListNhanVien_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="fn_ListPhieuThu_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_ListPhieuThu_Result1.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_ListPhieuThu_Result2.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_LoadLevel1_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_LoadLevel1_Result1.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="fn_LoadLevel_Result.cs">
@@ -276,12 +261,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_ListKhoaHoc_Result.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ListNhanVien_Result.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_LoadLevel_Result.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_TimHocVienTheoTen_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_TimNhanVienTheoTen_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StatePattern\LopHocContext.cs" />
+    <Compile Include="StatePattern\LopHocStartState.cs" />
+    <Compile Include="StatePattern\LopHocState.cs" />
+    <Compile Include="StatePattern\LopHocStopState.cs" />
     <Compile Include="TaikhoanGiaoVien.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -372,6 +370,9 @@
     <Folder Include="LinQ\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\cas-padlock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="EnglishCenterModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EnglishCenterModel.edmx</DependentUpon>
@@ -382,7 +383,6 @@
       <DependentUpon>EnglishCenterModel.edmx</DependentUpon>
       <LastGenOutput>EnglishCenterModel.cs</LastGenOutput>
     </Content>
-    <None Include="images\cas-padlock-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

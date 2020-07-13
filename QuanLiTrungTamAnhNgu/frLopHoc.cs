@@ -25,13 +25,13 @@ namespace QuanLiTrungTamAnhNgu
         int id_gv;
         int id_kh;
         int id_lv;
-        string malh;
+       
         decimal hocphi;
         string khunggiohoc;
         DateTime ngaybatdau;
         DateTime ngayketthuc;
         int sobuoihoc;
-
+        frPhieuThu pt = new frPhieuThu();
         private void frLopHoc_Load(object sender, EventArgs e)
         {
             Load_GiaoVien(cbxGV);
@@ -51,7 +51,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void Load_CbLevel(LookUpEdit lookUpEdit)
         {
-            lookUpEdit.Properties.DataSource = (from lv in context.fn_LoadLevel1()
+            lookUpEdit.Properties.DataSource = (from lv in context.fn_LoadLevel()
                                                 select new { lv.Ten_Level, lv.LevelsId }).ToList();
             lookUpEdit.Properties.DisplayMember = "Ten_Level";
 
@@ -72,13 +72,13 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttThemLH_Click(object sender, EventArgs e)
         {
-            if (txtHocPhi.Text.Replace(" ", "") != "" && txtMaLop.Text.Replace(" ", "") != "" && txtTenLop.Text.Replace(" ", "") != ""
+            if (txtHocPhi.Text.Replace(" ", "") != ""  && txtTenLop.Text.Replace(" ", "") != ""
                 && cbxGV.Text != "" && cbxKhoaHoc.Text != "" && cbxLevel.Text != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn thêm lớp học  này chứ!", "Thêm Lớp Học ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    malh = txtMaLop.Text;
+                   
                     tenlh = txtTenLop.Text;
                     hocphi = Convert.ToDecimal(txtHocPhi.Text);
                     sobuoihoc = Convert.ToInt32(txtSoBuoiHoc.Text);
@@ -90,14 +90,21 @@ namespace QuanLiTrungTamAnhNgu
                     id_lv = Convert.ToInt32(cbxLevel.EditValue);
 
 
-                    if (context.sp_ThemLopHoc(malh, tenlh, ngaybatdau, ngayketthuc, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
+                    try
                     {
-                        MessageBox.Show("Lớp học đã được thêm vào", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Load_LopHoc();
+                        if (context.sp_ThemLopHoc(tenlh, ngaybatdau, ngayketthuc, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
+                        {
+                            MessageBox.Show("Lớp học đã được thêm vào", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_LopHoc();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lớp học đã tồn tại", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Lớp học đã tồn tại", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    catch (Exception ex){
+                        throw ex;
                     }
                 }
             }
@@ -109,13 +116,12 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttSuaLH_Click(object sender, EventArgs e)
         {
-            if (txtHocPhi.Text.Replace(" ", "") != "" && txtMaLop.Text.Replace(" ", "") != "" && txtTenLop.Text.Replace(" ", "") != ""
+            if (txtHocPhi.Text.Replace(" ", "") != ""  && txtTenLop.Text.Replace(" ", "") != ""
                 && cbxGV.Text != "" && cbxKhoaHoc.Text != "" && cbxLevel.Text != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn sửa thông tin lớp học  này không?", "Sửa Lớp Học ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    malh = txtMaLop.Text;
                     tenlh = txtTenLop.Text;
                     hocphi = Convert.ToDecimal(txtHocPhi.Text);
                     sobuoihoc = Convert.ToInt32(txtSoBuoiHoc.Text);
@@ -126,7 +132,9 @@ namespace QuanLiTrungTamAnhNgu
                     id_kh = Convert.ToInt32(cbxKhoaHoc.EditValue);
                     id_lv = Convert.ToInt32(cbxLevel.EditValue);
 
-                    if (context.sp_SuaLopHoc(malh, tenlh, ngaybatdau.Date, ngayketthuc.Date, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
+                    int idlh = Convert.ToInt32(gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[0]).ToString());
+
+                    if (context.sp_SuaLopHoc(idlh,tenlh, ngaybatdau.Date, ngayketthuc.Date, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
                     {
                         MessageBox.Show("Đã Sửa Lớp Học", "Sửa lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_LopHoc();
@@ -143,7 +151,7 @@ namespace QuanLiTrungTamAnhNgu
 
         private void bttXoaLH_Click(object sender, EventArgs e)
         {
-            if (txtHocPhi.Text.Replace(" ", "") != "" && txtMaLop.Text.Replace(" ", "") != "" && txtTenLop.Text.Replace(" ", "") != ""
+            if (txtHocPhi.Text.Replace(" ", "") != ""  && txtTenLop.Text.Replace(" ", "") != ""
                   && cbxGV.Text != "" && cbxKhoaHoc.Text != "" && cbxLevel.Text != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa lớp học  này chứ!", "Xóa Lớp Học ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -174,36 +182,35 @@ namespace QuanLiTrungTamAnhNgu
         {
             gcLopHoc.DataSource = (context.fn_ListLopHoc()).ToList();    
             gvLopHoc.Columns[0].Visible = false;
-            gvLopHoc.Columns[1].Caption = "Mã Lớp Học";
-            gvLopHoc.Columns[2].Caption = "Tên Lớp Học";
-            gvLopHoc.Columns[3].Caption = "Giáo viên giảng dạy";
-            gvLopHoc.Columns[4].Caption = "Khóa học";
-            gvLopHoc.Columns[5].Caption = "Levels";
-            gvLopHoc.Columns[6].Caption = "Học phí";
-            gvLopHoc.Columns[7].Caption = "Số buổi học";
-            gvLopHoc.Columns[8].Caption = "Khung giờ học";
-            gvLopHoc.Columns[9].Caption = "Thời gian bắt đầu";
-            gvLopHoc.Columns[10].Caption = "Thời gian kết thúc";
+           
+            gvLopHoc.Columns[1].Caption = "Tên Lớp Học";
+            gvLopHoc.Columns[2].Caption = "Giáo viên giảng dạy";
+            gvLopHoc.Columns[3].Caption = "Khóa học";
+            gvLopHoc.Columns[4].Caption = "Levels";
+            gvLopHoc.Columns[5].Caption = "Học phí";
+            gvLopHoc.Columns[6].Caption = "Số buổi học";
+            gvLopHoc.Columns[7].Caption = "Khung giờ học";
+            gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
+            gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
         }
 
         private void gvLopHoc_Click(object sender, EventArgs e)
         {
             if (gvLopHoc.RowCount > 0)
             {
-                txtMaLop.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[1]).ToString();
-                txtMaLop.Enabled = false;
-                txtTenLop.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[2]).ToString();
-                cbxGV.Text = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[3]).ToString();
+              
+                txtTenLop.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[1])?.ToString();
+                cbxGV.Text = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[2])?.ToString();
                 Load_GiaoVien(cbxGV);
-                cbxKhoaHoc.Text = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[4]).ToString();
+                cbxKhoaHoc.Text = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[3]).ToString();
                 cbxKhoaHoc.Enabled = false;
-                cbxLevel.Text = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[5]).ToString();
+                cbxLevel.Text = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[4]).ToString();
                 cbxLevel.Enabled = false;
-                dtThoiGianBatDau.Value = DateTime.Parse(gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[9]).ToString());
-                dtThoiGianKetThuc.Value = DateTime.Parse(gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[10]).ToString());
-                txtSoBuoiHoc.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[7]).ToString();
-                txtHocPhi.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[6]).ToString();
-                txtThoiGianHoc.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[8]).ToString();
+                dtThoiGianBatDau.Value = DateTime.Parse(gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[8])?.ToString());
+                dtThoiGianKetThuc.Value = DateTime.Parse(gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[9])?.ToString());
+                txtSoBuoiHoc.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[6])?.ToString();
+                txtHocPhi.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[5])?.ToString();
+                txtThoiGianHoc.EditValue = gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[7])?.ToString();
             }
 
         }
@@ -239,8 +246,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void refresh()
         {
-            txtMaLop.Text = "";
-            txtMaLop.Enabled = true;
+            
             txtHocPhi.Text = "";
             txtSoBuoiHoc.Text = "";
             txtTenLop.Text = "";
@@ -277,31 +283,31 @@ namespace QuanLiTrungTamAnhNgu
                                    where lh.Ten_KH.Contains(tenKhoaHoc)
                                    select lh).ToList();
             gvLopHoc.Columns[0].Visible = false;
-            gvLopHoc.Columns[1].Caption = "Mã Lớp Học";
-            gvLopHoc.Columns[2].Caption = "Tên Lớp Học";
-            gvLopHoc.Columns[3].Caption = "Giáo viên giảng dạy";
-            gvLopHoc.Columns[4].Caption = "Khóa học";
-            gvLopHoc.Columns[5].Caption = "Levels";
-            gvLopHoc.Columns[6].Caption = "Học phí";
-            gvLopHoc.Columns[7].Caption = "Số buổi học";
-            gvLopHoc.Columns[8].Caption = "Khung giờ học";
-            gvLopHoc.Columns[9].Caption = "Thời gian bắt đầu";
-            gvLopHoc.Columns[10].Caption = "Thời gian kết thúc";
+
+            gvLopHoc.Columns[1].Caption = "Tên Lớp Học";
+            gvLopHoc.Columns[2].Caption = "Giáo viên giảng dạy";
+            gvLopHoc.Columns[3].Caption = "Khóa học";
+            gvLopHoc.Columns[4].Caption = "Levels";
+            gvLopHoc.Columns[5].Caption = "Học phí";
+            gvLopHoc.Columns[6].Caption = "Số buổi học";
+            gvLopHoc.Columns[7].Caption = "Khung giờ học";
+            gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
+            gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
         } 
         private void Load_LopHocTheoGiaoVien(int idgv)
         {
             gcLopHoc.DataSource = context.fn_TimLopTheoGiaoVien(idgv);
             gvLopHoc.Columns[0].Visible = false;
-            gvLopHoc.Columns[1].Caption = "Mã Lớp Học";
-            gvLopHoc.Columns[2].Caption = "Tên Lớp Học";
-            gvLopHoc.Columns[3].Caption = "Giáo viên giảng dạy";
-            gvLopHoc.Columns[4].Caption = "Khóa học";
-            gvLopHoc.Columns[5].Caption = "Levels";
-            gvLopHoc.Columns[6].Caption = "Học phí";
-            gvLopHoc.Columns[7].Caption = "Số buổi học";
-            gvLopHoc.Columns[8].Caption = "Khung giờ học";
-            gvLopHoc.Columns[9].Caption = "Thời gian bắt đầu";
-            gvLopHoc.Columns[10].Caption = "Thời gian kết thúc";
+
+            gvLopHoc.Columns[1].Caption = "Tên Lớp Học";
+            gvLopHoc.Columns[2].Caption = "Giáo viên giảng dạy";
+            gvLopHoc.Columns[3].Caption = "Khóa học";
+            gvLopHoc.Columns[4].Caption = "Levels";
+            gvLopHoc.Columns[5].Caption = "Học phí";
+            gvLopHoc.Columns[6].Caption = "Số buổi học";
+            gvLopHoc.Columns[7].Caption = "Khung giờ học";
+            gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
+            gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
         }
         private void Load_LopHocTheoThoiGian(DateTime date1, DateTime date2)
         {
@@ -310,17 +316,18 @@ namespace QuanLiTrungTamAnhNgu
                                    && DbFunctions.TruncateTime(lh.ThoiGianBatDau_LH) <= date2.Date
                                    select lh).ToList();
             gvLopHoc.Columns[0].Visible = false;
-            gvLopHoc.Columns[1].Caption = "Mã Lớp Học";
-            gvLopHoc.Columns[2].Caption = "Tên Lớp Học";
-            gvLopHoc.Columns[3].Caption = "Giáo viên giảng dạy";
-            gvLopHoc.Columns[4].Caption = "Khóa học";
-            gvLopHoc.Columns[5].Caption = "Levels";
-            gvLopHoc.Columns[6].Caption = "Học phí";
-            gvLopHoc.Columns[7].Caption = "Số buổi học";
-            gvLopHoc.Columns[8].Caption = "Khung giờ học";
-            gvLopHoc.Columns[9].Caption = "Thời gian bắt đầu";
-            gvLopHoc.Columns[10].Caption = "Thời gian kết thúc";
+
+            gvLopHoc.Columns[1].Caption = "Tên Lớp Học";
+            gvLopHoc.Columns[2].Caption = "Giáo viên giảng dạy";
+            gvLopHoc.Columns[3].Caption = "Khóa học";
+            gvLopHoc.Columns[4].Caption = "Levels";
+            gvLopHoc.Columns[5].Caption = "Học phí";
+            gvLopHoc.Columns[6].Caption = "Số buổi học";
+            gvLopHoc.Columns[7].Caption = "Khung giờ học";
+            gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
+            gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
         }
 
+       
     }
 }

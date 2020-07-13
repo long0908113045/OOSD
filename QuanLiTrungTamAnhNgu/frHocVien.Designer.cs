@@ -38,8 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
-            this.txtMaHV = new DevExpress.XtraEditors.TextEdit();
-            this.label2 = new System.Windows.Forms.Label();
             this.bttLHuy = new DevExpress.XtraEditors.SimpleButton();
             this.bttXoaHV = new DevExpress.XtraEditors.SimpleButton();
             this.bttSuaHV = new DevExpress.XtraEditors.SimpleButton();
@@ -65,7 +63,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTimTen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaHV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChiHV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoaiHV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailHV.Properties)).BeginInit();
@@ -131,7 +128,7 @@
             this.btnTimKiem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.ImageOptions.Image")));
             this.btnTimKiem.Location = new System.Drawing.Point(493, 56);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(140, 38);
+            this.btnTimKiem.Size = new System.Drawing.Size(138, 36);
             this.btnTimKiem.TabIndex = 3;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
@@ -158,8 +155,6 @@
             // panelControl4
             // 
             this.panelControl4.Controls.Add(this.btnRefresh);
-            this.panelControl4.Controls.Add(this.txtMaHV);
-            this.panelControl4.Controls.Add(this.label2);
             this.panelControl4.Controls.Add(this.bttLHuy);
             this.panelControl4.Controls.Add(this.bttXoaHV);
             this.panelControl4.Controls.Add(this.bttSuaHV);
@@ -189,30 +184,10 @@
             this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(187, 371);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(116, 38);
+            this.btnRefresh.Size = new System.Drawing.Size(114, 36);
             this.btnRefresh.TabIndex = 51;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // txtMaHV
-            // 
-            this.txtMaHV.Location = new System.Drawing.Point(148, 62);
-            this.txtMaHV.Name = "txtMaHV";
-            this.txtMaHV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaHV.Properties.Appearance.Options.UseFont = true;
-            this.txtMaHV.Size = new System.Drawing.Size(206, 32);
-            this.txtMaHV.TabIndex = 50;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 27);
-            this.label2.TabIndex = 49;
-            this.label2.Text = "Mã học viên:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bttLHuy
             // 
@@ -224,7 +199,7 @@
             this.bttLHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttLHuy.ImageOptions.Image")));
             this.bttLHuy.Location = new System.Drawing.Point(76, 371);
             this.bttLHuy.Name = "bttLHuy";
-            this.bttLHuy.Size = new System.Drawing.Size(85, 38);
+            this.bttLHuy.Size = new System.Drawing.Size(83, 36);
             this.bttLHuy.TabIndex = 48;
             this.bttLHuy.Text = "Hủy";
             this.bttLHuy.Click += new System.EventHandler(this.bttLHuy_Click);
@@ -239,7 +214,7 @@
             this.bttXoaHV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttXoaHV.ImageOptions.Image")));
             this.bttXoaHV.Location = new System.Drawing.Point(246, 311);
             this.bttXoaHV.Name = "bttXoaHV";
-            this.bttXoaHV.Size = new System.Drawing.Size(83, 38);
+            this.bttXoaHV.Size = new System.Drawing.Size(81, 36);
             this.bttXoaHV.TabIndex = 47;
             this.bttXoaHV.Text = "Xóa";
             this.bttXoaHV.Click += new System.EventHandler(this.bttXoaHV_Click);
@@ -254,7 +229,7 @@
             this.bttSuaHV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttSuaHV.ImageOptions.Image")));
             this.bttSuaHV.Location = new System.Drawing.Point(136, 311);
             this.bttSuaHV.Name = "bttSuaHV";
-            this.bttSuaHV.Size = new System.Drawing.Size(80, 38);
+            this.bttSuaHV.Size = new System.Drawing.Size(78, 36);
             this.bttSuaHV.TabIndex = 46;
             this.bttSuaHV.Text = "Sửa";
             this.bttSuaHV.Click += new System.EventHandler(this.bttSuaHV_Click);
@@ -269,7 +244,7 @@
             this.bttThemHV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttThemHV.ImageOptions.Image")));
             this.bttThemHV.Location = new System.Drawing.Point(13, 311);
             this.bttThemHV.Name = "bttThemHV";
-            this.bttThemHV.Size = new System.Drawing.Size(98, 38);
+            this.bttThemHV.Size = new System.Drawing.Size(96, 36);
             this.bttThemHV.TabIndex = 45;
             this.bttThemHV.Text = "Thêm";
             this.bttThemHV.Click += new System.EventHandler(this.bttThemHV_Click);
@@ -381,7 +356,6 @@
             this.gcHocVien.TabIndex = 7;
             this.gcHocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvHocVien});
-            // 
             // gvHocVien
             // 
             this.gvHocVien.GridControl = this.gcHocVien;
@@ -430,7 +404,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaHV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChiHV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoaiHV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailHV.Properties)).EndInit();
@@ -459,8 +432,6 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
-        private DevExpress.XtraEditors.TextEdit txtMaHV;
-        private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.SimpleButton bttLHuy;
         private DevExpress.XtraEditors.SimpleButton bttXoaHV;
         private DevExpress.XtraEditors.SimpleButton bttSuaHV;

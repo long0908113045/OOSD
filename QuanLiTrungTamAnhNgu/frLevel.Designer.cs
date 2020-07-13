@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frLevel));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.txtMaLV = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.txtTenLevel = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -46,7 +44,6 @@
             this.gvLevel = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaLV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLevel.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvLevel)).BeginInit();
@@ -54,8 +51,6 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.txtMaLV);
-            this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.btnRefresh);
             this.panelControl1.Controls.Add(this.txtTenLevel);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -72,25 +67,6 @@
             this.panelControl1.Size = new System.Drawing.Size(422, 461);
             this.panelControl1.TabIndex = 0;
             // 
-            // txtMaLV
-            // 
-            this.txtMaLV.Location = new System.Drawing.Point(156, 86);
-            this.txtMaLV.Name = "txtMaLV";
-            this.txtMaLV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLV.Properties.Appearance.Options.UseFont = true;
-            this.txtMaLV.Size = new System.Drawing.Size(231, 36);
-            this.txtMaLV.TabIndex = 65;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(47, 89);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(106, 29);
-            this.labelControl4.TabIndex = 64;
-            this.labelControl4.Text = "Mã Level: ";
-            // 
             // btnRefresh
             // 
             this.btnRefresh.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,7 +77,7 @@
             this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(242, 358);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(122, 38);
+            this.btnRefresh.Size = new System.Drawing.Size(120, 36);
             this.btnRefresh.TabIndex = 63;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -135,7 +111,7 @@
             this.bttLHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttLHuy.ImageOptions.Image")));
             this.bttLHuy.Location = new System.Drawing.Point(116, 358);
             this.bttLHuy.Name = "bttLHuy";
-            this.bttLHuy.Size = new System.Drawing.Size(99, 38);
+            this.bttLHuy.Size = new System.Drawing.Size(86, 36);
             this.bttLHuy.TabIndex = 60;
             this.bttLHuy.Text = "Hủy";
             this.bttLHuy.Click += new System.EventHandler(this.bttLHuy_Click);
@@ -150,7 +126,7 @@
             this.bttXoaLv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttXoaLv.ImageOptions.Image")));
             this.bttXoaLv.Location = new System.Drawing.Point(281, 309);
             this.bttXoaLv.Name = "bttXoaLv";
-            this.bttXoaLv.Size = new System.Drawing.Size(106, 38);
+            this.bttXoaLv.Size = new System.Drawing.Size(85, 36);
             this.bttXoaLv.TabIndex = 59;
             this.bttXoaLv.Text = "Xóa";
             this.bttXoaLv.Click += new System.EventHandler(this.bttXoaLv_Click);
@@ -165,7 +141,7 @@
             this.bttSuaLv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttSuaLv.ImageOptions.Image")));
             this.bttSuaLv.Location = new System.Drawing.Point(158, 309);
             this.bttSuaLv.Name = "bttSuaLv";
-            this.bttSuaLv.Size = new System.Drawing.Size(117, 38);
+            this.bttSuaLv.Size = new System.Drawing.Size(81, 36);
             this.bttSuaLv.TabIndex = 58;
             this.bttSuaLv.Text = "Sửa";
             this.bttSuaLv.Click += new System.EventHandler(this.bttSuaLv_Click);
@@ -180,7 +156,7 @@
             this.bttThemLv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttThemLv.ImageOptions.Image")));
             this.bttThemLv.Location = new System.Drawing.Point(31, 309);
             this.bttThemLv.Name = "bttThemLv";
-            this.bttThemLv.Size = new System.Drawing.Size(118, 38);
+            this.bttThemLv.Size = new System.Drawing.Size(100, 36);
             this.bttThemLv.TabIndex = 57;
             this.bttThemLv.Text = "Thêm";
             this.bttThemLv.Click += new System.EventHandler(this.bttThemLv_Click);
@@ -245,7 +221,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaLV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenLevel.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvLevel)).EndInit();
@@ -268,7 +243,5 @@
         private DevExpress.XtraEditors.TextEdit txtTenLevel;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
-        private DevExpress.XtraEditors.TextEdit txtMaLV;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

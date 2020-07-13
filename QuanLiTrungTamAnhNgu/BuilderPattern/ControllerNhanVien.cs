@@ -38,7 +38,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
         {
           
             
-            if(context.sp_ThemNhanVien(nhanVien.manv, nhanVien.hoten, nhanVien.chucvu, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh) != -1)
+            if(context.sp_ThemNhanVien( nhanVien.hoten, nhanVien.chucvu, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh) != -1)
             {
                 return true;
             }

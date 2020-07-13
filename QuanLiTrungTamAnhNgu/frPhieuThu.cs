@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using QuanLiTrungTamAnhNgu.StatePattern;
 
 namespace QuanLiTrungTamAnhNgu
 {
@@ -20,6 +21,7 @@ namespace QuanLiTrungTamAnhNgu
 
         }
         EnglishCenterEntities context = new EnglishCenterEntities();
+        LopHocStartState lopHocStartState = new LopHocStartState();
         string phuongthucthanhtoan;
         int idhv;
         int idnv;
@@ -57,17 +59,21 @@ namespace QuanLiTrungTamAnhNgu
             Global.LopHocID = Convert.ToInt32(e.Node.Tag);
             txtLopHoc.Text = e.Node.Text;
             Load_PhieuThu();
-        }
-
-        private void gvPhieuThu_Click(object sender, EventArgs e)
-        {
-
+            LopHocContext lhcontext = new LopHocContext();
+            if (lhcontext.Request())
+            {
+                bttDangKy.Enabled = true;
+            }
+            else
+            {
+                bttDangKy.Enabled = false;
+            }
         }
         private void Load_HocVien()
         {
             gcHocVien.DataSource = context.fn_ListHocVien().ToList();
             gvHocVien.Columns[0].Visible = false;
-            gvHocVien.Columns[1].Caption = "Mã học viên";
+            gvHocVien.Columns[1].Visible = false;
             gvHocVien.Columns[2].Caption = "Họ tên";
             gvHocVien.Columns[3].Caption = "Địa chỉ";
             gvHocVien.Columns[4].Caption = "Email";
@@ -113,37 +119,46 @@ namespace QuanLiTrungTamAnhNgu
         {
             idhv = Global.HocVienID;
             idlh = Global.LopHocID;
-            idnv = Global.NhanVienID;          
-            if (txtHocVien.Text == " " ||
-              txtLopHoc.Text == ""
-              )
+            idnv = Global.NhanVienID;
+            LopHocContext lhcontext = new LopHocContext();
+            if (lhcontext.Request())
             {
-                MessageBox.Show("Bạn chưa điền đủ thông tin!", "Thêm  học viên vào lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (txtHocVien.Text == " " || txtLopHoc.Text == "")
+                {
+                    MessageBox.Show("Bạn chưa điền đủ thông tin!", "Thêm  học viên vào lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+
+                    DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm học viên này vào lớp không ?", "Thêm học viên.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        if (context.sp_ThemPhieuThu(idhv, idlh, idnv) != -1)
+                        {
+                            MessageBox.Show("Bạn đã thêm học viên thành công!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_HocVien();
+                            Load_PhieuThu();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Học Viên Đã Tồn Tại!");
+                        }
+                    }
+
+
+                }
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm học viên này vào lớp không ?", "Thêm học viên.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-
-                    if (context.sp_ThemPhieuThu(idhv, idlh, idnv) != -1)
-                    {
-                        MessageBox.Show("Bạn đã thêm học viên thành công!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Load_HocVien();
-                        Load_PhieuThu();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Học Viên Đã Tồn Tại!");
-                    }
-                }
+                MessageBox.Show("Lớp Học Đã Đầy");
             }
         }
 
         private void gcHocVien_Click(object sender, EventArgs e)
         {
-            Global.HocVienID= Convert.ToInt32(gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[0]).ToString());
-            txtHocVien.Text = Convert.ToString(gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[2]).ToString());
+            Global.HocVienID= Convert.ToInt32(gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[0])?.ToString());
+            txtHocVien.Text = Convert.ToString(gvHocVien.GetRowCellValue(gvHocVien.FocusedRowHandle, gvHocVien.Columns[2])?.ToString());
         }
 
 
@@ -151,7 +166,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             gcPhieuThu.DataSource = context.fn_ListPhieuThu(Global.LopHocID).ToList();
             gvPhieuThu.Columns[0].Visible = false;
-            gvPhieuThu.Columns[1].Caption = "Mã học viên";
+            gvPhieuThu.Columns[1].Visible = false;
             gvPhieuThu.Columns[2].Caption = "Họ tên học viên";
             gvPhieuThu.Columns[3].Caption = "Họ tên nhân viên";
             gvPhieuThu.Columns[4].Caption = "Số Tiền";
@@ -163,12 +178,12 @@ namespace QuanLiTrungTamAnhNgu
 
         private void gcPhieuThu_Click(object sender, EventArgs e)
         {
-            Global.PhieuThuID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[0]).ToString());
-            txtHocVien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[2]).ToString());
-            Global.HocVienID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[7]).ToString());
-            txtPhuongThucThanhToan.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[5]).ToString());
-            txtSoTien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4]).ToString());
-            ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6]).ToString());
+            Global.PhieuThuID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[0])?.ToString());
+            txtHocVien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[2])?.ToString()) ?? "";
+            Global.HocVienID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[7])?.ToString());
+            txtPhuongThucThanhToan.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[5])?.ToString()) ?? "";
+            txtSoTien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString()) ?? "";
+            ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6])?.ToString());
 
         }
 
@@ -177,7 +192,7 @@ namespace QuanLiTrungTamAnhNgu
 
             gcHocVien.DataSource = context.sp_TimHocVienTheoTen(txtTimTen.Text).ToList();
             gvHocVien.Columns[0].Visible = false;
-            gvHocVien.Columns[1].Caption = "Mã học viên";
+            gvHocVien.Columns[1].Visible = false;
             gvHocVien.Columns[2].Caption = "Họ tên";
             gvHocVien.Columns[3].Caption = "Địa chỉ";
             gvHocVien.Columns[4].Caption = "Email";
@@ -191,7 +206,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             gcPhieuThu.DataSource = context.fn_TimTenTrenPhieuThu(Global.LopHocID,txtTimTen.Text.Trim()).ToList();
             gvPhieuThu.Columns[0].Visible = false;
-            gvPhieuThu.Columns[1].Caption = "Mã học viên";
+            gvPhieuThu.Columns[1].Visible = false;
             gvPhieuThu.Columns[2].Caption = "Họ tên học viên";
             gvPhieuThu.Columns[3].Caption = "Họ tên nhân viên";
             gvPhieuThu.Columns[4].Caption = "Số Tiền";
@@ -215,6 +230,5 @@ namespace QuanLiTrungTamAnhNgu
             Load_PhieuThu();
          }
 
-      
     }
 }

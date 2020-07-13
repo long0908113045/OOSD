@@ -51,7 +51,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             Global.LopHocID = Convert.ToInt32(e.Node.Tag);
             gcHocVien.DataSource = context.fn_ListHocVienCuaLopHoc(Global.LopHocID).ToList();
-            gvHocVien.Columns[0].Caption = "Mã học viên";
+            gvHocVien.Columns[0].Visible = false;
             gvHocVien.Columns[1].Caption = "Họ tên";
             gvHocVien.Columns[2].Caption = "Địa chỉ";
             gvHocVien.Columns[3].Caption = "Email";

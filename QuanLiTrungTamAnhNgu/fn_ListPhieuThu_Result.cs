@@ -13,11 +13,13 @@ namespace QuanLiTrungTamAnhNgu
     
     public partial class fn_ListPhieuThu_Result
     {
+        public int PhieuThuId { get; set; }
         public string Ma_HV { get; set; }
         public string HoTen_HV { get; set; }
         public string HoTen_NV { get; set; }
         public Nullable<decimal> SoTien { get; set; }
         public string PhuongThucThanhToan { get; set; }
         public Nullable<System.DateTime> NgayThanhToan { get; set; }
+        public int HocVienId { get; set; }
     }
 }

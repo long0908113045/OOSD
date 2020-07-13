@@ -15,8 +15,8 @@ namespace QuanLiTrungTamAnhNgu
     {
         public string Ma_HV { get; set; }
         public string HoTen_HV { get; set; }
-        public string SDT_HV { get; set; }
-        public string Email_HV { get; set; }
         public string DiaChi_HV { get; set; }
+        public string Email_HV { get; set; }
+        public string SDT_HV { get; set; }
     }
 }

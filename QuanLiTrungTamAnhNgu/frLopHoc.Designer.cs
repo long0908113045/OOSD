@@ -48,8 +48,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.cbxLevel = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtMaLop = new DevExpress.XtraEditors.TextEdit();
-            this.label3 = new System.Windows.Forms.Label();
             this.cbxKhoaHoc = new DevExpress.XtraEditors.LookUpEdit();
             this.cbxGV = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -79,7 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSoBuoiHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxLevel.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxKhoaHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxGV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).BeginInit();
@@ -182,7 +179,7 @@
             this.bttTimKiemNV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttTimKiemNV.ImageOptions.Image")));
             this.bttTimKiemNV.Location = new System.Drawing.Point(912, 64);
             this.bttTimKiemNV.Name = "bttTimKiemNV";
-            this.bttTimKiemNV.Size = new System.Drawing.Size(124, 36);
+            this.bttTimKiemNV.Size = new System.Drawing.Size(122, 34);
             this.bttTimKiemNV.TabIndex = 18;
             this.bttTimKiemNV.Text = "Tìm kiếm";
             this.bttTimKiemNV.Click += new System.EventHandler(this.bttTimKiemNV_Click);
@@ -234,8 +231,6 @@
             this.panelControl2.Controls.Add(this.labelControl6);
             this.panelControl2.Controls.Add(this.cbxLevel);
             this.panelControl2.Controls.Add(this.labelControl2);
-            this.panelControl2.Controls.Add(this.txtMaLop);
-            this.panelControl2.Controls.Add(this.label3);
             this.panelControl2.Controls.Add(this.cbxKhoaHoc);
             this.panelControl2.Controls.Add(this.cbxGV);
             this.panelControl2.Controls.Add(this.labelControl7);
@@ -269,7 +264,7 @@
             this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ImageOptions.Image")));
             this.btnRefresh.Location = new System.Drawing.Point(260, 551);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(105, 38);
+            this.btnRefresh.Size = new System.Drawing.Size(103, 36);
             this.btnRefresh.TabIndex = 67;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
@@ -333,25 +328,6 @@
             this.labelControl2.Size = new System.Drawing.Size(61, 29);
             this.labelControl2.TabIndex = 61;
             this.labelControl2.Text = "Level:";
-            // 
-            // txtMaLop
-            // 
-            this.txtMaLop.Location = new System.Drawing.Point(231, 239);
-            this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaLop.Properties.Appearance.Options.UseFont = true;
-            this.txtMaLop.Size = new System.Drawing.Size(206, 36);
-            this.txtMaLop.TabIndex = 60;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(27, 242);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 29);
-            this.label3.TabIndex = 59;
-            this.label3.Text = "Mã Lớp:";
             // 
             // cbxKhoaHoc
             // 
@@ -425,7 +401,7 @@
             this.bttLHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttLHuy.ImageOptions.Image")));
             this.bttLHuy.Location = new System.Drawing.Point(125, 551);
             this.bttLHuy.Name = "bttLHuy";
-            this.bttLHuy.Size = new System.Drawing.Size(76, 38);
+            this.bttLHuy.Size = new System.Drawing.Size(74, 36);
             this.bttLHuy.TabIndex = 47;
             this.bttLHuy.Text = "Hủy";
             this.bttLHuy.Click += new System.EventHandler(this.bttLHuy_Click);
@@ -440,7 +416,7 @@
             this.bttXoaLH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttXoaLH.ImageOptions.Image")));
             this.bttXoaLH.Location = new System.Drawing.Point(329, 503);
             this.bttXoaLH.Name = "bttXoaLH";
-            this.bttXoaLH.Size = new System.Drawing.Size(78, 38);
+            this.bttXoaLH.Size = new System.Drawing.Size(76, 36);
             this.bttXoaLH.TabIndex = 46;
             this.bttXoaLH.Text = "Xóa";
             this.bttXoaLH.Click += new System.EventHandler(this.bttXoaLH_Click);
@@ -455,7 +431,7 @@
             this.bttSuaLH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttSuaLH.ImageOptions.Image")));
             this.bttSuaLH.Location = new System.Drawing.Point(208, 503);
             this.bttSuaLH.Name = "bttSuaLH";
-            this.bttSuaLH.Size = new System.Drawing.Size(75, 38);
+            this.bttSuaLH.Size = new System.Drawing.Size(73, 36);
             this.bttSuaLH.TabIndex = 45;
             this.bttSuaLH.Text = "Sửa";
             this.bttSuaLH.Click += new System.EventHandler(this.bttSuaLH_Click);
@@ -470,7 +446,7 @@
             this.bttThemLH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttThemLH.ImageOptions.Image")));
             this.bttThemLH.Location = new System.Drawing.Point(76, 503);
             this.bttThemLH.Name = "bttThemLH";
-            this.bttThemLH.Size = new System.Drawing.Size(88, 38);
+            this.bttThemLH.Size = new System.Drawing.Size(86, 36);
             this.bttThemLH.TabIndex = 44;
             this.bttThemLH.Text = "Thêm";
             this.bttThemLH.Click += new System.EventHandler(this.bttThemLH_Click);
@@ -581,7 +557,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSoBuoiHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxLevel.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxKhoaHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxGV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocPhi.Properties)).EndInit();
@@ -621,8 +596,6 @@
         private DevExpress.XtraEditors.LookUpEdit cbxGV;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.TextEdit txtMaLop;
-        private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.LookUpEdit cbxLevel;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtThoiGianHoc;

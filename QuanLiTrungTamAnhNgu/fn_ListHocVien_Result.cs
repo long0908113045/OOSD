@@ -20,6 +20,5 @@ namespace QuanLiTrungTamAnhNgu
         public string Email_HV { get; set; }
         public string SDT_HV { get; set; }
         public string TrangThai { get; set; }
-        public string PassWords { get; set; }
     }
 }
