@@ -70,50 +70,7 @@ namespace QuanLiTrungTamAnhNgu
         }
 
 
-        private void bttThemLH_Click(object sender, EventArgs e)
-        {
-            if (txtHocPhi.Text.Replace(" ", "") != ""  && txtTenLop.Text.Replace(" ", "") != ""
-                && cbxGV.Text != "" && cbxKhoaHoc.Text != "" && cbxLevel.Text != "")
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn thêm lớp học  này chứ!", "Thêm Lớp Học ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-                   
-                    tenlh = txtTenLop.Text;
-                    hocphi = Convert.ToDecimal(txtHocPhi.Text);
-                    sobuoihoc = Convert.ToInt32(txtSoBuoiHoc.Text);
-                    ngaybatdau = Convert.ToDateTime(dtThoiGianBatDau.Value);
-                    ngayketthuc = Convert.ToDateTime(dtThoiGianKetThuc.Value);
-                    khunggiohoc = txtThoiGianHoc.Text;
-                    id_gv = Convert.ToInt32(cbxGV.EditValue);
-                    id_kh = Convert.ToInt32(cbxKhoaHoc.EditValue);
-                    id_lv = Convert.ToInt32(cbxLevel.EditValue);
-
-
-                    try
-                    {
-                        if (context.sp_ThemLopHoc(tenlh, ngaybatdau, ngayketthuc, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
-                        {
-                            MessageBox.Show("Lớp học đã được thêm vào", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Load_LopHoc();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Lớp học đã tồn tại", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    catch (Exception ex){
-                        throw ex;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng điền hết thông tin", "Thêm Lớp Học", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
+     
         private void bttSuaLH_Click(object sender, EventArgs e)
         {
             if (txtHocPhi.Text.Replace(" ", "") != ""  && txtTenLop.Text.Replace(" ", "") != ""
@@ -328,6 +285,48 @@ namespace QuanLiTrungTamAnhNgu
             gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
         }
 
-       
+        private void bttThemLH_Click(object sender, EventArgs e)
+        {
+            if (txtHocPhi.Text.Replace(" ", "") != "" && txtTenLop.Text.Replace(" ", "") != ""
+                && cbxGV.Text != "" && cbxKhoaHoc.Text != "" && cbxLevel.Text != "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn thêm lớp học  này chứ!", "Thêm Lớp Học ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    tenlh = txtTenLop.Text;
+                    hocphi = Convert.ToDecimal(txtHocPhi.Text);
+                    sobuoihoc = Convert.ToInt32(txtSoBuoiHoc.Text);
+                    ngaybatdau = Convert.ToDateTime(dtThoiGianBatDau.Value);
+                    ngayketthuc = Convert.ToDateTime(dtThoiGianKetThuc.Value);
+                    khunggiohoc = txtThoiGianHoc.Text;
+                    id_gv = Convert.ToInt32(cbxGV.EditValue);
+                    id_kh = Convert.ToInt32(cbxKhoaHoc.EditValue);
+                    id_lv = Convert.ToInt32(cbxLevel.EditValue);
+
+                    try
+                    {
+                        if (context.sp_ThemLopHoc(tenlh, ngaybatdau, ngayketthuc, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
+                        {
+                            MessageBox.Show("Lớp học đã được thêm vào", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_LopHoc();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lớp học đã tồn tại", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng điền hết thông tin", "Thêm Lớp Học", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

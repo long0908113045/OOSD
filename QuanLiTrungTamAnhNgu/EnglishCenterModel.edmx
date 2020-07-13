@@ -517,7 +517,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="idkh" Type="int" Mode="In" />
           <Parameter Name="idlv" Type="int" Mode="In" />
           <Parameter Name="sobuoihoc" Type="int" Mode="In" />
-          <Parameter Name="khunggiohoc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="khunggiohoc" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_ThemNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
