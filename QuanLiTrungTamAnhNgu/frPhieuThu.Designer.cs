@@ -177,7 +177,7 @@
             this.btnThanhToan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.ImageOptions.Image")));
             this.btnThanhToan.Location = new System.Drawing.Point(881, 120);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(149, 38);
+            this.btnThanhToan.Size = new System.Drawing.Size(147, 36);
             this.btnThanhToan.TabIndex = 39;
             this.btnThanhToan.Text = "Thanh Toán";
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
@@ -238,9 +238,9 @@
             this.bttDangKy.Appearance.Options.UseForeColor = true;
             this.bttDangKy.AutoSize = true;
             this.bttDangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttDangKy.ImageOptions.Image")));
-            this.bttDangKy.Location = new System.Drawing.Point(148, 122);
+            this.bttDangKy.Location = new System.Drawing.Point(148, 150);
             this.bttDangKy.Name = "bttDangKy";
-            this.bttDangKy.Size = new System.Drawing.Size(135, 38);
+            this.bttDangKy.Size = new System.Drawing.Size(133, 36);
             this.bttDangKy.TabIndex = 30;
             this.bttDangKy.Text = "Đăng Ký";
             this.bttDangKy.Click += new System.EventHandler(this.bttDangKy_Click);
@@ -333,7 +333,7 @@
             this.btnTimKiemPhieuThu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiemPhieuThu.ImageOptions.SvgImage")));
             this.btnTimKiemPhieuThu.Location = new System.Drawing.Point(406, 5);
             this.btnTimKiemPhieuThu.Name = "btnTimKiemPhieuThu";
-            this.btnTimKiemPhieuThu.Size = new System.Drawing.Size(132, 46);
+            this.btnTimKiemPhieuThu.Size = new System.Drawing.Size(130, 44);
             this.btnTimKiemPhieuThu.TabIndex = 18;
             this.btnTimKiemPhieuThu.Text = "Tìm Kiếm";
             this.btnTimKiemPhieuThu.Click += new System.EventHandler(this.btnTimKiemPhieuThu_Click);
@@ -407,7 +407,7 @@
             this.btnRefreshv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefreshv.ImageOptions.Image")));
             this.btnRefreshv.Location = new System.Drawing.Point(170, 50);
             this.btnRefreshv.Name = "btnRefreshv";
-            this.btnRefreshv.Size = new System.Drawing.Size(105, 38);
+            this.btnRefreshv.Size = new System.Drawing.Size(103, 36);
             this.btnRefreshv.TabIndex = 16;
             this.btnRefreshv.Text = "Refresh";
             this.btnRefreshv.Click += new System.EventHandler(this.btnRefreshv_Click);
@@ -422,7 +422,7 @@
             this.btnTimKiemHocVIen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiemHocVIen.ImageOptions.SvgImage")));
             this.btnTimKiemHocVIen.Location = new System.Drawing.Point(326, 14);
             this.btnTimKiemHocVIen.Name = "btnTimKiemHocVIen";
-            this.btnTimKiemHocVIen.Size = new System.Drawing.Size(132, 46);
+            this.btnTimKiemHocVIen.Size = new System.Drawing.Size(130, 44);
             this.btnTimKiemHocVIen.TabIndex = 15;
             this.btnTimKiemHocVIen.Text = "Tìm Kiếm";
             this.btnTimKiemHocVIen.Click += new System.EventHandler(this.btnTimKiemHocVIen_Click);

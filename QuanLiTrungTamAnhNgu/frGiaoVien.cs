@@ -70,5 +70,15 @@ namespace QuanLiTrungTamAnhNgu
             lbSoLuong.Text = (gvHocVien.RowCount).ToString();
             txtLopHoc.Text = thongtinlophoc.Ten_LH;
         }
+
+        private void gvHocVien_ShowingEditor(object sender, CancelEventArgs c)
+        {
+            gvHocVien.ShowingEditor += (s, e) => {
+                e.Cancel = gvHocVien.FocusedColumn.FieldName == "Họ tên";
+            };
+
+
+        }
+
     }
 }

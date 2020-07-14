@@ -102,7 +102,7 @@
     <Compile Include="BuilderPattern\GiaoVienBuilder.cs" />
     <Compile Include="BuilderPattern\INhanVienBuilder.cs" />
     <Compile Include="BuilderPattern\KeToanBuilder.cs" />
-    <Compile Include="BuilderPattern\NhanVien.cs" />
+    <Compile Include="BuilderPattern\NhanViens.cs" />
     <Compile Include="BuilderPattern\NhanVienBuildDirector.cs" />
     <Compile Include="BuilderPattern\NhanVienBuilder.cs" />
     <Compile Include="BuilderPhieuThu\IPhieuThuBuilder.cs" />
@@ -153,88 +153,82 @@
     <Compile Include="fn_TimTenTrenPhieuThu_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="GUI\frDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frDangNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frDangNhap.Designer.cs">
+    <Compile Include="GUI\frDangNhap.Designer.cs">
       <DependentUpon>frDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="frGiaoVien.cs">
+    <Compile Include="GUI\frGiaoVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frGiaoVien.Designer.cs">
+    <Compile Include="GUI\frGiaoVien.Designer.cs">
       <DependentUpon>frGiaoVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frHocVien.cs">
+    <Compile Include="GUI\frHocVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frHocVien.Designer.cs">
+    <Compile Include="GUI\frHocVien.Designer.cs">
       <DependentUpon>frHocVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frListAdmin.cs">
+    <Compile Include="GUI\frListAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frListAdmin.Designer.cs">
+    <Compile Include="GUI\frListAdmin.Designer.cs">
       <DependentUpon>frListAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frKeToan.cs">
+    <Compile Include="GUI\frKeToan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frKeToan.Designer.cs">
+    <Compile Include="GUI\frKeToan.Designer.cs">
       <DependentUpon>frKeToan.cs</DependentUpon>
     </Compile>
-    <Compile Include="frKhoaHoc.cs">
+    <Compile Include="GUI\frKhoaHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frKhoaHoc.Designer.cs">
+    <Compile Include="GUI\frKhoaHoc.Designer.cs">
       <DependentUpon>frKhoaHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="frLevel.cs">
+    <Compile Include="GUI\frLevel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frLevel.Designer.cs">
+    <Compile Include="GUI\frLevel.Designer.cs">
       <DependentUpon>frLevel.cs</DependentUpon>
     </Compile>
-    <Compile Include="frListLopHoc.cs">
+    <Compile Include="GUI\frListLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frListLopHoc.Designer.cs">
+    <Compile Include="GUI\frListLopHoc.Designer.cs">
       <DependentUpon>frListLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="frLopHoc.cs">
+    <Compile Include="GUI\frLopHoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frLopHoc.Designer.cs">
+    <Compile Include="GUI\frLopHoc.Designer.cs">
       <DependentUpon>frLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="frMain.cs">
+    <Compile Include="GUI\frMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frMain.Designer.cs">
+    <Compile Include="GUI\frMain.Designer.cs">
       <DependentUpon>frMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frNhanVien.cs">
+    <Compile Include="GUI\frNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frNhanVien.Designer.cs">
+    <Compile Include="GUI\frNhanVien.Designer.cs">
       <DependentUpon>frNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frPhieuThu.cs">
+    <Compile Include="GUI\frPhieuThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frPhieuThu.Designer.cs">
+    <Compile Include="GUI\frPhieuThu.Designer.cs">
       <DependentUpon>frPhieuThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frWait.cs">
+    <Compile Include="GUI\frWait.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frWait.Designer.cs">
+    <Compile Include="GUI\frWait.Designer.cs">
       <DependentUpon>frWait.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
@@ -264,6 +258,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingletonPattern\ControllerGiaoVien.cs" />
+    <Compile Include="SingletonPattern\ControllerHocVien.cs" />
+    <Compile Include="SingletonPattern\ControllerLopHoc.cs" />
+    <Compile Include="SingletonPattern\My_DB.cs" />
+    <Compile Include="SingletonPattern\ControllerNhanVien.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_ListKhoaHoc_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -283,6 +288,9 @@
     <Compile Include="StatePattern\LopHocStartState.cs" />
     <Compile Include="StatePattern\LopHocState.cs" />
     <Compile Include="StatePattern\LopHocStopState.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TaikhoanGiaoVien.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -292,46 +300,43 @@
     <Compile Include="view_ListGiaoVien.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frDangNhap.resx">
+    <EmbeddedResource Include="GUI\frDangNhap.resx">
       <DependentUpon>frDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frGiaoVien.resx">
+    <EmbeddedResource Include="GUI\frGiaoVien.resx">
       <DependentUpon>frGiaoVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frHocVien.resx">
+    <EmbeddedResource Include="GUI\frHocVien.resx">
       <DependentUpon>frHocVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frListAdmin.resx">
+    <EmbeddedResource Include="GUI\frListAdmin.resx">
       <DependentUpon>frListAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frKeToan.resx">
+    <EmbeddedResource Include="GUI\frKeToan.resx">
       <DependentUpon>frKeToan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frKhoaHoc.resx">
+    <EmbeddedResource Include="GUI\frKhoaHoc.resx">
       <DependentUpon>frKhoaHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frLevel.resx">
+    <EmbeddedResource Include="GUI\frLevel.resx">
       <DependentUpon>frLevel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frListLopHoc.resx">
+    <EmbeddedResource Include="GUI\frListLopHoc.resx">
       <DependentUpon>frListLopHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frLopHoc.resx">
+    <EmbeddedResource Include="GUI\frLopHoc.resx">
       <DependentUpon>frLopHoc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frMain.resx">
+    <EmbeddedResource Include="GUI\frMain.resx">
       <DependentUpon>frMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frNhanVien.resx">
+    <EmbeddedResource Include="GUI\frNhanVien.resx">
       <DependentUpon>frNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frPhieuThu.resx">
+    <EmbeddedResource Include="GUI\frPhieuThu.resx">
       <DependentUpon>frPhieuThu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frWait.resx">
+    <EmbeddedResource Include="GUI\frWait.resx">
       <DependentUpon>frWait.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />

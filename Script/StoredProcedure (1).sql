@@ -118,15 +118,11 @@ BEGIN
 END
 GO
 
-SELECT
-  *
-FROM NhanVien_audits
 --9.Sửa Nhân Viên
 IF OBJECT_ID('sp_SuaNhanVien') IS NOT NULL
   DROP PROC sp_SuaNhanVien
 GO
-CREATE PROC sp_SuaNhanVien 
-@id_nv int,
+CREATE PROC sp_SuaNhanVien @id_nv int,
 @hoten nvarchar(50),
 @chucvu nvarchar(50),
 @email nvarchar(50),
@@ -300,8 +296,7 @@ IF OBJECT_ID('sp_ThemLopHoc') IS NOT NULL
   DROP PROC sp_ThemLopHoc;
 GO
 
-CREATE PROC sp_ThemLopHoc
-@tenlh nvarchar(100),
+CREATE PROC sp_ThemLopHoc @tenlh nvarchar(100),
 @thoigianbatdau smalldatetime,
 @thoigianketthuc smalldatetime,
 @hocphi numeric(18, 0),
@@ -309,13 +304,14 @@ CREATE PROC sp_ThemLopHoc
 @idkh int,
 @idlv int,
 @sobuoihoc int,
-@khunggiohoc nvarchar(100)
+@khunggiohoc nvarchar(100),
+@soluonghocvien int
 AS
 BEGIN
-	set identity_insert LopHoc off;
-				insert into LopHoc(Ten_LH,ThoiGianBatDau_LH,ThoiGianKetThuc_LH,HocPhi,NhanVienId
-				,KhoaHocId,LevelsId,SoBuoiHoc,KhungGioHoc, TrangThai)
-				values (@tenlh, @thoigianbatdau,@thoigianketthuc,@hocphi,@idnv,@idkh,@idlv,@sobuoihoc,@khunggiohoc, 1);	
+  SET IDENTITY_INSERT LopHoc OFF;
+  INSERT INTO LopHoc (Ten_LH, ThoiGianBatDau_LH, ThoiGianKetThuc_LH, HocPhi, NhanVienId
+  , KhoaHocId, LevelsId, SoBuoiHoc, KhungGioHoc, SoLuongHocVien, TrangThai)
+    VALUES (@tenlh, @thoigianbatdau, @thoigianketthuc, @hocphi, @idnv, @idkh, @idlv, @sobuoihoc, @khunggiohoc, @soluonghocvien, 1);
 END
 GO
 
@@ -337,7 +333,8 @@ CREATE PROC sp_SuaLopHoc @lopHocID int,
 @idkh int,
 @idlv int,
 @sobuoihoc int,
-@khunggiohoc nvarchar(max)
+@khunggiohoc nvarchar(max),
+@soluonghocvien int
 AS
 BEGIN
   BEGIN TRY
@@ -352,7 +349,8 @@ BEGIN
           KhoaHocId = @idkh,
           LevelsId = @idlv,
           SoBuoiHoc = @sobuoihoc,
-          KhungGioHoc = @khunggiohoc
+          KhungGioHoc = @khunggiohoc,
+		  SoLuongHocVien = @soluonghocvien
       WHERE LopHocId = @lopHocID
     COMMIT TRAN;
   END TRY
@@ -393,7 +391,8 @@ AS
     LopHoc.SoBuoiHoc,
     LopHoc.KhungGioHoc,
     LopHoc.ThoiGianBatDau_LH,
-    LopHoc.ThoiGianKetThuc_LH
+    LopHoc.ThoiGianKetThuc_LH,
+	LopHoc.SoLuongHocVien
   FROM LopHoc
   JOIN KhoaHoc
     ON KhoaHoc.KhoaHocId = LopHoc.KhoaHocId
@@ -447,7 +446,8 @@ AS
     LopHoc.SoBuoiHoc,
     LopHoc.KhungGioHoc,
     LopHoc.ThoiGianBatDau_LH,
-    LopHoc.ThoiGianKetThuc_LH
+    LopHoc.ThoiGianKetThuc_LH,
+	LopHoc.SoLuongHocVien
   FROM LopHoc
   JOIN KhoaHoc
     ON KhoaHoc.KhoaHocId = LopHoc.KhoaHocId
@@ -571,77 +571,8 @@ GO
 
 
 
---33. list lưu lại lịch sử update của nhân viên
---Tạo bảng lưu những thay đổi trên bảng nhân viên  
-USE EnglishCenter;
-GO
-CREATE TABLE NhanVien_audits (
-  Change_id int IDENTITY PRIMARY KEY,
-  Ma_NV nvarchar(100) NOT NULL,
-  HoTen_NV nvarchar(100) NOT NULL,
-  ChucVu nvarchar(100) NOT NULL,
-  Email nvarchar(100) NOT NULL,
-  SDT_NV nvarchar(100) NOT NULL,
-  CMND_NV nvarchar(100) NOT NULL,
-  Birthday datetime NULL,
-  Update_at datetime NOT NULL,
-  Operation char(3) NOT NULL,
-  CHECK (operation = 'INS' OR operation = 'DEL')
-)
-IF OBJECT_ID('tr_NV_update') IS NOT NULL
-  DROP TRIGGER tr_NV_update;
-GO
-
-CREATE TRIGGER tr_NV_update
-ON NhanVien
-AFTER INSERT, UPDATE
-AS
-BEGIN
-  INSERT NhanVien_audits (Ma_NV, HoTen_NV, ChucVu, Email, SDT_NV, CMND_NV, Birthday, Update_at, Operation)
-    SELECT
-      i.Ma_NV,
-      i.HoTen_NV,
-      i.ChucVu,
-      i.Email,
-      i.SDT_NV,
-      i.CMND,
-      i.Birthday,
-      GETDATE(),
-      'INS'
-    FROM inserted i
-END
-GO
-
-SELECT
-  *
-FROM NhanVien_audits;
 
 
---
-IF OBJECT_ID('tr_NV_delete') IS NOT NULL
-  DROP TRIGGER tr_NV_delete;
-GO
-
-
-CREATE TRIGGER tr_NV_delete
-ON NhanVien
-AFTER DELETE
-AS
-BEGIN
-  INSERT NhanVien_audits (Ma_NV, HoTen_NV, ChucVu, Email, SDT_NV, CMND_NV, Birthday, Update_at, Operation)
-    SELECT
-      d.Ma_NV,
-      d.HoTen_NV,
-      d.ChucVu,
-      d.Email,
-      d.SDT_NV,
-      d.CMND,
-      d.Birthday,
-      GETDATE(),
-      'DEL'
-    FROM deleted d
-END
-GO
 
 
 --Đặt điều kiện lớp không được > 20 học viên
@@ -649,6 +580,10 @@ GO
 
 
 USE EnglishCenter;
+GO
+
+IF OBJECT_ID('sp_demSoLuong') IS NOT NULL
+  DROP PROC sp_demSoLuong
 GO
 
 CREATE PROC sp_demSoLuong @lopHocId int = 0
@@ -784,6 +719,7 @@ AS
         ON PhanQuyen.Ten_PhanQuyen LIKE inserted.ChucVu
       WHERE NhanVienId = inserted.NhanVienId;
 GO
+
 --Xoa TKNV
 USE EnglishCenter;
 GO
@@ -941,7 +877,8 @@ AS
     LopHoc.SoBuoiHoc,
     LopHoc.KhungGioHoc,
     LopHoc.ThoiGianBatDau_LH,
-    LopHoc.ThoiGianKetThuc_LH
+    LopHoc.ThoiGianKetThuc_LH,
+	LopHoc.SoLuongHocVien
   FROM LopHoc
   JOIN KhoaHoc
     ON KhoaHoc.KhoaHocId = LopHoc.KhoaHocId
@@ -1064,5 +1001,39 @@ AS
   AND s.HoTen_HV LIKE '%' + @ten + '%')
 GO
 
+-- Thêm tài khoản nhân viên
+   
+IF OBJECT_ID('sp_ThemTaiKhoanNV') IS NOT NULL
+  DROP PROC sp_ThemTaiKhoanNV;
+GO
+CREATE PROC sp_ThemTaiKhoanNV @nhanvienid int,
+@username nvarchar(50),
+@chucvu nvarchar(50),
+@passwords nvarchar(50),
+@trangthai nvarchar(50),
+@phanquyenid int
 
+AS
+BEGIN
+  IF (EXISTS (SELECT
+      *
+    FROM TaikhoanGiaoVien
+    WHERE Username = @username
+    AND TrangThai LIKE '1')
+    )
+    RETURN -1;
+  ELSE
+  BEGIN TRY
+    BEGIN TRAN;
+
+      SET IDENTITY_INSERT TaiKhoanGiaoVien OFF;
+      INSERT INTO TaiKhoanGiaoVien (NhanVienId, Username, ChucVu, PassWords, TrangThai, PhanQuyenId)
+        VALUES (@nhanvienid, @username, @chucvu, @passwords, @trangthai, @phanquyenid)
+    COMMIT TRAN;
+  END TRY
+  BEGIN CATCH
+    ROLLBACK TRAN
+  END CATCH
+END
+GO
 --Sắp xếp tên admin

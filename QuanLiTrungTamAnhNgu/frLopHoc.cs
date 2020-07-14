@@ -328,5 +328,16 @@ namespace QuanLiTrungTamAnhNgu
                 MessageBox.Show("Vui lòng điền hết thông tin", "Thêm Lớp Học", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void gcLopHoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvLopHoc_ShowingEditor(object sender, CancelEventArgs e)
+        {
+            e.Cancel = gvLopHoc.FocusedColumn.FieldName == "Ten_LH";
+
+        }
     }
 }

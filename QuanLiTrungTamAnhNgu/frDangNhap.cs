@@ -166,5 +166,10 @@ namespace QuanLiTrungTamAnhNgu
             }
             return null;
         }
+
+        private void cbxChucVu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -82,7 +82,6 @@
             // gcHocVien
             // 
             this.gcHocVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcHocVien.Enabled = false;
             this.gcHocVien.Location = new System.Drawing.Point(250, 0);
             this.gcHocVien.MainView = this.gvHocVien;
             this.gcHocVien.Name = "gcHocVien";
@@ -95,6 +94,7 @@
             // 
             this.gvHocVien.GridControl = this.gcHocVien;
             this.gvHocVien.Name = "gvHocVien";
+            this.gvHocVien.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gvHocVien_ShowingEditor);
             // 
             // panelControl1
             // 
@@ -138,7 +138,7 @@
             this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
             this.btnThoat.Location = new System.Drawing.Point(505, 225);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(223, 38);
+            this.btnThoat.Size = new System.Drawing.Size(221, 36);
             this.btnThoat.TabIndex = 24;
             this.btnThoat.Text = "Thoát chương trình";
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);

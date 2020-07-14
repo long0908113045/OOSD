@@ -236,5 +236,6 @@ namespace QuanLiTrungTamAnhNgu
             Load_PhieuThu();
          }
 
+      
     }
 }

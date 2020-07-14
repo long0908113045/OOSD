@@ -528,11 +528,13 @@
             this.gcLopHoc.TabIndex = 2;
             this.gcLopHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvLopHoc});
+            this.gcLopHoc.Click += new System.EventHandler(this.gcLopHoc_Click);
             // 
             // gvLopHoc
             // 
             this.gvLopHoc.GridControl = this.gcLopHoc;
             this.gvLopHoc.Name = "gvLopHoc";
+            this.gvLopHoc.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gvLopHoc_ShowingEditor);
             this.gvLopHoc.Click += new System.EventHandler(this.gvLopHoc_Click);
             // 
             // frLopHoc
