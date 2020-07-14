@@ -105,6 +105,9 @@
     <Compile Include="BuilderPattern\NhanVien.cs" />
     <Compile Include="BuilderPattern\NhanVienBuildDirector.cs" />
     <Compile Include="BuilderPattern\NhanVienBuilder.cs" />
+    <Compile Include="BuilderPhieuThu\IPhieuThuBuilder.cs" />
+    <Compile Include="BuilderPhieuThu\PhieuThu.cs" />
+    <Compile Include="BuilderPhieuThu\PhieuThuBuilder.cs" />
     <Compile Include="EnglishCenterModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

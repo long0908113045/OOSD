@@ -101,8 +101,14 @@ namespace QuanLiTrungTamAnhNgu
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn thanh toán ?", "Thanh Toán.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
-
-                    if (context.sp_CapNhatPhieuThu(idpt,ngaythanhtoan.Date,phuongthucthanhtoan,sotien,idhv,idlh,idnv)!= 0)
+                    BuilderPhieuThu.PhieuThu phieu = new BuilderPhieuThu.PhieuThuBuilder().HocVienId(idhv)
+                                                                                            .LopHocId(idlh)
+                                                                                            .NhanVienId(idnv)
+                                                                                            .NgayThanhToan(ngaythanhtoan.Date)
+                                                                                            .PhuongThucThanhToan(phuongthucthanhtoan)
+                                                                                            .SoTien(sotien)
+                                                                                            .build();
+                    if (phieu.ThuTien())
                     {
                         MessageBox.Show("Bạn đã thanh toán  thành công!", "Thanh Toán.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_PhieuThu();
@@ -133,8 +139,8 @@ namespace QuanLiTrungTamAnhNgu
                     DialogResult dialogResult = MessageBox.Show("Bạn muốn thêm học viên này vào lớp không ?", "Thêm học viên.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
-
-                        if (context.sp_ThemPhieuThu(idhv, idlh, idnv) != -1)
+                        BuilderPhieuThu.PhieuThu phieu = new BuilderPhieuThu.PhieuThuBuilder().HocVienId(idhv).LopHocId(idlh).NhanVienId(idnv).build();
+                        if (phieu.DangKyLopHoc())
                         {
                             MessageBox.Show("Bạn đã thêm học viên thành công!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Load_HocVien();
