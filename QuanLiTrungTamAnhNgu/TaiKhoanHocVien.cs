@@ -10,8 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class TaiKhoanHocVien
     {
         public int TaiKhoanHocVienId { get; set; }
@@ -20,7 +19,7 @@ namespace QuanLiTrungTamAnhNgu
         public string TrangThai { get; set; }
         public string PassWords { get; set; }
         public Nullable<int> PhanQuyenId { get; set; }
-    
+
         public virtual HocVien HocVien { get; set; }
         public virtual PhanQuyen PhanQuyen { get; set; }
     }

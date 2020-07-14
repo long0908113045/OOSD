@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    
+
     public partial class fn_TimLopTheoGiaoVien_Result
     {
         public int LopHocId { get; set; }

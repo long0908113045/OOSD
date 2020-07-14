@@ -42,7 +42,7 @@ namespace QuanLiTrungTamAnhNgu
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    if (context.sp_ThemHocVien(hoTen, diaChi, email, soDienThoai) != -1 )
+                    if (context.sp_ThemHocVien(hoTen, diaChi, email, soDienThoai) != -1)
                     {
                         MessageBox.Show("Bạn đã thêm học viên thành công!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_HocVien();
@@ -136,7 +136,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void Load_HocVien()
         {
-            gcHocVien.DataSource = context.fn_ListHocVien().ToList();
+            gcHocVien.DataSource = (context.fn_ListHocVien()).ToList();
             gvHocVien.Columns[0].Visible = false;
             gvHocVien.Columns[1].Visible = false;
             gvHocVien.Columns[2].Caption = "Họ tên";

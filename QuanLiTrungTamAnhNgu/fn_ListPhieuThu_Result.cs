@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    
+
     public partial class fn_ListPhieuThu_Result
     {
         public int PhieuThuId { get; set; }

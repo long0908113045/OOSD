@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    
+
     public partial class sp_ListKhoaHoc_Result
     {
         public int KhoaHocId { get; set; }

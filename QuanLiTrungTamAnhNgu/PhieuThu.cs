@@ -10,8 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class PhieuThu
     {
         public int PhieuThuId { get; set; }
@@ -21,7 +20,7 @@ namespace QuanLiTrungTamAnhNgu
         public int LopHocId { get; set; }
         public Nullable<decimal> SoTien { get; set; }
         public Nullable<int> NhanVienId { get; set; }
-    
+
         public virtual HocVien HocVien { get; set; }
         public virtual LopHoc LopHoc { get; set; }
         public virtual NhanVien NhanVien { get; set; }

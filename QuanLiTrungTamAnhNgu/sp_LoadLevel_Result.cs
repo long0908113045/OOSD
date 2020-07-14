@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    
+
     public partial class sp_LoadLevel_Result
     {
         public int LevelsId { get; set; }

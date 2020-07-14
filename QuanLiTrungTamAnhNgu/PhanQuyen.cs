@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PhanQuyen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +20,10 @@ namespace QuanLiTrungTamAnhNgu
             this.TaikhoanGiaoViens = new HashSet<TaikhoanGiaoVien>();
             this.TaiKhoanHocViens = new HashSet<TaiKhoanHocVien>();
         }
-    
+
         public int PhanQuyenId { get; set; }
         public string Ten_PhanQuyen { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaikhoanGiaoVien> TaikhoanGiaoViens { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

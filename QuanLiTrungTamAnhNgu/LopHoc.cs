@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class LopHoc
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             this.PhieuThus = new HashSet<PhieuThu>();
         }
-    
+
         public int LopHocId { get; set; }
         public string Ma_LH { get; set; }
         public string Ten_LH { get; set; }
@@ -32,7 +32,7 @@ namespace QuanLiTrungTamAnhNgu
         public Nullable<int> SoBuoiHoc { get; set; }
         public string KhungGioHoc { get; set; }
         public string TrangThai { get; set; }
-    
+
         public virtual KhoaHoc KhoaHoc { get; set; }
         public virtual Level Level { get; set; }
         public virtual NhanVien NhanVien { get; set; }

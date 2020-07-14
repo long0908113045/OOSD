@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-    
+
     public partial class sp_TimHocVienTheoTen_Result
     {
         public int HocVienId { get; set; }

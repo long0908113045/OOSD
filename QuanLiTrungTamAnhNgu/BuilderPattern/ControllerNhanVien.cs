@@ -35,9 +35,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
             this.nhanVien = nhanVien;
         }
         public bool themNhanVien()
-        {
-          
-            
+        {  
             if(context.sp_ThemNhanVien( nhanVien.hoten, nhanVien.chucvu, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh) != -1)
             {
                 return true;
