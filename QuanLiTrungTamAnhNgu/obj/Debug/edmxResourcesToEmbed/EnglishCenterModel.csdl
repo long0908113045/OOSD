@@ -155,6 +155,7 @@
     <NavigationProperty Name="Level" Relationship="Self.fk_LH_LV" FromRole="LopHoc" ToRole="Levels" />
     <NavigationProperty Name="NhanVien" Relationship="Self.fk_LH_NV" FromRole="LopHoc" ToRole="NhanVien" />
     <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_LH" FromRole="LopHoc" ToRole="PhieuThu" />
+    <Property Name="SoLuongHocVien" Type="Int32" />
   </EntityType>
   <EntityType Name="NhanVien">
     <Key>
@@ -466,7 +467,6 @@
       <Parameter Name="chucvu" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_ListKhoaHoc" ReturnType="Collection(EnglishCenterModel.sp_ListKhoaHoc_Result)" />
-    <FunctionImport Name="sp_ListNhanVien" ReturnType="Collection(EnglishCenterModel.sp_ListNhanVien_Result)" />
     <FunctionImport Name="sp_LoadLevel" ReturnType="Collection(EnglishCenterModel.sp_LoadLevel_Result)" />
     <FunctionImport Name="sp_SuaHocVien">
       <Parameter Name="idhv" Mode="In" Type="Int32" />
@@ -496,6 +496,7 @@
       <Parameter Name="idlv" Mode="In" Type="Int32" />
       <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
       <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+      <Parameter Name="soluonghocvien" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_SuaNhanVien">
       <Parameter Name="id_nv" Mode="In" Type="Int32" />
@@ -506,6 +507,12 @@
       <Parameter Name="cmnd" Mode="In" Type="String" />
       <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="sp_ThemHocVien">
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="sp_ThemKhoaHoc">
       <Parameter Name="tenkh" Mode="In" Type="String" />
       <Parameter Name="mota" Mode="In" Type="String" />
@@ -513,6 +520,18 @@
     <FunctionImport Name="sp_ThemLevel">
       <Parameter Name="tenlv" Mode="In" Type="String" />
       <Parameter Name="mota" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemLopHoc">
+      <Parameter Name="tenlh" Mode="In" Type="String" />
+      <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+      <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+      <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+      <Parameter Name="idnv" Mode="In" Type="Int32" />
+      <Parameter Name="idkh" Mode="In" Type="Int32" />
+      <Parameter Name="idlv" Mode="In" Type="Int32" />
+      <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+      <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+      <Parameter Name="soluonghocvien" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_ThemNhanVien">
       <Parameter Name="hoten" Mode="In" Type="String" />
@@ -552,40 +571,52 @@
     <FunctionImport Name="sp_XoaNhanVien">
       <Parameter Name="id_nv" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_ThemHocVien">
-      <Parameter Name="hoten" Mode="In" Type="String" />
-      <Parameter Name="diachi" Mode="In" Type="String" />
-      <Parameter Name="email" Mode="In" Type="String" />
-      <Parameter Name="sdt" Mode="In" Type="String" />
+    <EntitySet Name="sysdiagrams" EntityType="EnglishCenterModel.sysdiagram" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
     </FunctionImport>
-    <FunctionImport Name="sp_ThemLopHoc">
-      <Parameter Name="tenlh" Mode="In" Type="String" />
-      <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
-      <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
-      <Parameter Name="hocphi" Mode="In" Type="Decimal" />
-      <Parameter Name="idnv" Mode="In" Type="Int32" />
-      <Parameter Name="idkh" Mode="In" Type="Int32" />
-      <Parameter Name="idlv" Mode="In" Type="Int32" />
-      <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
-      <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
     </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(EnglishCenterModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(EnglishCenterModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ListNhanVien" ReturnType="Collection(EnglishCenterModel.sp_ListNhanVien_Result)" />
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemTaiKhoanNV">
+      <Parameter Name="nhanvienid" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="chucvu" Mode="In" Type="String" />
+      <Parameter Name="passwords" Mode="In" Type="String" />
+      <Parameter Name="trangthai" Mode="In" Type="String" />
+      <Parameter Name="phanquyenid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
   <ComplexType Name="sp_ListKhoaHoc_Result">
     <Property Type="Int32" Name="KhoaHocId" Nullable="false" />
     <Property Type="String" Name="Ma_KH" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_ListNhanVien_Result">
-    <Property Type="Int32" Name="NhanVienId" Nullable="false" />
-    <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
     <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="sp_LoadLevel_Result">
@@ -605,6 +636,38 @@
     <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="sp_TimNhanVienTheoTen_Result">
+    <Property Type="Int32" Name="NhanVienId" Nullable="false" />
+    <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_ListNhanVien_Result">
     <Property Type="Int32" Name="NhanVienId" Nullable="false" />
     <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />

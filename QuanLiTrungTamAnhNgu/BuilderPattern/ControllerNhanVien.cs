@@ -12,25 +12,25 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
         EnglishCenterEntities context = new EnglishCenterEntities();
        
 
-        public NhanVien nhanVien;
-        public ControllerNhanVien(NhanVien nhanVien)
+        public NhanViens nhanVien;
+        public ControllerNhanVien(NhanViens nhanVien)
         {
             NhanVienBuildDirector buildDirector = new NhanVienBuildDirector();
             if (nhanVien.chucvu == "Kế Toán")
             {
-                nhanVien = buildDirector.Construct(new KeToanBuilder(), nhanVien.manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
+                nhanVien = buildDirector.Construct(new KeToanBuilder(), nhanVien.Manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
             }
             if (nhanVien.chucvu == "Giáo Viên")
             {
-                nhanVien = buildDirector.Construct(new GiaoVienBuilder(), nhanVien.manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
+                nhanVien = buildDirector.Construct(new GiaoVienBuilder(), nhanVien.Manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
             }
             if (nhanVien.chucvu == "Nhân Viên")
             {
-                nhanVien = buildDirector.Construct(new NhanVienBuilder(), nhanVien.manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
+                nhanVien = buildDirector.Construct(new NhanVienBuilder(), nhanVien.Manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
             }
             if (nhanVien.chucvu == "Admin")
             {
-                nhanVien = buildDirector.Construct(new AdminBuilder(), nhanVien.manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
+                nhanVien = buildDirector.Construct(new AdminBuilder(), nhanVien.Manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
             }
             this.nhanVien = nhanVien;
         }

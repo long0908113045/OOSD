@@ -52,6 +52,7 @@
           <Property Name="LevelsId" Type="int" />
           <Property Name="SoBuoiHoc" Type="int" />
           <Property Name="KhungGioHoc" Type="nvarchar(max)" />
+          <Property Name="SoLuongHocVien" Type="int" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NhanVien">
@@ -67,21 +68,6 @@
           <Property Name="CMND" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Birthday" Type="datetime" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="NhanVien_audits">
-          <Key>
-            <PropertyRef Name="Change_id" />
-          </Key>
-          <Property Name="Change_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ma_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="HoTen_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="SDT_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CMND_NV" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Birthday" Type="datetime" />
-          <Property Name="Update_at" Type="datetime" Nullable="false" />
-          <Property Name="Operation" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="PhanQuyen">
           <Key>
@@ -101,6 +87,16 @@
           <Property Name="LopHocId" Type="int" Nullable="false" />
           <Property Name="SoTien" Type="money" />
           <Property Name="NhanVienId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TaikhoanGiaoVien">
           <Key>
@@ -255,9 +251,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_demSoLuongHocSinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
-          <Parameter Name="lopHocId" Type="int" Mode="In" />
-        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="fn_ListHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <ReturnType>
             <CollectionType>
@@ -314,6 +308,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
                 <Property Name="KhungGioHoc" Type="nvarchar(max)" />
                 <Property Name="ThoiGianBatDau_LH" Type="date" />
                 <Property Name="ThoiGianKetThuc_LH" Type="date" />
+                <Property Name="SoLuongHocVien" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -334,6 +329,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
                 <Property Name="KhungGioHoc" Type="nvarchar(max)" />
                 <Property Name="ThoiGianBatDau_LH" Type="date" />
                 <Property Name="ThoiGianKetThuc_LH" Type="date" />
+                <Property Name="SoLuongHocVien" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -401,6 +397,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
                 <Property Name="KhungGioHoc" Type="nvarchar(max)" />
                 <Property Name="ThoiGianBatDau_LH" Type="date" />
                 <Property Name="ThoiGianKetThuc_LH" Type="date" />
+                <Property Name="SoLuongHocVien" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -423,6 +420,12 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
         <Function Name="sp_CapNhatPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idpt" Type="int" Mode="In" />
           <Parameter Name="ngaythanhtoan" Type="smalldatetime" Mode="In" />
@@ -432,8 +435,26 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="idlh" Type="int" Mode="In" />
           <Parameter Name="idnv" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
         <Function Name="sp_demSoLuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="lopHocId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_KiemTraTaiKhoanHV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idpq" Type="int" Mode="InOut" />
@@ -448,14 +469,11 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
           <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_KTTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="manv" Type="nvarchar" Mode="In" />
-          <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_ListKhoaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_ListNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_LoadLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_SuaHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idhv" Type="int" Mode="In" />
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
@@ -484,6 +502,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="idlv" Type="int" Mode="In" />
           <Parameter Name="sobuoihoc" Type="int" Mode="In" />
           <Parameter Name="khunggiohoc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="soluonghocvien" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_SuaNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_nv" Type="int" Mode="In" />
@@ -518,6 +537,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="idlv" Type="int" Mode="In" />
           <Parameter Name="sobuoihoc" Type="int" Mode="In" />
           <Parameter Name="khunggiohoc" Type="nvarchar" Mode="In" />
+          <Parameter Name="soluonghocvien" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_ThemNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="hoten" Type="nvarchar" Mode="In" />
@@ -527,13 +547,18 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="cmnd" Type="nvarchar" Mode="In" />
           <Parameter Name="ngaysinh" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="sp_ThemPhanQuyen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ten" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="sp_ThemPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idhv" Type="int" Mode="In" />
           <Parameter Name="idlh" Type="int" Mode="In" />
           <Parameter Name="idnv" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nhanvienid" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
+          <Parameter Name="passwords" Type="nvarchar" Mode="In" />
+          <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+          <Parameter Name="phanquyenid" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_TimHocVienTheoTen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten" Type="nvarchar" Mode="In" />
@@ -542,6 +567,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="ten" Type="nvarchar" Mode="In" />
           <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_XoaHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_hv" Type="int" Mode="In" />
         </Function>
@@ -563,9 +589,9 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <EntitySet Name="Levels" EntityType="Self.Levels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NhanVien_audits" EntityType="Self.NhanVien_audits" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuThu" EntityType="Self.PhieuThu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaikhoanGiaoVien" EntityType="Self.TaikhoanGiaoVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoanHocVien" EntityType="Self.TaiKhoanHocVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="view_ListGiaoVien" EntityType="Self.view_ListGiaoVien" store:Type="Views" store:Schema="dbo">
@@ -775,6 +801,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <NavigationProperty Name="Level" Relationship="Self.fk_LH_LV" FromRole="LopHoc" ToRole="Levels" />
           <NavigationProperty Name="NhanVien" Relationship="Self.fk_LH_NV" FromRole="LopHoc" ToRole="NhanVien" />
           <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_LH" FromRole="LopHoc" ToRole="PhieuThu" />
+          <Property Name="SoLuongHocVien" Type="Int32" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -1086,7 +1113,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="chucvu" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_ListKhoaHoc" ReturnType="Collection(EnglishCenterModel.sp_ListKhoaHoc_Result)" />
-          <FunctionImport Name="sp_ListNhanVien" ReturnType="Collection(EnglishCenterModel.sp_ListNhanVien_Result)" />
           <FunctionImport Name="sp_LoadLevel" ReturnType="Collection(EnglishCenterModel.sp_LoadLevel_Result)" />
           <FunctionImport Name="sp_SuaHocVien">
             <Parameter Name="idhv" Mode="In" Type="Int32" />
@@ -1116,6 +1142,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="idlv" Mode="In" Type="Int32" />
             <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
             <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+            <Parameter Name="soluonghocvien" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_SuaNhanVien">
             <Parameter Name="id_nv" Mode="In" Type="Int32" />
@@ -1126,6 +1153,12 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="cmnd" Mode="In" Type="String" />
             <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="sp_ThemHocVien">
+            <Parameter Name="hoten" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_ThemKhoaHoc">
             <Parameter Name="tenkh" Mode="In" Type="String" />
             <Parameter Name="mota" Mode="In" Type="String" />
@@ -1133,6 +1166,18 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImport Name="sp_ThemLevel">
             <Parameter Name="tenlv" Mode="In" Type="String" />
             <Parameter Name="mota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemLopHoc">
+            <Parameter Name="tenlh" Mode="In" Type="String" />
+            <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
+            <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
+            <Parameter Name="hocphi" Mode="In" Type="Decimal" />
+            <Parameter Name="idnv" Mode="In" Type="Int32" />
+            <Parameter Name="idkh" Mode="In" Type="Int32" />
+            <Parameter Name="idlv" Mode="In" Type="Int32" />
+            <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
+            <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+            <Parameter Name="soluonghocvien" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_ThemNhanVien">
             <Parameter Name="hoten" Mode="In" Type="String" />
@@ -1172,40 +1217,52 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImport Name="sp_XoaNhanVien">
           <Parameter Name="id_nv" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_ThemHocVien">
-            <Parameter Name="hoten" Mode="In" Type="String" />
-            <Parameter Name="diachi" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="sdt" Mode="In" Type="String" />
+          <EntitySet Name="sysdiagrams" EntityType="EnglishCenterModel.sysdiagram" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
-          <FunctionImport Name="sp_ThemLopHoc">
-            <Parameter Name="tenlh" Mode="In" Type="String" />
-            <Parameter Name="thoigianbatdau" Mode="In" Type="DateTime" />
-            <Parameter Name="thoigianketthuc" Mode="In" Type="DateTime" />
-            <Parameter Name="hocphi" Mode="In" Type="Decimal" />
-            <Parameter Name="idnv" Mode="In" Type="Int32" />
-            <Parameter Name="idkh" Mode="In" Type="Int32" />
-            <Parameter Name="idlv" Mode="In" Type="Int32" />
-            <Parameter Name="sobuoihoc" Mode="In" Type="Int32" />
-            <Parameter Name="khunggiohoc" Mode="In" Type="String" />
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(EnglishCenterModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(EnglishCenterModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ListNhanVien" ReturnType="Collection(EnglishCenterModel.sp_ListNhanVien_Result)" />
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemTaiKhoanNV">
+            <Parameter Name="nhanvienid" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="chucvu" Mode="In" Type="String" />
+            <Parameter Name="passwords" Mode="In" Type="String" />
+            <Parameter Name="trangthai" Mode="In" Type="String" />
+            <Parameter Name="phanquyenid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <ComplexType Name="sp_ListKhoaHoc_Result">
           <Property Type="Int32" Name="KhoaHocId" Nullable="false" />
           <Property Type="String" Name="Ma_KH" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_ListNhanVien_Result">
-          <Property Type="Int32" Name="NhanVienId" Nullable="false" />
-          <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
           <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_LoadLevel_Result">
@@ -1225,6 +1282,38 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_TimNhanVienTheoTen_Result">
+          <Property Type="Int32" Name="NhanVienId" Nullable="false" />
+          <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ListNhanVien_Result">
           <Property Type="Int32" Name="NhanVienId" Nullable="false" />
           <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
@@ -1279,6 +1368,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <EntitySetMapping Name="LopHocs">
             <EntityTypeMapping TypeName="EnglishCenterModel.LopHoc">
               <MappingFragment StoreEntitySet="LopHoc">
+                <ScalarProperty Name="SoLuongHocVien" ColumnName="SoLuongHocVien" />
                 <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
                 <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
                 <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
@@ -1306,22 +1396,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
                 <ScalarProperty Name="CMND" ColumnName="CMND" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NhanVien_audits">
-            <EntityTypeMapping TypeName="EnglishCenterModel.NhanVien_audits">
-              <MappingFragment StoreEntitySet="NhanVien_audits">
-                <ScalarProperty Name="Change_id" ColumnName="Change_id" />
-                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
-                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
-                <ScalarProperty Name="CMND_NV" ColumnName="CMND_NV" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Update_at" ColumnName="Update_at" />
-                <ScalarProperty Name="Operation" ColumnName="Operation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1523,52 +1597,16 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImportMapping FunctionImportName="sp_demSoLuong" FunctionName="EnglishCenterModel.Store.sp_demSoLuong" />
           <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanHV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanHV" />
           <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
-          <FunctionImportMapping FunctionImportName="sp_ListKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_ListKhoaHoc">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_ListKhoaHoc_Result">
-                <ScalarProperty Name="KhoaHocId" ColumnName="KhoaHocId" />
-                <ScalarProperty Name="Ma_KH" ColumnName="Ma_KH" />
-                <ScalarProperty Name="Ten_KH" ColumnName="Ten_KH" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ListNhanVien" FunctionName="EnglishCenterModel.Store.sp_ListNhanVien">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_ListNhanVien_Result">
-                <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
-                <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
-                <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
-                <ScalarProperty Name="CMND" ColumnName="CMND" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_LoadLevel" FunctionName="EnglishCenterModel.Store.sp_LoadLevel">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_LoadLevel_Result">
-                <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
-                <ScalarProperty Name="Ma_Level" ColumnName="Ma_Level" />
-                <ScalarProperty Name="Ten_Level" ColumnName="Ten_Level" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
           <FunctionImportMapping FunctionImportName="sp_SuaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_SuaKhoaHoc" />
           <FunctionImportMapping FunctionImportName="sp_SuaLevel" FunctionName="EnglishCenterModel.Store.sp_SuaLevel" />
           <FunctionImportMapping FunctionImportName="sp_SuaLopHoc" FunctionName="EnglishCenterModel.Store.sp_SuaLopHoc" />
           <FunctionImportMapping FunctionImportName="sp_SuaNhanVien" FunctionName="EnglishCenterModel.Store.sp_SuaNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_ThemHocVien" FunctionName="EnglishCenterModel.Store.sp_ThemHocVien" />
           <FunctionImportMapping FunctionImportName="sp_ThemKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_ThemKhoaHoc" />
           <FunctionImportMapping FunctionImportName="sp_ThemLevel" FunctionName="EnglishCenterModel.Store.sp_ThemLevel" />
+          <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
           <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_ThemPhanQuyen" FunctionName="EnglishCenterModel.Store.sp_ThemPhanQuyen" />
           <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
           <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
             <ResultMapping>
@@ -1603,8 +1641,42 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
           <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
           <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_ThemHocVien" FunctionName="EnglishCenterModel.Store.sp_ThemHocVien" />
-          <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EnglishCenterModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EnglishCenterModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EnglishCenterModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EnglishCenterModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EnglishCenterModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EnglishCenterModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EnglishCenterModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_ThemTaiKhoanNV" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EnglishCenterModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

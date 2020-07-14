@@ -8,13 +8,13 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
 {
     class KeToanBuilder:INhanVienBuilder
     {
-        private NhanVien nhanvien;
+        private NhanViens nhanvien;
         public KeToanBuilder()
         {
-            nhanvien = new NhanVien();
+            nhanvien = new NhanViens();
             nhanvien.chucvu = "Kế Toán";
         }
-        public NhanVien GetNhanVien()
+        public NhanViens GetNhanVien()
         {
             return this.nhanvien;
         }
@@ -43,7 +43,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
 
         public void Setmanv(string manv)
         {
-            this.nhanvien.manv = manv;
+            this.nhanvien.Manv = manv;
         }
 
         public void Setsdt(string sdt)

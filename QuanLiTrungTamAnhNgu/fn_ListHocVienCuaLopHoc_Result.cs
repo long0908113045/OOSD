@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-
+    
     public partial class fn_ListHocVienCuaLopHoc_Result
     {
         public string Ma_HV { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
 {
-    class PhieuThuBuilder : IPhieuThuBuilder
+    class PhieuThuBuilder: IPhieuThuBuilder
     {
         PhieuThu PhieuThu = new PhieuThu();
         public PhieuThu build()

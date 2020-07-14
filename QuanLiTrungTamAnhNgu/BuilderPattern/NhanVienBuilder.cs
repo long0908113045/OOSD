@@ -8,14 +8,14 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
 {
     class NhanVienBuilder:INhanVienBuilder
     {
-        private NhanVien nhanvien;
+        private NhanViens nhanvien;
         public NhanVienBuilder()
         {
-            nhanvien = new NhanVien();
+            nhanvien = new NhanViens();
             nhanvien.chucvu = "Nhân Viên";
 
         }
-        public NhanVien GetNhanVien()
+        public NhanViens GetNhanVien()
         {
             return this.nhanvien;
         }
@@ -44,7 +44,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
 
         public void Setmanv(string manv)
         {
-            this.nhanvien.manv = manv;
+            this.nhanvien.Manv = manv;
         }
 
         public void Setsdt(string sdt)

@@ -8,7 +8,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
 {
     class NhanVienBuildDirector
     {
-        public NhanVien Construct(INhanVienBuilder builder, string manv, string hoten,string email,string sdt,string cmnd,DateTime ngaysinh)
+        public NhanViens Construct(INhanVienBuilder builder, string manv, string hoten,string email,string sdt,string cmnd,DateTime ngaysinh)
         {
             
             builder.Setmanv(manv);
@@ -18,7 +18,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
             builder.Setcmnd(cmnd);
             builder.Setngaysinh(ngaysinh);
            
-            NhanVien nhanVien = builder.GetNhanVien();
+            NhanViens nhanVien = builder.GetNhanVien();
             
             
             return nhanVien;

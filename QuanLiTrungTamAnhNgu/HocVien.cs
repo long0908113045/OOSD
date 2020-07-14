@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class HocVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             this.PhieuThus = new HashSet<PhieuThu>();
         }
-
+    
         public int HocVienId { get; set; }
         public string Ma_HV { get; set; }
         public string HoTen_HV { get; set; }
@@ -27,7 +27,7 @@ namespace QuanLiTrungTamAnhNgu
         public string Email_HV { get; set; }
         public string SDT_HV { get; set; }
         public string TrangThai { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuThu> PhieuThus { get; set; }
         public virtual TaiKhoanHocVien TaiKhoanHocVien { get; set; }

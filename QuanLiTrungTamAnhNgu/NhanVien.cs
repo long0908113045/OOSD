@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class NhanVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace QuanLiTrungTamAnhNgu
             this.PhieuThus = new HashSet<PhieuThu>();
             this.TaikhoanGiaoViens = new HashSet<TaikhoanGiaoVien>();
         }
-
+    
         public int NhanVienId { get; set; }
         public string Ma_NV { get; set; }
         public string HoTen_NV { get; set; }
@@ -31,7 +31,7 @@ namespace QuanLiTrungTamAnhNgu
         public string CMND { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public string TrangThai { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LopHoc> LopHocs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,22 +11,22 @@ namespace QuanLiTrungTamAnhNgu
 {
     using System;
     using System.Data.Entity;
-    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
     using System.Linq;
-
+    
     public partial class EnglishCenterEntities : DbContext
     {
         public EnglishCenterEntities()
             : base("name=EnglishCenterEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<HocVien> HocViens { get; set; }
         public virtual DbSet<KhoaHoc> KhoaHocs { get; set; }
         public virtual DbSet<Level> Levels { get; set; }
@@ -38,523 +38,664 @@ namespace QuanLiTrungTamAnhNgu
         public virtual DbSet<TaikhoanGiaoVien> TaikhoanGiaoViens { get; set; }
         public virtual DbSet<TaiKhoanHocVien> TaiKhoanHocViens { get; set; }
         public virtual DbSet<view_ListGiaoVien> view_ListGiaoVien { get; set; }
-
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    
         [DbFunction("EnglishCenterEntities", "fn_ListHocVien")]
         public virtual IQueryable<fn_ListHocVien_Result> fn_ListHocVien()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListHocVien_Result>("[EnglishCenterEntities].[fn_ListHocVien]()");
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_ListHocVienCuaLopHoc")]
         public virtual IQueryable<fn_ListHocVienCuaLopHoc_Result> fn_ListHocVienCuaLopHoc(Nullable<int> idlh)
         {
             var idlhParameter = idlh.HasValue ?
                 new ObjectParameter("idlh", idlh) :
                 new ObjectParameter("idlh", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListHocVienCuaLopHoc_Result>("[EnglishCenterEntities].[fn_ListHocVienCuaLopHoc](@idlh)", idlhParameter);
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_ListKhoaHoc")]
         public virtual IQueryable<fn_ListKhoaHoc_Result> fn_ListKhoaHoc()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListKhoaHoc_Result>("[EnglishCenterEntities].[fn_ListKhoaHoc]()");
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_ListLopHoc")]
         public virtual IQueryable<fn_ListLopHoc_Result> fn_ListLopHoc()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListLopHoc_Result>("[EnglishCenterEntities].[fn_ListLopHoc]()");
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_ListLopHocTheoKhoaHoc")]
         public virtual IQueryable<fn_ListLopHocTheoKhoaHoc_Result> fn_ListLopHocTheoKhoaHoc(Nullable<int> idkh)
         {
             var idkhParameter = idkh.HasValue ?
                 new ObjectParameter("idkh", idkh) :
                 new ObjectParameter("idkh", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListLopHocTheoKhoaHoc_Result>("[EnglishCenterEntities].[fn_ListLopHocTheoKhoaHoc](@idkh)", idkhParameter);
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_ListNhanVien")]
         public virtual IQueryable<fn_ListNhanVien_Result> fn_ListNhanVien()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListNhanVien_Result>("[EnglishCenterEntities].[fn_ListNhanVien]()");
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_ListPhieuThu")]
         public virtual IQueryable<fn_ListPhieuThu_Result> fn_ListPhieuThu(Nullable<int> idlh)
         {
             var idlhParameter = idlh.HasValue ?
                 new ObjectParameter("idlh", idlh) :
                 new ObjectParameter("idlh", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListPhieuThu_Result>("[EnglishCenterEntities].[fn_ListPhieuThu](@idlh)", idlhParameter);
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_LoadLevel")]
         public virtual IQueryable<fn_LoadLevel_Result> fn_LoadLevel()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_LoadLevel_Result>("[EnglishCenterEntities].[fn_LoadLevel]()");
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_TimLopTheoGiaoVien")]
         public virtual IQueryable<fn_TimLopTheoGiaoVien_Result> fn_TimLopTheoGiaoVien(Nullable<int> idgv)
         {
             var idgvParameter = idgv.HasValue ?
                 new ObjectParameter("idgv", idgv) :
                 new ObjectParameter("idgv", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_TimLopTheoGiaoVien_Result>("[EnglishCenterEntities].[fn_TimLopTheoGiaoVien](@idgv)", idgvParameter);
         }
-
+    
         [DbFunction("EnglishCenterEntities", "fn_TimTenTrenPhieuThu")]
         public virtual IQueryable<fn_TimTenTrenPhieuThu_Result> fn_TimTenTrenPhieuThu(Nullable<int> idlh, string ten)
         {
             var idlhParameter = idlh.HasValue ?
                 new ObjectParameter("idlh", idlh) :
                 new ObjectParameter("idlh", typeof(int));
-
+    
             var tenParameter = ten != null ?
                 new ObjectParameter("ten", ten) :
                 new ObjectParameter("ten", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_TimTenTrenPhieuThu_Result>("[EnglishCenterEntities].[fn_TimTenTrenPhieuThu](@idlh, @ten)", idlhParameter, tenParameter);
         }
-
+    
         public virtual int sp_CapNhatPhieuThu(Nullable<int> idpt, Nullable<System.DateTime> ngaythanhtoan, string phuongthucthanhtoan, Nullable<decimal> sotien, Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv)
         {
             var idptParameter = idpt.HasValue ?
                 new ObjectParameter("idpt", idpt) :
                 new ObjectParameter("idpt", typeof(int));
-
+    
             var ngaythanhtoanParameter = ngaythanhtoan.HasValue ?
                 new ObjectParameter("ngaythanhtoan", ngaythanhtoan) :
                 new ObjectParameter("ngaythanhtoan", typeof(System.DateTime));
-
+    
             var phuongthucthanhtoanParameter = phuongthucthanhtoan != null ?
                 new ObjectParameter("phuongthucthanhtoan", phuongthucthanhtoan) :
                 new ObjectParameter("phuongthucthanhtoan", typeof(string));
-
+    
             var sotienParameter = sotien.HasValue ?
                 new ObjectParameter("sotien", sotien) :
                 new ObjectParameter("sotien", typeof(decimal));
-
+    
             var idhvParameter = idhv.HasValue ?
                 new ObjectParameter("idhv", idhv) :
                 new ObjectParameter("idhv", typeof(int));
-
+    
             var idlhParameter = idlh.HasValue ?
                 new ObjectParameter("idlh", idlh) :
                 new ObjectParameter("idlh", typeof(int));
-
+    
             var idnvParameter = idnv.HasValue ?
                 new ObjectParameter("idnv", idnv) :
                 new ObjectParameter("idnv", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatPhieuThu", idptParameter, ngaythanhtoanParameter, phuongthucthanhtoanParameter, sotienParameter, idhvParameter, idlhParameter, idnvParameter);
         }
-
+    
         public virtual ObjectResult<Nullable<int>> sp_demSoLuong(Nullable<int> lopHocId)
         {
             var lopHocIdParameter = lopHocId.HasValue ?
                 new ObjectParameter("lopHocId", lopHocId) :
                 new ObjectParameter("lopHocId", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_demSoLuong", lopHocIdParameter);
         }
-
+    
         public virtual int sp_KiemTraTaiKhoanHV(ObjectParameter idpq, ObjectParameter idhv, string name, string pass)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
                 new ObjectParameter("name", typeof(string));
-
+    
             var passParameter = pass != null ?
                 new ObjectParameter("pass", pass) :
                 new ObjectParameter("pass", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_KiemTraTaiKhoanHV", idpq, idhv, nameParameter, passParameter);
         }
-
+    
         public virtual int sp_KiemTraTaiKhoanNV(ObjectParameter idpq, ObjectParameter idnv, string name, string pass, string chucvu)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
                 new ObjectParameter("name", typeof(string));
-
+    
             var passParameter = pass != null ?
                 new ObjectParameter("pass", pass) :
                 new ObjectParameter("pass", typeof(string));
-
+    
             var chucvuParameter = chucvu != null ?
                 new ObjectParameter("chucvu", chucvu) :
                 new ObjectParameter("chucvu", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_KiemTraTaiKhoanNV", idpq, idnv, nameParameter, passParameter, chucvuParameter);
         }
-
+    
         public virtual ObjectResult<sp_ListKhoaHoc_Result> sp_ListKhoaHoc()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListKhoaHoc_Result>("sp_ListKhoaHoc");
         }
-
-        public virtual ObjectResult<sp_ListNhanVien_Result> sp_ListNhanVien()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListNhanVien_Result>("sp_ListNhanVien");
-        }
-
+    
         public virtual ObjectResult<sp_LoadLevel_Result> sp_LoadLevel()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LoadLevel_Result>("sp_LoadLevel");
         }
-
+    
         public virtual int sp_SuaHocVien(Nullable<int> idhv, string hoten, string diachi, string email, string sdt)
         {
             var idhvParameter = idhv.HasValue ?
                 new ObjectParameter("idhv", idhv) :
                 new ObjectParameter("idhv", typeof(int));
-
+    
             var hotenParameter = hoten != null ?
                 new ObjectParameter("hoten", hoten) :
                 new ObjectParameter("hoten", typeof(string));
-
+    
             var diachiParameter = diachi != null ?
                 new ObjectParameter("diachi", diachi) :
                 new ObjectParameter("diachi", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var sdtParameter = sdt != null ?
                 new ObjectParameter("sdt", sdt) :
                 new ObjectParameter("sdt", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SuaHocVien", idhvParameter, hotenParameter, diachiParameter, emailParameter, sdtParameter);
         }
-
+    
         public virtual int sp_SuaKhoaHoc(Nullable<int> id_KH, string tenkh, string mota)
         {
             var id_KHParameter = id_KH.HasValue ?
                 new ObjectParameter("id_KH", id_KH) :
                 new ObjectParameter("id_KH", typeof(int));
-
+    
             var tenkhParameter = tenkh != null ?
                 new ObjectParameter("tenkh", tenkh) :
                 new ObjectParameter("tenkh", typeof(string));
-
+    
             var motaParameter = mota != null ?
                 new ObjectParameter("mota", mota) :
                 new ObjectParameter("mota", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SuaKhoaHoc", id_KHParameter, tenkhParameter, motaParameter);
         }
-
+    
         public virtual int sp_SuaLevel(Nullable<int> idlv, string mota, string tenlv)
         {
             var idlvParameter = idlv.HasValue ?
                 new ObjectParameter("idlv", idlv) :
                 new ObjectParameter("idlv", typeof(int));
-
+    
             var motaParameter = mota != null ?
                 new ObjectParameter("mota", mota) :
                 new ObjectParameter("mota", typeof(string));
-
+    
             var tenlvParameter = tenlv != null ?
                 new ObjectParameter("tenlv", tenlv) :
                 new ObjectParameter("tenlv", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SuaLevel", idlvParameter, motaParameter, tenlvParameter);
         }
-
-        public virtual int sp_SuaLopHoc(Nullable<int> lopHocID, string tenlh, Nullable<System.DateTime> thoigianbatdau, Nullable<System.DateTime> thoigianketthuc, Nullable<decimal> hocphi, Nullable<int> idnv, Nullable<int> idkh, Nullable<int> idlv, Nullable<int> sobuoihoc, string khunggiohoc)
+    
+        public virtual int sp_SuaLopHoc(Nullable<int> lopHocID, string tenlh, Nullable<System.DateTime> thoigianbatdau, Nullable<System.DateTime> thoigianketthuc, Nullable<decimal> hocphi, Nullable<int> idnv, Nullable<int> idkh, Nullable<int> idlv, Nullable<int> sobuoihoc, string khunggiohoc, Nullable<int> soluonghocvien)
         {
             var lopHocIDParameter = lopHocID.HasValue ?
                 new ObjectParameter("lopHocID", lopHocID) :
                 new ObjectParameter("lopHocID", typeof(int));
-
+    
             var tenlhParameter = tenlh != null ?
                 new ObjectParameter("tenlh", tenlh) :
                 new ObjectParameter("tenlh", typeof(string));
-
+    
             var thoigianbatdauParameter = thoigianbatdau.HasValue ?
                 new ObjectParameter("thoigianbatdau", thoigianbatdau) :
                 new ObjectParameter("thoigianbatdau", typeof(System.DateTime));
-
+    
             var thoigianketthucParameter = thoigianketthuc.HasValue ?
                 new ObjectParameter("thoigianketthuc", thoigianketthuc) :
                 new ObjectParameter("thoigianketthuc", typeof(System.DateTime));
-
+    
             var hocphiParameter = hocphi.HasValue ?
                 new ObjectParameter("hocphi", hocphi) :
                 new ObjectParameter("hocphi", typeof(decimal));
-
+    
             var idnvParameter = idnv.HasValue ?
                 new ObjectParameter("idnv", idnv) :
                 new ObjectParameter("idnv", typeof(int));
-
+    
             var idkhParameter = idkh.HasValue ?
                 new ObjectParameter("idkh", idkh) :
                 new ObjectParameter("idkh", typeof(int));
-
+    
             var idlvParameter = idlv.HasValue ?
                 new ObjectParameter("idlv", idlv) :
                 new ObjectParameter("idlv", typeof(int));
-
+    
             var sobuoihocParameter = sobuoihoc.HasValue ?
                 new ObjectParameter("sobuoihoc", sobuoihoc) :
                 new ObjectParameter("sobuoihoc", typeof(int));
-
+    
             var khunggiohocParameter = khunggiohoc != null ?
                 new ObjectParameter("khunggiohoc", khunggiohoc) :
                 new ObjectParameter("khunggiohoc", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SuaLopHoc", lopHocIDParameter, tenlhParameter, thoigianbatdauParameter, thoigianketthucParameter, hocphiParameter, idnvParameter, idkhParameter, idlvParameter, sobuoihocParameter, khunggiohocParameter);
+    
+            var soluonghocvienParameter = soluonghocvien.HasValue ?
+                new ObjectParameter("soluonghocvien", soluonghocvien) :
+                new ObjectParameter("soluonghocvien", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SuaLopHoc", lopHocIDParameter, tenlhParameter, thoigianbatdauParameter, thoigianketthucParameter, hocphiParameter, idnvParameter, idkhParameter, idlvParameter, sobuoihocParameter, khunggiohocParameter, soluonghocvienParameter);
         }
-
+    
         public virtual int sp_SuaNhanVien(Nullable<int> id_nv, string hoten, string chucvu, string email, string sdt, string cmnd, Nullable<System.DateTime> ngaysinh)
         {
             var id_nvParameter = id_nv.HasValue ?
                 new ObjectParameter("id_nv", id_nv) :
                 new ObjectParameter("id_nv", typeof(int));
-
+    
             var hotenParameter = hoten != null ?
                 new ObjectParameter("hoten", hoten) :
                 new ObjectParameter("hoten", typeof(string));
-
+    
             var chucvuParameter = chucvu != null ?
                 new ObjectParameter("chucvu", chucvu) :
                 new ObjectParameter("chucvu", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var sdtParameter = sdt != null ?
                 new ObjectParameter("sdt", sdt) :
                 new ObjectParameter("sdt", typeof(string));
-
+    
             var cmndParameter = cmnd != null ?
                 new ObjectParameter("cmnd", cmnd) :
                 new ObjectParameter("cmnd", typeof(string));
-
+    
             var ngaysinhParameter = ngaysinh.HasValue ?
                 new ObjectParameter("ngaysinh", ngaysinh) :
                 new ObjectParameter("ngaysinh", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SuaNhanVien", id_nvParameter, hotenParameter, chucvuParameter, emailParameter, sdtParameter, cmndParameter, ngaysinhParameter);
         }
-
-        public virtual int sp_ThemKhoaHoc(string tenkh, string mota)
-        {
-            var tenkhParameter = tenkh != null ?
-                new ObjectParameter("tenkh", tenkh) :
-                new ObjectParameter("tenkh", typeof(string));
-
-            var motaParameter = mota != null ?
-                new ObjectParameter("mota", mota) :
-                new ObjectParameter("mota", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemKhoaHoc", tenkhParameter, motaParameter);
-        }
-
-        public virtual int sp_ThemLevel(string tenlv, string mota)
-        {
-            var tenlvParameter = tenlv != null ?
-                new ObjectParameter("tenlv", tenlv) :
-                new ObjectParameter("tenlv", typeof(string));
-
-            var motaParameter = mota != null ?
-                new ObjectParameter("mota", mota) :
-                new ObjectParameter("mota", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemLevel", tenlvParameter, motaParameter);
-        }
-
-        public virtual int sp_ThemNhanVien(string hoten, string chucvu, string email, string sdt, string cmnd, Nullable<System.DateTime> ngaysinh)
-        {
-            var hotenParameter = hoten != null ?
-                new ObjectParameter("hoten", hoten) :
-                new ObjectParameter("hoten", typeof(string));
-
-            var chucvuParameter = chucvu != null ?
-                new ObjectParameter("chucvu", chucvu) :
-                new ObjectParameter("chucvu", typeof(string));
-
-            var emailParameter = email != null ?
-                new ObjectParameter("email", email) :
-                new ObjectParameter("email", typeof(string));
-
-            var sdtParameter = sdt != null ?
-                new ObjectParameter("sdt", sdt) :
-                new ObjectParameter("sdt", typeof(string));
-
-            var cmndParameter = cmnd != null ?
-                new ObjectParameter("cmnd", cmnd) :
-                new ObjectParameter("cmnd", typeof(string));
-
-            var ngaysinhParameter = ngaysinh.HasValue ?
-                new ObjectParameter("ngaysinh", ngaysinh) :
-                new ObjectParameter("ngaysinh", typeof(System.DateTime));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemNhanVien", hotenParameter, chucvuParameter, emailParameter, sdtParameter, cmndParameter, ngaysinhParameter);
-        }
-
-        public virtual int sp_ThemPhanQuyen(string ten)
-        {
-            var tenParameter = ten != null ?
-                new ObjectParameter("ten", ten) :
-                new ObjectParameter("ten", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhanQuyen", tenParameter);
-        }
-
-        public virtual int sp_ThemPhieuThu(Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv)
-        {
-            var idhvParameter = idhv.HasValue ?
-                new ObjectParameter("idhv", idhv) :
-                new ObjectParameter("idhv", typeof(int));
-
-            var idlhParameter = idlh.HasValue ?
-                new ObjectParameter("idlh", idlh) :
-                new ObjectParameter("idlh", typeof(int));
-
-            var idnvParameter = idnv.HasValue ?
-                new ObjectParameter("idnv", idnv) :
-                new ObjectParameter("idnv", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhieuThu", idhvParameter, idlhParameter, idnvParameter);
-        }
-
-        public virtual ObjectResult<sp_TimHocVienTheoTen_Result> sp_TimHocVienTheoTen(string ten)
-        {
-            var tenParameter = ten != null ?
-                new ObjectParameter("ten", ten) :
-                new ObjectParameter("ten", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimHocVienTheoTen_Result>("sp_TimHocVienTheoTen", tenParameter);
-        }
-
-        public virtual ObjectResult<sp_TimNhanVienTheoTen_Result> sp_TimNhanVienTheoTen(string ten, string chucvu)
-        {
-            var tenParameter = ten != null ?
-                new ObjectParameter("ten", ten) :
-                new ObjectParameter("ten", typeof(string));
-
-            var chucvuParameter = chucvu != null ?
-                new ObjectParameter("chucvu", chucvu) :
-                new ObjectParameter("chucvu", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimNhanVienTheoTen_Result>("sp_TimNhanVienTheoTen", tenParameter, chucvuParameter);
-        }
-
-        public virtual int sp_XoaHocVien(Nullable<int> id_hv)
-        {
-            var id_hvParameter = id_hv.HasValue ?
-                new ObjectParameter("id_hv", id_hv) :
-                new ObjectParameter("id_hv", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaHocVien", id_hvParameter);
-        }
-
-        public virtual int sp_XoaKhoaHoc(Nullable<int> id_kh)
-        {
-            var id_khParameter = id_kh.HasValue ?
-                new ObjectParameter("id_kh", id_kh) :
-                new ObjectParameter("id_kh", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaKhoaHoc", id_khParameter);
-        }
-
-        public virtual int sp_XoaLevel(Nullable<int> idlv)
-        {
-            var idlvParameter = idlv.HasValue ?
-                new ObjectParameter("idlv", idlv) :
-                new ObjectParameter("idlv", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaLevel", idlvParameter);
-        }
-
-        public virtual int sp_XoaLopHoc(Nullable<int> idlh)
-        {
-            var idlhParameter = idlh.HasValue ?
-                new ObjectParameter("idlh", idlh) :
-                new ObjectParameter("idlh", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaLopHoc", idlhParameter);
-        }
-
-        public virtual int sp_XoaNhanVien(Nullable<int> id_nv)
-        {
-            var id_nvParameter = id_nv.HasValue ?
-                new ObjectParameter("id_nv", id_nv) :
-                new ObjectParameter("id_nv", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
-        }
-
+    
         public virtual int sp_ThemHocVien(string hoten, string diachi, string email, string sdt)
         {
             var hotenParameter = hoten != null ?
                 new ObjectParameter("hoten", hoten) :
                 new ObjectParameter("hoten", typeof(string));
-
+    
             var diachiParameter = diachi != null ?
                 new ObjectParameter("diachi", diachi) :
                 new ObjectParameter("diachi", typeof(string));
-
+    
             var emailParameter = email != null ?
                 new ObjectParameter("email", email) :
                 new ObjectParameter("email", typeof(string));
-
+    
             var sdtParameter = sdt != null ?
                 new ObjectParameter("sdt", sdt) :
                 new ObjectParameter("sdt", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemHocVien", hotenParameter, diachiParameter, emailParameter, sdtParameter);
         }
-
-        public virtual int sp_ThemLopHoc(string tenlh, Nullable<System.DateTime> thoigianbatdau, Nullable<System.DateTime> thoigianketthuc, Nullable<decimal> hocphi, Nullable<int> idnv, Nullable<int> idkh, Nullable<int> idlv, Nullable<int> sobuoihoc, string khunggiohoc)
+    
+        public virtual int sp_ThemKhoaHoc(string tenkh, string mota)
+        {
+            var tenkhParameter = tenkh != null ?
+                new ObjectParameter("tenkh", tenkh) :
+                new ObjectParameter("tenkh", typeof(string));
+    
+            var motaParameter = mota != null ?
+                new ObjectParameter("mota", mota) :
+                new ObjectParameter("mota", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemKhoaHoc", tenkhParameter, motaParameter);
+        }
+    
+        public virtual int sp_ThemLevel(string tenlv, string mota)
+        {
+            var tenlvParameter = tenlv != null ?
+                new ObjectParameter("tenlv", tenlv) :
+                new ObjectParameter("tenlv", typeof(string));
+    
+            var motaParameter = mota != null ?
+                new ObjectParameter("mota", mota) :
+                new ObjectParameter("mota", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemLevel", tenlvParameter, motaParameter);
+        }
+    
+        public virtual int sp_ThemLopHoc(string tenlh, Nullable<System.DateTime> thoigianbatdau, Nullable<System.DateTime> thoigianketthuc, Nullable<decimal> hocphi, Nullable<int> idnv, Nullable<int> idkh, Nullable<int> idlv, Nullable<int> sobuoihoc, string khunggiohoc, Nullable<int> soluonghocvien)
         {
             var tenlhParameter = tenlh != null ?
                 new ObjectParameter("tenlh", tenlh) :
                 new ObjectParameter("tenlh", typeof(string));
-
+    
             var thoigianbatdauParameter = thoigianbatdau.HasValue ?
                 new ObjectParameter("thoigianbatdau", thoigianbatdau) :
                 new ObjectParameter("thoigianbatdau", typeof(System.DateTime));
-
+    
             var thoigianketthucParameter = thoigianketthuc.HasValue ?
                 new ObjectParameter("thoigianketthuc", thoigianketthuc) :
                 new ObjectParameter("thoigianketthuc", typeof(System.DateTime));
-
+    
             var hocphiParameter = hocphi.HasValue ?
                 new ObjectParameter("hocphi", hocphi) :
                 new ObjectParameter("hocphi", typeof(decimal));
-
+    
             var idnvParameter = idnv.HasValue ?
                 new ObjectParameter("idnv", idnv) :
                 new ObjectParameter("idnv", typeof(int));
-
+    
             var idkhParameter = idkh.HasValue ?
                 new ObjectParameter("idkh", idkh) :
                 new ObjectParameter("idkh", typeof(int));
-
+    
             var idlvParameter = idlv.HasValue ?
                 new ObjectParameter("idlv", idlv) :
                 new ObjectParameter("idlv", typeof(int));
-
+    
             var sobuoihocParameter = sobuoihoc.HasValue ?
                 new ObjectParameter("sobuoihoc", sobuoihoc) :
                 new ObjectParameter("sobuoihoc", typeof(int));
-
+    
             var khunggiohocParameter = khunggiohoc != null ?
                 new ObjectParameter("khunggiohoc", khunggiohoc) :
                 new ObjectParameter("khunggiohoc", typeof(string));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemLopHoc", tenlhParameter, thoigianbatdauParameter, thoigianketthucParameter, hocphiParameter, idnvParameter, idkhParameter, idlvParameter, sobuoihocParameter, khunggiohocParameter);
+    
+            var soluonghocvienParameter = soluonghocvien.HasValue ?
+                new ObjectParameter("soluonghocvien", soluonghocvien) :
+                new ObjectParameter("soluonghocvien", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemLopHoc", tenlhParameter, thoigianbatdauParameter, thoigianketthucParameter, hocphiParameter, idnvParameter, idkhParameter, idlvParameter, sobuoihocParameter, khunggiohocParameter, soluonghocvienParameter);
+        }
+    
+        public virtual int sp_ThemNhanVien(string hoten, string chucvu, string email, string sdt, string cmnd, Nullable<System.DateTime> ngaysinh)
+        {
+            var hotenParameter = hoten != null ?
+                new ObjectParameter("hoten", hoten) :
+                new ObjectParameter("hoten", typeof(string));
+    
+            var chucvuParameter = chucvu != null ?
+                new ObjectParameter("chucvu", chucvu) :
+                new ObjectParameter("chucvu", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var cmndParameter = cmnd != null ?
+                new ObjectParameter("cmnd", cmnd) :
+                new ObjectParameter("cmnd", typeof(string));
+    
+            var ngaysinhParameter = ngaysinh.HasValue ?
+                new ObjectParameter("ngaysinh", ngaysinh) :
+                new ObjectParameter("ngaysinh", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemNhanVien", hotenParameter, chucvuParameter, emailParameter, sdtParameter, cmndParameter, ngaysinhParameter);
+        }
+    
+        public virtual int sp_ThemPhanQuyen(string ten)
+        {
+            var tenParameter = ten != null ?
+                new ObjectParameter("ten", ten) :
+                new ObjectParameter("ten", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhanQuyen", tenParameter);
+        }
+    
+        public virtual int sp_ThemPhieuThu(Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv)
+        {
+            var idhvParameter = idhv.HasValue ?
+                new ObjectParameter("idhv", idhv) :
+                new ObjectParameter("idhv", typeof(int));
+    
+            var idlhParameter = idlh.HasValue ?
+                new ObjectParameter("idlh", idlh) :
+                new ObjectParameter("idlh", typeof(int));
+    
+            var idnvParameter = idnv.HasValue ?
+                new ObjectParameter("idnv", idnv) :
+                new ObjectParameter("idnv", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhieuThu", idhvParameter, idlhParameter, idnvParameter);
+        }
+    
+        public virtual ObjectResult<sp_TimHocVienTheoTen_Result> sp_TimHocVienTheoTen(string ten)
+        {
+            var tenParameter = ten != null ?
+                new ObjectParameter("ten", ten) :
+                new ObjectParameter("ten", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimHocVienTheoTen_Result>("sp_TimHocVienTheoTen", tenParameter);
+        }
+    
+        public virtual ObjectResult<sp_TimNhanVienTheoTen_Result> sp_TimNhanVienTheoTen(string ten, string chucvu)
+        {
+            var tenParameter = ten != null ?
+                new ObjectParameter("ten", ten) :
+                new ObjectParameter("ten", typeof(string));
+    
+            var chucvuParameter = chucvu != null ?
+                new ObjectParameter("chucvu", chucvu) :
+                new ObjectParameter("chucvu", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimNhanVienTheoTen_Result>("sp_TimNhanVienTheoTen", tenParameter, chucvuParameter);
+        }
+    
+        public virtual int sp_XoaHocVien(Nullable<int> id_hv)
+        {
+            var id_hvParameter = id_hv.HasValue ?
+                new ObjectParameter("id_hv", id_hv) :
+                new ObjectParameter("id_hv", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaHocVien", id_hvParameter);
+        }
+    
+        public virtual int sp_XoaKhoaHoc(Nullable<int> id_kh)
+        {
+            var id_khParameter = id_kh.HasValue ?
+                new ObjectParameter("id_kh", id_kh) :
+                new ObjectParameter("id_kh", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaKhoaHoc", id_khParameter);
+        }
+    
+        public virtual int sp_XoaLevel(Nullable<int> idlv)
+        {
+            var idlvParameter = idlv.HasValue ?
+                new ObjectParameter("idlv", idlv) :
+                new ObjectParameter("idlv", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaLevel", idlvParameter);
+        }
+    
+        public virtual int sp_XoaLopHoc(Nullable<int> idlh)
+        {
+            var idlhParameter = idlh.HasValue ?
+                new ObjectParameter("idlh", idlh) :
+                new ObjectParameter("idlh", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaLopHoc", idlhParameter);
+        }
+    
+        public virtual int sp_XoaNhanVien(Nullable<int> id_nv)
+        {
+            var id_nvParameter = id_nv.HasValue ?
+                new ObjectParameter("id_nv", id_nv) :
+                new ObjectParameter("id_nv", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_ListNhanVien_Result> sp_ListNhanVien()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListNhanVien_Result>("sp_ListNhanVien");
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_ThemTaiKhoanNV(Nullable<int> nhanvienid, string username, string chucvu, string passwords, string trangthai, Nullable<int> phanquyenid)
+        {
+            var nhanvienidParameter = nhanvienid.HasValue ?
+                new ObjectParameter("nhanvienid", nhanvienid) :
+                new ObjectParameter("nhanvienid", typeof(int));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var chucvuParameter = chucvu != null ?
+                new ObjectParameter("chucvu", chucvu) :
+                new ObjectParameter("chucvu", typeof(string));
+    
+            var passwordsParameter = passwords != null ?
+                new ObjectParameter("passwords", passwords) :
+                new ObjectParameter("passwords", typeof(string));
+    
+            var trangthaiParameter = trangthai != null ?
+                new ObjectParameter("trangthai", trangthai) :
+                new ObjectParameter("trangthai", typeof(string));
+    
+            var phanquyenidParameter = phanquyenid.HasValue ?
+                new ObjectParameter("phanquyenid", phanquyenid) :
+                new ObjectParameter("phanquyenid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV", nhanvienidParameter, usernameParameter, chucvuParameter, passwordsParameter, trangthaiParameter, phanquyenidParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

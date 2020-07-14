@@ -14,7 +14,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
         void Setsdt(string sdt);
         void Setcmnd(string cmnd);
         void Setngaysinh(DateTime ngaysinh);
-        NhanVien GetNhanVien();
+        NhanViens GetNhanVien();
 
     }
 }

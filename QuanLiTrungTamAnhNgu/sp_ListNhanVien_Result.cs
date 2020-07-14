@@ -10,7 +10,7 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-
+    
     public partial class sp_ListNhanVien_Result
     {
         public int NhanVienId { get; set; }

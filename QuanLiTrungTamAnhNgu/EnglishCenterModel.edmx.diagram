@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="478d4e53992146449baf3b1bebaa7c9b" Name="Diagram1">
+      <Diagram DiagramId="539399f62c2347f4819d9f75eec00573" Name="Diagram1">
         <EntityTypeShape EntityType="EnglishCenterModel.HocVien" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.KhoaHoc" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.Level" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
@@ -26,6 +26,7 @@
         <AssociationConnector Association="EnglishCenterModel.fk_TKGV_GV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_PQ_GV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_PQ_HV" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EnglishCenterModel.sysdiagram" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

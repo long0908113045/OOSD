@@ -10,7 +10,8 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class NhanVien_audits
     {
         public int Change_id { get; set; }

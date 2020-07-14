@@ -10,7 +10,8 @@
 namespace QuanLiTrungTamAnhNgu
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class view_ListGiaoVien
     {
         public string HoTen_NV { get; set; }
