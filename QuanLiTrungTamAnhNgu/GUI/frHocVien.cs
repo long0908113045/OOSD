@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QuanLiTrungTamAnhNgu
 {
-    public partial class frHocVien : Form
+    public partial class frHocVien : DevExpress.XtraEditors.XtraForm
     {
         public frHocVien()
         {

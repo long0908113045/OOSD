@@ -74,13 +74,14 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.EditValue = "Admin";
+            this.txtTaiKhoan.EditValue = "admin@gmail.com";
             this.txtTaiKhoan.Location = new System.Drawing.Point(473, 98);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaiKhoan.Properties.Appearance.Options.UseFont = true;
             this.txtTaiKhoan.Size = new System.Drawing.Size(125, 32);
             this.txtTaiKhoan.TabIndex = 3;
+            this.txtTaiKhoan.EditValueChanged += new System.EventHandler(this.txtTaiKhoan_EditValueChanged);
             // 
             // txtMatKhau
             // 
@@ -102,7 +103,7 @@
             this.btnDangNhap.AutoSize = true;
             this.btnDangNhap.Location = new System.Drawing.Point(351, 252);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(118, 34);
+            this.btnDangNhap.Size = new System.Drawing.Size(116, 32);
             this.btnDangNhap.TabIndex = 5;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.bttDangNhap_Click);
