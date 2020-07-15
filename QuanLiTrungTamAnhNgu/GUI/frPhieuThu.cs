@@ -60,8 +60,10 @@ namespace QuanLiTrungTamAnhNgu
             txtLopHoc.Text = e.Node.Text;
             Load_PhieuThu();
             LopHocContext lhcontext = new LopHocContext();
+            Load_ThongTinLopHoc();
             if (lhcontext.Request())
             {
+
                 bttDangKy.Enabled = true;
             }
             else
@@ -236,6 +238,13 @@ namespace QuanLiTrungTamAnhNgu
             Load_PhieuThu();
         }
 
-
+        private void Load_ThongTinLopHoc()
+        {
+            var thongtinlophoc = (from lophoc in context.fn_ListLopHoc()
+                                  where lophoc.LopHocId == Global.LopHocID
+                                  select lophoc).FirstOrDefault();
+            string soluongdangky = (gvPhieuThu.RowCount).ToString();
+            lbSoLuong.Text = soluongdangky + "/" + thongtinlophoc.SoLuongHocVien.ToString();
+        }
     }
 }

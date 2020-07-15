@@ -41,6 +41,8 @@
             this.rdXemTheoKhoaLH = new System.Windows.Forms.RadioButton();
             this.rdbttXemTheoGiaoVienLH = new System.Windows.Forms.RadioButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.txtSoLuongHocVien = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.txtSoBuoiHoc = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -74,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbxTimKH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongHocVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoBuoiHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxLevel.Properties)).BeginInit();
@@ -224,6 +227,8 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.txtSoLuongHocVien);
+            this.panelControl2.Controls.Add(this.labelControl9);
             this.panelControl2.Controls.Add(this.btnRefresh);
             this.panelControl2.Controls.Add(this.txtSoBuoiHoc);
             this.panelControl2.Controls.Add(this.labelControl8);
@@ -251,8 +256,28 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl2.Location = new System.Drawing.Point(0, 115);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(495, 588);
+            this.panelControl2.Size = new System.Drawing.Size(518, 588);
             this.panelControl2.TabIndex = 1;
+            // 
+            // txtSoLuongHocVien
+            // 
+            this.txtSoLuongHocVien.Location = new System.Drawing.Point(260, 238);
+            this.txtSoLuongHocVien.Name = "txtSoLuongHocVien";
+            this.txtSoLuongHocVien.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoLuongHocVien.Properties.Appearance.Options.UseFont = true;
+            this.txtSoLuongHocVien.Size = new System.Drawing.Size(206, 36);
+            this.txtSoLuongHocVien.TabIndex = 69;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Location = new System.Drawing.Point(21, 245);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(206, 29);
+            this.labelControl9.TabIndex = 68;
+            this.labelControl9.Text = "Số Lượng Học Viên:";
+            this.labelControl9.Click += new System.EventHandler(this.labelControl9_Click);
             // 
             // btnRefresh
             // 
@@ -271,11 +296,11 @@
             // 
             // txtSoBuoiHoc
             // 
-            this.txtSoBuoiHoc.Location = new System.Drawing.Point(234, 370);
+            this.txtSoBuoiHoc.Location = new System.Drawing.Point(263, 374);
             this.txtSoBuoiHoc.Name = "txtSoBuoiHoc";
             this.txtSoBuoiHoc.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSoBuoiHoc.Properties.Appearance.Options.UseFont = true;
-            this.txtSoBuoiHoc.Size = new System.Drawing.Size(203, 36);
+            this.txtSoBuoiHoc.Size = new System.Drawing.Size(206, 36);
             this.txtSoBuoiHoc.TabIndex = 66;
             // 
             // labelControl8
@@ -290,7 +315,7 @@
             // 
             // txtThoiGianHoc
             // 
-            this.txtThoiGianHoc.Location = new System.Drawing.Point(234, 453);
+            this.txtThoiGianHoc.Location = new System.Drawing.Point(263, 457);
             this.txtThoiGianHoc.Name = "txtThoiGianHoc";
             this.txtThoiGianHoc.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtThoiGianHoc.Properties.Appearance.Options.UseFont = true;
@@ -309,7 +334,7 @@
             // 
             // cbxLevel
             // 
-            this.cbxLevel.Location = new System.Drawing.Point(231, 192);
+            this.cbxLevel.Location = new System.Drawing.Point(260, 196);
             this.cbxLevel.Name = "cbxLevel";
             this.cbxLevel.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxLevel.Properties.Appearance.Options.UseFont = true;
@@ -323,7 +348,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(30, 197);
+            this.labelControl2.Location = new System.Drawing.Point(21, 203);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(61, 29);
             this.labelControl2.TabIndex = 61;
@@ -331,7 +356,7 @@
             // 
             // cbxKhoaHoc
             // 
-            this.cbxKhoaHoc.Location = new System.Drawing.Point(231, 147);
+            this.cbxKhoaHoc.Location = new System.Drawing.Point(260, 151);
             this.cbxKhoaHoc.Name = "cbxKhoaHoc";
             this.cbxKhoaHoc.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxKhoaHoc.Properties.Appearance.Options.UseFont = true;
@@ -344,7 +369,7 @@
             // cbxGV
             // 
             this.cbxGV.EditValue = "";
-            this.cbxGV.Location = new System.Drawing.Point(231, 109);
+            this.cbxGV.Location = new System.Drawing.Point(260, 113);
             this.cbxGV.Name = "cbxGV";
             this.cbxGV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxGV.Properties.Appearance.Options.UseFont = true;
@@ -353,13 +378,12 @@
             this.cbxGV.Properties.NullText = "";
             this.cbxGV.Size = new System.Drawing.Size(206, 36);
             this.cbxGV.TabIndex = 55;
-            this.cbxGV.EditValueChanged += new System.EventHandler(this.cbxGV_EditValueChanged);
             // 
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(30, 152);
+            this.labelControl7.Location = new System.Drawing.Point(21, 158);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(109, 29);
             this.labelControl7.TabIndex = 57;
@@ -369,7 +393,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 112);
+            this.label2.Location = new System.Drawing.Point(18, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 29);
             this.label2.TabIndex = 56;
@@ -377,17 +401,17 @@
             // 
             // txtHocPhi
             // 
-            this.txtHocPhi.Location = new System.Drawing.Point(234, 412);
+            this.txtHocPhi.Location = new System.Drawing.Point(263, 416);
             this.txtHocPhi.Name = "txtHocPhi";
             this.txtHocPhi.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHocPhi.Properties.Appearance.Options.UseFont = true;
-            this.txtHocPhi.Size = new System.Drawing.Size(203, 36);
+            this.txtHocPhi.Size = new System.Drawing.Size(206, 36);
             this.txtHocPhi.TabIndex = 49;
             // 
             // dtThoiGianKetThuc
             // 
             this.dtThoiGianKetThuc.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtThoiGianKetThuc.Location = new System.Drawing.Point(234, 328);
+            this.dtThoiGianKetThuc.Location = new System.Drawing.Point(263, 332);
             this.dtThoiGianKetThuc.Name = "dtThoiGianKetThuc";
             this.dtThoiGianKetThuc.Size = new System.Drawing.Size(206, 36);
             this.dtThoiGianKetThuc.TabIndex = 48;
@@ -455,7 +479,7 @@
             // dtThoiGianBatDau
             // 
             this.dtThoiGianBatDau.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtThoiGianBatDau.Location = new System.Drawing.Point(234, 286);
+            this.dtThoiGianBatDau.Location = new System.Drawing.Point(263, 290);
             this.dtThoiGianBatDau.Name = "dtThoiGianBatDau";
             this.dtThoiGianBatDau.Size = new System.Drawing.Size(206, 36);
             this.dtThoiGianBatDau.TabIndex = 43;
@@ -472,7 +496,7 @@
             // 
             // txtTenLop
             // 
-            this.txtTenLop.Location = new System.Drawing.Point(231, 68);
+            this.txtTenLop.Location = new System.Drawing.Point(260, 72);
             this.txtTenLop.Name = "txtTenLop";
             this.txtTenLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenLop.Properties.Appearance.Options.UseFont = true;
@@ -503,7 +527,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 71);
+            this.label1.Location = new System.Drawing.Point(18, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 29);
             this.label1.TabIndex = 34;
@@ -522,10 +546,10 @@
             // gcLopHoc
             // 
             this.gcLopHoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcLopHoc.Location = new System.Drawing.Point(495, 115);
+            this.gcLopHoc.Location = new System.Drawing.Point(518, 115);
             this.gcLopHoc.MainView = this.gvLopHoc;
             this.gcLopHoc.Name = "gcLopHoc";
-            this.gcLopHoc.Size = new System.Drawing.Size(697, 588);
+            this.gcLopHoc.Size = new System.Drawing.Size(674, 588);
             this.gcLopHoc.TabIndex = 2;
             this.gcLopHoc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvLopHoc});
@@ -555,6 +579,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongHocVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoBuoiHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxLevel.Properties)).EndInit();
@@ -609,5 +634,7 @@
         private System.Windows.Forms.DateTimePicker dtNgay2;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraEditors.TextEdit txtSoLuongHocVien;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

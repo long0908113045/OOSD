@@ -37,6 +37,8 @@ namespace QuanLiTrungTamAnhNgu
         DateTime ngaybatdau;
         DateTime ngayketthuc;
         int sobuoihoc;
+        int soLuongHocVien;
+
         frPhieuThu pt = new frPhieuThu();
         private void frLopHoc_Load(object sender, EventArgs e)
         {
@@ -94,10 +96,11 @@ namespace QuanLiTrungTamAnhNgu
                     id_gv = Convert.ToInt32(cbxGV.EditValue);
                     id_kh = Convert.ToInt32(cbxKhoaHoc.EditValue);
                     id_lv = Convert.ToInt32(cbxLevel.EditValue);
+                    soLuongHocVien = Convert.ToInt32(txtSoLuongHocVien.Text);
 
                     int idlh = Convert.ToInt32(gvLopHoc.GetRowCellValue(gvLopHoc.FocusedRowHandle, gvLopHoc.Columns[0]).ToString());
 
-                    if (context.sp_SuaLopHoc(idlh,tenlh, ngaybatdau.Date, ngayketthuc.Date, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
+                    if (context.sp_SuaLopHoc(idlh,tenlh, ngaybatdau.Date, ngayketthuc.Date, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc,soLuongHocVien) == 1)
                     {
                         MessageBox.Show("Đã Sửa Lớp Học", "Sửa lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_LopHoc();
@@ -155,6 +158,8 @@ namespace QuanLiTrungTamAnhNgu
             gvLopHoc.Columns[7].Caption = "Khung giờ học";
             gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
             gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
+            gvLopHoc.Columns[10].Caption = "Số Lượng Học Viên Tối Đa";
+
         }
 
         private void gvLopHoc_Click(object sender, EventArgs e)
@@ -256,7 +261,9 @@ namespace QuanLiTrungTamAnhNgu
             gvLopHoc.Columns[7].Caption = "Khung giờ học";
             gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
             gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
-        } 
+            gvLopHoc.Columns[10].Caption = "Số Lượng Học Viên Tối Đa";
+
+        }
         private void Load_LopHocTheoGiaoVien(int idgv)
         {
             gcLopHoc.DataSource = giaoVien.showLopTheoGiaoVien(idgv);
@@ -271,6 +278,8 @@ namespace QuanLiTrungTamAnhNgu
             gvLopHoc.Columns[7].Caption = "Khung giờ học";
             gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
             gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
+            gvLopHoc.Columns[10].Caption = "Số Lượng Học Viên Tối Đa";
+
         }
         private void Load_LopHocTheoThoiGian(DateTime date1, DateTime date2)
         {
@@ -289,6 +298,8 @@ namespace QuanLiTrungTamAnhNgu
             gvLopHoc.Columns[7].Caption = "Khung giờ học";
             gvLopHoc.Columns[8].Caption = "Thời gian bắt đầu";
             gvLopHoc.Columns[9].Caption = "Thời gian kết thúc";
+            gvLopHoc.Columns[10].Caption = "Số Lượng Học Viên Tối Đa";
+
         }
 
         private void bttThemLH_Click(object sender, EventArgs e)
@@ -309,10 +320,11 @@ namespace QuanLiTrungTamAnhNgu
                     id_gv = Convert.ToInt32(cbxGV.EditValue);
                     id_kh = Convert.ToInt32(cbxKhoaHoc.EditValue);
                     id_lv = Convert.ToInt32(cbxLevel.EditValue);
+                    soLuongHocVien = Convert.ToInt32(txtSoLuongHocVien.Text);
 
                     try
                     {
-                        if (context.sp_ThemLopHoc(tenlh, ngaybatdau, ngayketthuc, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc) == 1)
+                        if (context.sp_ThemLopHoc(tenlh, ngaybatdau, ngayketthuc, hocphi, id_gv, id_kh, id_lv, sobuoihoc, khunggiohoc,soLuongHocVien) == 1)
                         {
                             MessageBox.Show("Lớp học đã được thêm vào", "Thêm lớp học.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Load_LopHoc();
@@ -335,7 +347,7 @@ namespace QuanLiTrungTamAnhNgu
             }
         }
 
-        private void cbxGV_EditValueChanged(object sender, EventArgs e)
+        private void labelControl9_Click(object sender, EventArgs e)
         {
 
         }

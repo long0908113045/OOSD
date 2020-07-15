@@ -76,6 +76,7 @@ namespace QuanLiTrungTamAnhNgu
             txtKhungGioHoc.Text = thongtinlophoc.KhungGioHoc;
             txtSoBuoiHoc.Text = thongtinlophoc.SoBuoiHoc.ToString();
             lbSoLuong.Text = (gvListHocVien.RowCount).ToString();
+            lbtoida.Text = thongtinlophoc.SoLuongHocVien.ToString();
         }
 
        

@@ -24,5 +24,6 @@ namespace QuanLiTrungTamAnhNgu
         public string KhungGioHoc { get; set; }
         public Nullable<System.DateTime> ThoiGianBatDau_LH { get; set; }
         public Nullable<System.DateTime> ThoiGianKetThuc_LH { get; set; }
+        public Nullable<int> SoLuongHocVien { get; set; }
     }
 }

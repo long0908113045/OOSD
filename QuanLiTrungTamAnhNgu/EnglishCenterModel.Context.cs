@@ -32,13 +32,12 @@ namespace QuanLiTrungTamAnhNgu
         public virtual DbSet<Level> Levels { get; set; }
         public virtual DbSet<LopHoc> LopHocs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<NhanVien_audits> NhanVien_audits { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<PhieuThu> PhieuThus { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaikhoanGiaoVien> TaikhoanGiaoViens { get; set; }
         public virtual DbSet<TaiKhoanHocVien> TaiKhoanHocViens { get; set; }
         public virtual DbSet<view_ListGiaoVien> view_ListGiaoVien { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         [DbFunction("EnglishCenterEntities", "fn_ListHocVien")]
         public virtual IQueryable<fn_ListHocVien_Result> fn_ListHocVien()
@@ -124,6 +123,27 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_TimTenTrenPhieuThu_Result>("[EnglishCenterEntities].[fn_TimTenTrenPhieuThu](@idlh, @ten)", idlhParameter, tenParameter);
         }
     
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
         public virtual int sp_CapNhatPhieuThu(Nullable<int> idpt, Nullable<System.DateTime> ngaythanhtoan, string phuongthucthanhtoan, Nullable<decimal> sotien, Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv)
         {
             var idptParameter = idpt.HasValue ?
@@ -157,6 +177,27 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatPhieuThu", idptParameter, ngaythanhtoanParameter, phuongthucthanhtoanParameter, sotienParameter, idhvParameter, idlhParameter, idnvParameter);
         }
     
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> sp_demSoLuong(Nullable<int> lopHocId)
         {
             var lopHocIdParameter = lopHocId.HasValue ?
@@ -164,6 +205,45 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("lopHocId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_demSoLuong", lopHocIdParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_KiemTraTaiKhoanHV(ObjectParameter idpq, ObjectParameter idhv, string name, string pass)
@@ -196,14 +276,21 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_KiemTraTaiKhoanNV", idpq, idnv, nameParameter, passParameter, chucvuParameter);
         }
     
-        public virtual ObjectResult<sp_ListKhoaHoc_Result> sp_ListKhoaHoc()
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListKhoaHoc_Result>("sp_ListKhoaHoc");
-        }
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
     
-        public virtual ObjectResult<sp_LoadLevel_Result> sp_LoadLevel()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LoadLevel_Result>("sp_LoadLevel");
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
     
         public virtual int sp_SuaHocVien(Nullable<int> idhv, string hoten, string diachi, string email, string sdt)
@@ -468,15 +555,6 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemNhanVien", hotenParameter, chucvuParameter, emailParameter, sdtParameter, cmndParameter, ngaysinhParameter);
         }
     
-        public virtual int sp_ThemPhanQuyen(string ten)
-        {
-            var tenParameter = ten != null ?
-                new ObjectParameter("ten", ten) :
-                new ObjectParameter("ten", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhanQuyen", tenParameter);
-        }
-    
         public virtual int sp_ThemPhieuThu(Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv)
         {
             var idhvParameter = idhv.HasValue ?
@@ -492,6 +570,35 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("idnv", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhieuThu", idhvParameter, idlhParameter, idnvParameter);
+        }
+    
+        public virtual int sp_ThemTaiKhoanNV(Nullable<int> nhanvienid, string username, string chucvu, string passwords, string trangthai, Nullable<int> phanquyenid)
+        {
+            var nhanvienidParameter = nhanvienid.HasValue ?
+                new ObjectParameter("nhanvienid", nhanvienid) :
+                new ObjectParameter("nhanvienid", typeof(int));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var chucvuParameter = chucvu != null ?
+                new ObjectParameter("chucvu", chucvu) :
+                new ObjectParameter("chucvu", typeof(string));
+    
+            var passwordsParameter = passwords != null ?
+                new ObjectParameter("passwords", passwords) :
+                new ObjectParameter("passwords", typeof(string));
+    
+            var trangthaiParameter = trangthai != null ?
+                new ObjectParameter("trangthai", trangthai) :
+                new ObjectParameter("trangthai", typeof(string));
+    
+            var phanquyenidParameter = phanquyenid.HasValue ?
+                new ObjectParameter("phanquyenid", phanquyenid) :
+                new ObjectParameter("phanquyenid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV", nhanvienidParameter, usernameParameter, chucvuParameter, passwordsParameter, trangthaiParameter, phanquyenidParameter);
         }
     
         public virtual ObjectResult<sp_TimHocVienTheoTen_Result> sp_TimHocVienTheoTen(string ten)
@@ -514,6 +621,11 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("chucvu", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimNhanVienTheoTen_Result>("sp_TimNhanVienTheoTen", tenParameter, chucvuParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
         public virtual int sp_XoaHocVien(Nullable<int> id_hv)
@@ -559,143 +671,6 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("id_nv", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
-        }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_ListNhanVien_Result> sp_ListNhanVien()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListNhanVien_Result>("sp_ListNhanVien");
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_ThemTaiKhoanNV(Nullable<int> nhanvienid, string username, string chucvu, string passwords, string trangthai, Nullable<int> phanquyenid)
-        {
-            var nhanvienidParameter = nhanvienid.HasValue ?
-                new ObjectParameter("nhanvienid", nhanvienid) :
-                new ObjectParameter("nhanvienid", typeof(int));
-    
-            var usernameParameter = username != null ?
-                new ObjectParameter("username", username) :
-                new ObjectParameter("username", typeof(string));
-    
-            var chucvuParameter = chucvu != null ?
-                new ObjectParameter("chucvu", chucvu) :
-                new ObjectParameter("chucvu", typeof(string));
-    
-            var passwordsParameter = passwords != null ?
-                new ObjectParameter("passwords", passwords) :
-                new ObjectParameter("passwords", typeof(string));
-    
-            var trangthaiParameter = trangthai != null ?
-                new ObjectParameter("trangthai", trangthai) :
-                new ObjectParameter("trangthai", typeof(string));
-    
-            var phanquyenidParameter = phanquyenid.HasValue ?
-                new ObjectParameter("phanquyenid", phanquyenid) :
-                new ObjectParameter("phanquyenid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV", nhanvienidParameter, usernameParameter, chucvuParameter, passwordsParameter, trangthaiParameter, phanquyenidParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

@@ -39,7 +39,6 @@
     <EntitySetMapping Name="LopHocs">
       <EntityTypeMapping TypeName="EnglishCenterModel.LopHoc">
         <MappingFragment StoreEntitySet="LopHoc">
-          <ScalarProperty Name="SoLuongHocVien" ColumnName="SoLuongHocVien" />
           <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
           <ScalarProperty Name="Ma_LH" ColumnName="Ma_LH" />
           <ScalarProperty Name="Ten_LH" ColumnName="Ten_LH" />
@@ -51,6 +50,7 @@
           <ScalarProperty Name="LevelsId" ColumnName="LevelsId" />
           <ScalarProperty Name="SoBuoiHoc" ColumnName="SoBuoiHoc" />
           <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
+          <ScalarProperty Name="SoLuongHocVien" ColumnName="SoLuongHocVien" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -88,6 +88,17 @@
           <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
           <ScalarProperty Name="SoTien" ColumnName="SoTien" />
           <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EnglishCenterModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -173,6 +184,7 @@
           <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
           <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
           <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+          <ScalarProperty Name="SoLuongHocVien" ColumnName="SoLuongHocVien" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -190,6 +202,7 @@
           <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
           <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
           <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+          <ScalarProperty Name="SoLuongHocVien" ColumnName="SoLuongHocVien" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -247,6 +260,7 @@
           <ScalarProperty Name="KhungGioHoc" ColumnName="KhungGioHoc" />
           <ScalarProperty Name="ThoiGianBatDau_LH" ColumnName="ThoiGianBatDau_LH" />
           <ScalarProperty Name="ThoiGianKetThuc_LH" ColumnName="ThoiGianKetThuc_LH" />
+          <ScalarProperty Name="SoLuongHocVien" ColumnName="SoLuongHocVien" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -264,10 +278,33 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EnglishCenterModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_CapNhatPhieuThu" FunctionName="EnglishCenterModel.Store.sp_CapNhatPhieuThu" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EnglishCenterModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_demSoLuong" FunctionName="EnglishCenterModel.Store.sp_demSoLuong" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EnglishCenterModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EnglishCenterModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EnglishCenterModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanHV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanHV" />
     <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EnglishCenterModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
     <FunctionImportMapping FunctionImportName="sp_SuaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_SuaKhoaHoc" />
     <FunctionImportMapping FunctionImportName="sp_SuaLevel" FunctionName="EnglishCenterModel.Store.sp_SuaLevel" />
@@ -279,6 +316,7 @@
     <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
     <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
     <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
+    <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_ThemTaiKhoanNV" />
     <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
       <ResultMapping>
         <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimHocVienTheoTen_Result">
@@ -307,46 +345,11 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EnglishCenterModel.Store.sp_upgraddiagrams" />
     <FunctionImportMapping FunctionImportName="sp_XoaHocVien" FunctionName="EnglishCenterModel.Store.sp_XoaHocVien" />
     <FunctionImportMapping FunctionImportName="sp_XoaKhoaHoc" FunctionName="EnglishCenterModel.Store.sp_XoaKhoaHoc" />
     <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
     <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
     <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="EnglishCenterModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="EnglishCenterModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="EnglishCenterModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="EnglishCenterModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="EnglishCenterModel.Store.sp_helpdiagramdefinition">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EnglishCenterModel.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="EnglishCenterModel.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EnglishCenterModel.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="EnglishCenterModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_ThemTaiKhoanNV" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="EnglishCenterModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

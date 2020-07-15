@@ -247,9 +247,6 @@
     <Compile Include="NhanVien.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien_audits.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="PhanQuyen.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -267,15 +264,6 @@
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_ListKhoaHoc_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_ListNhanVien_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_LoadLevel_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_TimHocVienTheoTen_Result.cs">

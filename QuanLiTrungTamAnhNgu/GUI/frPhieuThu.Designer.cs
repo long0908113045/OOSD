@@ -34,6 +34,8 @@
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lbSoLuong = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnThanhToan = new DevExpress.XtraEditors.SimpleButton();
@@ -97,7 +99,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(243, 677);
+            this.panelControl1.Size = new System.Drawing.Size(243, 766);
             this.panelControl1.TabIndex = 6;
             // 
             // treeViewListLH
@@ -105,7 +107,7 @@
             this.treeViewListLH.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeViewListLH.Location = new System.Drawing.Point(2, 2);
             this.treeViewListLH.Name = "treeViewListLH";
-            this.treeViewListLH.Size = new System.Drawing.Size(239, 673);
+            this.treeViewListLH.Size = new System.Drawing.Size(239, 762);
             this.treeViewListLH.TabIndex = 1;
             this.treeViewListLH.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewListLH_AfterSelect);
             // 
@@ -114,7 +116,7 @@
             this.treeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList.Location = new System.Drawing.Point(2, 2);
             this.treeList.Name = "treeList";
-            this.treeList.Size = new System.Drawing.Size(239, 673);
+            this.treeList.Size = new System.Drawing.Size(239, 762);
             this.treeList.TabIndex = 0;
             // 
             // panel2
@@ -130,6 +132,8 @@
             // 
             this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl2.Controls.Add(this.lbSoLuong);
+            this.panelControl2.Controls.Add(this.label10);
             this.panelControl2.Controls.Add(this.label9);
             this.panelControl2.Controls.Add(this.dateTimePicker1);
             this.panelControl2.Controls.Add(this.btnThanhToan);
@@ -148,6 +152,25 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1072, 205);
             this.panelControl2.TabIndex = 9;
+            // 
+            // lbSoLuong
+            // 
+            this.lbSoLuong.AutoSize = true;
+            this.lbSoLuong.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSoLuong.Location = new System.Drawing.Point(143, 127);
+            this.lbSoLuong.Name = "lbSoLuong";
+            this.lbSoLuong.Size = new System.Drawing.Size(0, 25);
+            this.lbSoLuong.TabIndex = 43;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(15, 128);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 25);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Sỉ Số:";
             // 
             // label9
             // 
@@ -177,7 +200,7 @@
             this.btnThanhToan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.ImageOptions.Image")));
             this.btnThanhToan.Location = new System.Drawing.Point(881, 120);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(149, 38);
+            this.btnThanhToan.Size = new System.Drawing.Size(147, 36);
             this.btnThanhToan.TabIndex = 39;
             this.btnThanhToan.Text = "Thanh Toán";
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
@@ -238,9 +261,9 @@
             this.bttDangKy.Appearance.Options.UseForeColor = true;
             this.bttDangKy.AutoSize = true;
             this.bttDangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttDangKy.ImageOptions.Image")));
-            this.bttDangKy.Location = new System.Drawing.Point(148, 122);
+            this.bttDangKy.Location = new System.Drawing.Point(148, 164);
             this.bttDangKy.Name = "bttDangKy";
-            this.bttDangKy.Size = new System.Drawing.Size(135, 38);
+            this.bttDangKy.Size = new System.Drawing.Size(133, 36);
             this.bttDangKy.TabIndex = 30;
             this.bttDangKy.Text = "Đăng Ký";
             this.bttDangKy.Click += new System.EventHandler(this.bttDangKy_Click);
@@ -306,7 +329,7 @@
             this.panelControl5.Controls.Add(this.gcPhieuThu);
             this.panelControl5.Location = new System.Drawing.Point(756, 216);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(561, 449);
+            this.panelControl5.Size = new System.Drawing.Size(561, 538);
             this.panelControl5.TabIndex = 14;
             // 
             // btnRefreshnv
@@ -333,7 +356,7 @@
             this.btnTimKiemPhieuThu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiemPhieuThu.ImageOptions.SvgImage")));
             this.btnTimKiemPhieuThu.Location = new System.Drawing.Point(406, 5);
             this.btnTimKiemPhieuThu.Name = "btnTimKiemPhieuThu";
-            this.btnTimKiemPhieuThu.Size = new System.Drawing.Size(132, 46);
+            this.btnTimKiemPhieuThu.Size = new System.Drawing.Size(130, 44);
             this.btnTimKiemPhieuThu.TabIndex = 18;
             this.btnTimKiemPhieuThu.Text = "Tìm Kiếm";
             this.btnTimKiemPhieuThu.Click += new System.EventHandler(this.btnTimKiemPhieuThu_Click);
@@ -365,7 +388,7 @@
             this.gcPhieuThu.Location = new System.Drawing.Point(9, 93);
             this.gcPhieuThu.MainView = this.gvPhieuThu;
             this.gcPhieuThu.Name = "gcPhieuThu";
-            this.gcPhieuThu.Size = new System.Drawing.Size(545, 297);
+            this.gcPhieuThu.Size = new System.Drawing.Size(545, 386);
             this.gcPhieuThu.TabIndex = 1;
             this.gcPhieuThu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPhieuThu,
@@ -394,7 +417,7 @@
             this.panelControl4.Controls.Add(this.gcHocVien);
             this.panelControl4.Location = new System.Drawing.Point(247, 216);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(503, 449);
+            this.panelControl4.Size = new System.Drawing.Size(503, 538);
             this.panelControl4.TabIndex = 13;
             // 
             // btnRefreshv
@@ -407,7 +430,7 @@
             this.btnRefreshv.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefreshv.ImageOptions.Image")));
             this.btnRefreshv.Location = new System.Drawing.Point(170, 50);
             this.btnRefreshv.Name = "btnRefreshv";
-            this.btnRefreshv.Size = new System.Drawing.Size(105, 38);
+            this.btnRefreshv.Size = new System.Drawing.Size(103, 36);
             this.btnRefreshv.TabIndex = 16;
             this.btnRefreshv.Text = "Refresh";
             this.btnRefreshv.Click += new System.EventHandler(this.btnRefreshv_Click);
@@ -422,7 +445,7 @@
             this.btnTimKiemHocVIen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnTimKiemHocVIen.ImageOptions.SvgImage")));
             this.btnTimKiemHocVIen.Location = new System.Drawing.Point(326, 14);
             this.btnTimKiemHocVIen.Name = "btnTimKiemHocVIen";
-            this.btnTimKiemHocVIen.Size = new System.Drawing.Size(132, 46);
+            this.btnTimKiemHocVIen.Size = new System.Drawing.Size(130, 44);
             this.btnTimKiemHocVIen.TabIndex = 15;
             this.btnTimKiemHocVIen.Text = "Tìm Kiếm";
             this.btnTimKiemHocVIen.Click += new System.EventHandler(this.btnTimKiemHocVIen_Click);
@@ -454,7 +477,7 @@
             this.gcHocVien.Location = new System.Drawing.Point(9, 93);
             this.gcHocVien.MainView = this.gvHocVien;
             this.gcHocVien.Name = "gcHocVien";
-            this.gcHocVien.Size = new System.Drawing.Size(486, 297);
+            this.gcHocVien.Size = new System.Drawing.Size(486, 386);
             this.gcHocVien.TabIndex = 0;
             this.gcHocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvHocVien,
@@ -482,14 +505,14 @@
             this.panel1.Controls.Add(this.panelControl1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 677);
+            this.panel1.Size = new System.Drawing.Size(1315, 766);
             this.panel1.TabIndex = 0;
             // 
             // frPhieuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 689);
+            this.ClientSize = new System.Drawing.Size(1327, 778);
             this.Controls.Add(this.panel1);
             this.Name = "frPhieuThu";
             this.Text = "Phiếu Thu";
@@ -562,5 +585,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvHocVien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbSoLuong;
+        private System.Windows.Forms.Label label10;
     }
 }

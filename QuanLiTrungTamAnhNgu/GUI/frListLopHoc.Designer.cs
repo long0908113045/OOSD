@@ -31,7 +31,9 @@
             this.gcsListHV = new DevExpress.XtraGrid.GridControl();
             this.gvListHocVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lbtoida = new System.Windows.Forms.Label();
             this.lbSoLuong = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtKhungGioHoc = new DevExpress.XtraEditors.TextEdit();
             this.txtSoBuoiHoc = new DevExpress.XtraEditors.TextEdit();
@@ -79,7 +81,9 @@
             // 
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl1.Controls.Add(this.lbtoida);
             this.panelControl1.Controls.Add(this.lbSoLuong);
+            this.panelControl1.Controls.Add(this.label8);
             this.panelControl1.Controls.Add(this.label6);
             this.panelControl1.Controls.Add(this.txtKhungGioHoc);
             this.panelControl1.Controls.Add(this.txtSoBuoiHoc);
@@ -95,24 +99,43 @@
             this.panelControl1.Size = new System.Drawing.Size(833, 162);
             this.panelControl1.TabIndex = 2;
             // 
+            // lbtoida
+            // 
+            this.lbtoida.AutoSize = true;
+            this.lbtoida.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbtoida.Location = new System.Drawing.Point(694, 123);
+            this.lbtoida.Name = "lbtoida";
+            this.lbtoida.Size = new System.Drawing.Size(0, 27);
+            this.lbtoida.TabIndex = 15;
+            // 
             // lbSoLuong
             // 
             this.lbSoLuong.AutoSize = true;
             this.lbSoLuong.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSoLuong.Location = new System.Drawing.Point(209, 122);
+            this.lbSoLuong.Location = new System.Drawing.Point(314, 123);
             this.lbSoLuong.Name = "lbSoLuong";
             this.lbSoLuong.Size = new System.Drawing.Size(0, 27);
             this.lbSoLuong.TabIndex = 13;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(386, 123);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(251, 27);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Số lượng học viên tối đa:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 117);
+            this.label6.Location = new System.Drawing.Point(6, 123);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(197, 27);
+            this.label6.Size = new System.Drawing.Size(302, 27);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Số lượng học viên: ";
+            this.label6.Text = "Số lượng học viên đã đăng ký:";
             // 
             // txtKhungGioHoc
             // 
@@ -263,5 +286,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private System.Windows.Forms.TreeView treeViewListLH;
         private System.Windows.Forms.Label lbSoLuong;
+        private System.Windows.Forms.Label lbtoida;
+        private System.Windows.Forms.Label label8;
     }
 }

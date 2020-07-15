@@ -31,8 +31,8 @@ namespace QuanLiTrungTamAnhNgu
         public Nullable<int> LevelsId { get; set; }
         public Nullable<int> SoBuoiHoc { get; set; }
         public string KhungGioHoc { get; set; }
-        public string TrangThai { get; set; }
         public Nullable<int> SoLuongHocVien { get; set; }
+        public string TrangThai { get; set; }
     
         public virtual KhoaHoc KhoaHoc { get; set; }
         public virtual Level Level { get; set; }
