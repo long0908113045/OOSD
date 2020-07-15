@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EnglishCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EnglishCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HocVien">
           <Key>
             <PropertyRef Name="HocVienId" />
@@ -62,12 +62,12 @@
           <Property Name="NhanVienId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ma_NV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
-          <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="SDT_NV" Type="nvarchar" MaxLength="50" />
           <Property Name="CMND" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Birthday" Type="datetime" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChucVuId" Type="int" />
         </EntityType>
         <EntityType Name="PhanQuyen">
           <Key>
@@ -82,11 +82,11 @@
           </Key>
           <Property Name="PhieuThuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NgayThanhToan" Type="date" />
-          <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="50" />
           <Property Name="HocVienId" Type="int" Nullable="false" />
           <Property Name="LopHocId" Type="int" Nullable="false" />
           <Property Name="SoTien" Type="money" />
           <Property Name="NhanVienId" Type="int" />
+          <Property Name="PhuongThucThanhToanId" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -121,24 +121,6 @@
           <Property Name="PassWords" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PhanQuyenId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EnglishCenter.dbo.dsHocVien' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dsHocVien">
-          <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
-          <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
-          <Property Name="SDT_HV" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'EnglishCenter.dbo.dsLop' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dsLop">
-          <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" />
-          <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianBatDau_LH" Type="date" />
-          <Property Name="ThoiGianKetThuc_LH" Type="date" />
-          <Property Name="HocPhi" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="SoBuoiHoc" Type="int" />
-          <Property Name="KhungGioHoc" Type="nvarchar(max)" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="view_ListGiaoVien">
@@ -270,6 +252,16 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="fn_ListChucVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ChucVuId" Type="int" Nullable="false" />
+                <Property Name="Ten_CV" Type="nvarchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="fn_ListHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <ReturnType>
             <CollectionType>
@@ -660,8 +652,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <End Role="TaikhoanGiaoVien" EntitySet="TaikhoanGiaoVien" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EnglishCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -841,6 +832,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_NV" FromRole="NhanVien" ToRole="LopHoc" />
           <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_NV" FromRole="NhanVien" ToRole="PhieuThu" />
           <NavigationProperty Name="TaikhoanGiaoViens" Relationship="Self.fk_TKGV_GV" FromRole="NhanVien" ToRole="TaikhoanGiaoVien" />
+          <Property Name="ChucVuId" Type="Int32" />
         </EntityType>
         <EntityType Name="PhanQuyen">
           <Key>
@@ -865,6 +857,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <NavigationProperty Name="HocVien" Relationship="Self.fk_PT_HV" FromRole="PhieuThu" ToRole="HocVien" />
           <NavigationProperty Name="LopHoc" Relationship="Self.fk_PT_LH" FromRole="PhieuThu" ToRole="LopHoc" />
           <NavigationProperty Name="NhanVien" Relationship="Self.fk_PT_NV" FromRole="PhieuThu" ToRole="NhanVien" />
+          <Property Name="PhuongThucThanhToanId" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1085,20 +1078,20 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           </AssociationSet>
           <FunctionImport Name="fn_ListHocVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVien_Result)" />
           <FunctionImport Name="fn_ListHocVienCuaLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result)">
-            <Parameter Name="idlh" Mode="In" Type="Int32" />
+          <Parameter Name="idlh" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fn_ListKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListKhoaHoc_Result)" />
           <FunctionImport Name="fn_ListLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHoc_Result)" />
           <FunctionImport Name="fn_ListLopHocTheoKhoaHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListLopHocTheoKhoaHoc_Result)">
-            <Parameter Name="idkh" Mode="In" Type="Int32" />
+          <Parameter Name="idkh" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fn_ListNhanVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListNhanVien_Result)" />
           <FunctionImport Name="fn_ListPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListPhieuThu_Result)">
-            <Parameter Name="idlh" Mode="In" Type="Int32" />
+          <Parameter Name="idlh" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fn_LoadLevel" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel_Result)" />
           <FunctionImport Name="fn_TimLopTheoGiaoVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimLopTheoGiaoVien_Result)">
-            <Parameter Name="idgv" Mode="In" Type="Int32" />
+          <Parameter Name="idgv" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fn_TimTenTrenPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimTenTrenPhieuThu_Result)">
             <Parameter Name="idlh" Mode="In" Type="Int32" />
@@ -1126,7 +1119,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_demSoLuong" ReturnType="Collection(Int32)">
-            <Parameter Name="lopHocId" Mode="In" Type="Int32" />
+          <Parameter Name="lopHocId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1245,7 +1238,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="phanquyenid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_TimHocVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimHocVienTheoTen_Result)">
-            <Parameter Name="ten" Mode="In" Type="String" />
+          <Parameter Name="ten" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_TimNhanVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimNhanVienTheoTen_Result)">
             <Parameter Name="ten" Mode="In" Type="String" />
@@ -1253,20 +1246,21 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="sp_XoaHocVien">
-            <Parameter Name="id_hv" Mode="In" Type="Int32" />
+          <Parameter Name="id_hv" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaKhoaHoc">
-            <Parameter Name="id_kh" Mode="In" Type="Int32" />
+          <Parameter Name="id_kh" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaLevel">
-            <Parameter Name="idlv" Mode="In" Type="Int32" />
+          <Parameter Name="idlv" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaLopHoc">
-            <Parameter Name="idlh" Mode="In" Type="Int32" />
+          <Parameter Name="idlh" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_XoaNhanVien">
-            <Parameter Name="id_nv" Mode="In" Type="Int32" />
+          <Parameter Name="id_nv" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="fn_ListChucVu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListChucVu_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1298,6 +1292,10 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
           <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="fn_ListChucVu_Result">
+          <Property Type="Int32" Name="ChucVuId" Nullable="false" />
+          <Property Type="String" Name="Ten_CV" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1362,10 +1360,10 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="EnglishCenterModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="ChucVuId" ColumnName="ChucVuId" />
                 <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
                 <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
                 <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
                 <ScalarProperty Name="CMND" ColumnName="CMND" />
@@ -1385,9 +1383,9 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <EntitySetMapping Name="PhieuThus">
             <EntityTypeMapping TypeName="EnglishCenterModel.PhieuThu">
               <MappingFragment StoreEntitySet="PhieuThu">
+                <ScalarProperty Name="PhuongThucThanhToanId" ColumnName="PhuongThucThanhToanId" />
                 <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
                 <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
-                <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
                 <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
                 <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
                 <ScalarProperty Name="SoTien" ColumnName="SoTien" />
@@ -1655,6 +1653,14 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
           <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
           <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
+          <FunctionImportMapping FunctionImportName="fn_ListChucVu" FunctionName="EnglishCenterModel.Store.fn_ListChucVu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListChucVu_Result">
+                <ScalarProperty Name="ChucVuId" ColumnName="ChucVuId" />
+                <ScalarProperty Name="Ten_CV" ColumnName="Ten_CV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

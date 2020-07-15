@@ -21,6 +21,7 @@ namespace QuanLiTrungTamAnhNgu
         public int LopHocId { get; set; }
         public Nullable<decimal> SoTien { get; set; }
         public Nullable<int> NhanVienId { get; set; }
+        public Nullable<int> PhuongThucThanhToanId { get; set; }
     
         public virtual HocVien HocVien { get; set; }
         public virtual LopHoc LopHoc { get; set; }

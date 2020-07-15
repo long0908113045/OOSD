@@ -102,7 +102,7 @@
             this.btnDangNhap.AutoSize = true;
             this.btnDangNhap.Location = new System.Drawing.Point(351, 252);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(118, 34);
+            this.btnDangNhap.Size = new System.Drawing.Size(116, 32);
             this.btnDangNhap.TabIndex = 5;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.bttDangNhap_Click);

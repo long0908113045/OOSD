@@ -672,5 +672,11 @@ namespace QuanLiTrungTamAnhNgu
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
         }
+    
+        [DbFunction("EnglishCenterEntities", "fn_ListChucVu")]
+        public virtual IQueryable<fn_ListChucVu_Result> fn_ListChucVu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListChucVu_Result>("[EnglishCenterEntities].[fn_ListChucVu]()");
+        }
     }
 }
