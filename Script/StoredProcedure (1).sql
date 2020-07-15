@@ -697,7 +697,7 @@ AS
       ON TaikhoanGiaoVien.NhanVienId = inserted.NhanVienId)
     )
     UPDATE TaikhoanGiaoVien
-    SET Username = NhanVien.HoTen_NV,
+    SET Username = NhanVien.Email,
         ChucVu = NhanVien.ChucVu,
         PassWords = NhanVien.SDT_NV,
         PhanQuyenId = PhanQuyen.PhanQuyenId
@@ -709,7 +709,7 @@ AS
     INSERT INTO TaikhoanGiaoVien (NhanVienId, Username, ChucVu, PassWords, TrangThai, PhanQuyenId)
       SELECT
         NhanVienId,
-        HoTen_NV,
+        Email,
         ChucVu,
         SDT_NV,
         TrangThai,
@@ -795,10 +795,7 @@ EXEC dbo.sp_XoaHocVien 1007;
 --neu tim theo khoang -> clustered hieu qua hon
 --2 dieu kien -> dieu kien = uu tien trc
 
-ALTER TABLE TaikhoanGiaoVien
-ADD CONSTRAINT fk_PQ_GV
-FOREIGN KEY (PhanQuyenId)
-REFERENCES PhanQuyen (PhanQuyenId)
+
 --Kiểm tra tai khoản nhân viên 
 USE EnglishCenter
 GO

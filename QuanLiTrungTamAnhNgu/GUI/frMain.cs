@@ -30,7 +30,6 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void bttDSHV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frHocVien));
             if (frm != null)
             {
@@ -45,7 +44,6 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
         }
 
      
@@ -58,7 +56,6 @@ namespace QuanLiTrungTamAnhNgu
 
         private void btnDangNhap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frListAdmin));
             if (frm != null)
             {
@@ -73,12 +70,10 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
         }
 
         private void bttDangKy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frPhieuThu));
             if (frm != null)
             {
@@ -92,7 +87,6 @@ namespace QuanLiTrungTamAnhNgu
                 f.MdiParent = this;
                 f.Show();
             }
-            SplashScreenManager.CloseForm();
 
 
         }
@@ -100,7 +94,6 @@ namespace QuanLiTrungTamAnhNgu
         private void bttLopHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frLopHoc));
             if (frm != null)
             {
@@ -115,14 +108,12 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
                 
             }
-            SplashScreenManager.CloseForm();
 
         }
 
         private void bttDSNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frNhanVien));
             if (frm != null)
             {
@@ -137,12 +128,10 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
         }
 
         private void bttKhoaHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frKhoaHoc));
             if (frm != null)
             {
@@ -157,12 +146,10 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
         }
 
         private void bttLevels_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frLevel));
             if (frm != null)
             {
@@ -177,13 +164,11 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
         }
 
         private void btnListLH_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frListLopHoc));
             if (frm != null)
             {
@@ -198,7 +183,15 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
+        }
+
+        private void frMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
         }
     }
 }

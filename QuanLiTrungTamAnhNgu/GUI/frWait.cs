@@ -14,7 +14,9 @@ namespace QuanLiTrungTamAnhNgu
         public frWait()
         {
             InitializeComponent();
+           
             this.labelCopyright.Text = "Copyright © 1998-" + DateTime.Now.Year.ToString();
+           
         }
 
         #region Overrides
@@ -28,6 +30,11 @@ namespace QuanLiTrungTamAnhNgu
 
         public enum SplashScreenCommand
         {
+        }
+
+        private void frWait_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

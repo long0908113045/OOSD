@@ -115,7 +115,7 @@
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage});
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1179, 178);
+            this.ribbonControl.Size = new System.Drawing.Size(1179, 193);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -306,6 +306,7 @@
             this.barButtonItem7.Id = 73;
             this.barButtonItem7.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem7.ImageOptions.SvgImage")));
             this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -363,16 +364,16 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 700);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 707);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1179, 37);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1179, 30);
             // 
             // officeNavigationBar
             // 
             this.officeNavigationBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.officeNavigationBar.Location = new System.Drawing.Point(0, 648);
+            this.officeNavigationBar.Location = new System.Drawing.Point(0, 655);
             this.officeNavigationBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.officeNavigationBar.Name = "officeNavigationBar";
             this.officeNavigationBar.Size = new System.Drawing.Size(1179, 52);
@@ -401,6 +402,7 @@
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Quản lý trung tâm tiếng anh";
+            this.Load += new System.EventHandler(this.frMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar)).EndInit();
