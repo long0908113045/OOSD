@@ -144,9 +144,6 @@
     <Compile Include="fn_ListPhieuThu_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="fn_ListPhieuThu_Result1.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="fn_LoadLevel_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>

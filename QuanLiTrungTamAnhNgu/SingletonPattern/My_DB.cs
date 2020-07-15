@@ -10,7 +10,7 @@ namespace QuanLiTrungTamAnhNgu.SingletonPattern
 {
     class My_DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=EC2;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=EnglishCenter;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
         public SqlConnection getConnection
         {
             get

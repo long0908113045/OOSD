@@ -1,5 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="EnglishCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="fn_ListHocVien_Result">
+    <Property Name="HocVienId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="fn_ListHocVienCuaLopHoc_Result">
+    <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi_HV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="fn_ListKhoaHoc_Result">
+    <Property Name="KhoaHocId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_KH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="fn_ListLopHoc_Result">
+    <Property Name="LopHocId" Type="Int32" Nullable="false" />
+    <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SoBuoiHoc" Type="Int32" />
+    <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianBatDau_LH" Type="DateTime" />
+    <Property Name="ThoiGianKetThuc_LH" Type="DateTime" />
+    <Property Name="SoLuongHocVien" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fn_ListLopHocTheoKhoaHoc_Result">
+    <Property Name="LopHocId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SoBuoiHoc" Type="Int32" />
+    <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianBatDau_LH" Type="DateTime" />
+    <Property Name="ThoiGianKetThuc_LH" Type="DateTime" />
+    <Property Name="SoLuongHocVien" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fn_ListNhanVien_Result">
+    <Property Name="NhanVienId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="fn_ListPhieuThu_Result">
+    <Property Name="PhieuThuId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PhuongThucThanhToanId" Type="Int32" />
+    <Property Name="NgayThanhToan" Type="DateTime" />
+    <Property Name="HocVienId" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fn_LoadLevel_Result">
+    <Property Name="LevelsId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="fn_TimLopTheoGiaoVien_Result">
+    <Property Name="LopHocId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_LH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_KH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HocPhi" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SoBuoiHoc" Type="Int32" />
+    <Property Name="KhungGioHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianBatDau_LH" Type="DateTime" />
+    <Property Name="ThoiGianKetThuc_LH" Type="DateTime" />
+    <Property Name="SoLuongHocVien" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fn_TimTenTrenPhieuThu_Result">
+    <Property Name="PhieuThuId" Type="Int32" Nullable="false" />
+    <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Ten_PTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NgayThanhToan" Type="DateTime" />
+    <Property Name="HocVienId" Type="Int32" Nullable="false" />
+  </ComplexType>
   <EntityType Name="HocVien">
     <Key>
       <PropertyRef Name="HocVienId" />
@@ -341,6 +443,9 @@
       <Parameter Name="idkh" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="fn_ListNhanVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListNhanVien_Result)" />
+    <FunctionImport Name="fn_ListPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListPhieuThu_Result)">
+      <Parameter Name="idlh" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="fn_LoadLevel" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_LoadLevel_Result)" />
     <FunctionImport Name="fn_TimLopTheoGiaoVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_TimLopTheoGiaoVien_Result)">
       <Parameter Name="idgv" Mode="In" Type="Int32" />
@@ -482,112 +587,10 @@
     <FunctionImport Name="sp_XoaNhanVien">
       <Parameter Name="id_nv" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="fn_ListPhieuThu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListPhieuThu_Result1)">
-      <Parameter Name="idlh" Mode="In" Type="Int32" />
+    <FunctionImport Name="sp_getHocPhi">
+      <Parameter Name="lopHocId" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="fn_ListHocVien_Result">
-    <Property Type="Int32" Name="HocVienId" Nullable="false" />
-    <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_ListHocVienCuaLopHoc_Result">
-    <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="DiaChi_HV" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Email_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SDT_HV" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_ListKhoaHoc_Result">
-    <Property Type="Int32" Name="KhoaHocId" Nullable="false" />
-    <Property Type="String" Name="Ma_KH" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_ListLopHoc_Result">
-    <Property Type="Int32" Name="LopHocId" Nullable="false" />
-    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-    <Property Type="Int32" Name="SoLuongHocVien" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="fn_ListLopHocTheoKhoaHoc_Result">
-    <Property Type="Int32" Name="LopHocId" Nullable="false" />
-    <Property Type="String" Name="Ma_LH" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-    <Property Type="Int32" Name="SoLuongHocVien" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="fn_ListNhanVien_Result">
-    <Property Type="Int32" Name="NhanVienId" Nullable="false" />
-    <Property Type="String" Name="Ma_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="ChucVu" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SDT_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
-    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_ListPhieuThu_Result">
-    <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
-    <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-    <Property Type="String" Name="Ten_PTTT" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-    <Property Type="Int32" Name="HocVienId" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="fn_LoadLevel_Result">
-    <Property Type="Int32" Name="LevelsId" Nullable="false" />
-    <Property Type="String" Name="Ma_Level" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="MoTa" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_TimLopTheoGiaoVien_Result">
-    <Property Type="Int32" Name="LopHocId" Nullable="false" />
-    <Property Type="String" Name="Ma_LH" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Ten_LH" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Ten_KH" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Ten_Level" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="HocPhi" Nullable="true" Precision="18" Scale="0" />
-    <Property Type="Int32" Name="SoBuoiHoc" Nullable="true" />
-    <Property Type="String" Name="KhungGioHoc" Nullable="true" />
-    <Property Type="DateTime" Name="ThoiGianBatDau_LH" Nullable="true" Precision="10" />
-    <Property Type="DateTime" Name="ThoiGianKetThuc_LH" Nullable="true" Precision="10" />
-    <Property Type="Int32" Name="SoLuongHocVien" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="fn_TimTenTrenPhieuThu_Result">
-    <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
-    <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-    <Property Type="String" Name="Ten_PTTT" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-    <Property Type="Int32" Name="HocVienId" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="sp_TimHocVienTheoTen_Result">
     <Property Type="Int32" Name="HocVienId" Nullable="false" />
     <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
@@ -607,15 +610,5 @@
     <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
     <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_ListPhieuThu_Result1">
-    <Property Type="Int32" Name="PhieuThuId" Nullable="false" />
-    <Property Type="String" Name="Ma_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_HV" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="HoTen_NV" Nullable="true" MaxLength="50" />
-    <Property Type="Decimal" Name="SoTien" Nullable="true" Precision="19" Scale="4" />
-    <Property Type="String" Name="Ten_PTTT" Nullable="false" MaxLength="50" />
-    <Property Type="DateTime" Name="NgayThanhToan" Nullable="true" Precision="10" />
-    <Property Type="Int32" Name="HocVienId" Nullable="false" />
   </ComplexType>
 </Schema>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using QuanLiTrungTamAnhNgu.StatePattern;
+using QuanLiTrungTamAnhNgu.SingletonPattern;
 
 namespace QuanLiTrungTamAnhNgu
 {
@@ -21,7 +22,7 @@ namespace QuanLiTrungTamAnhNgu
 
         }
         EnglishCenterEntities context = new EnglishCenterEntities();
-        LopHocStartState lopHocStartState = new LopHocStartState();
+        ControllerLopHoc lopHoc = new ControllerLopHoc();
         int idpttt;
         int idhv;
         int idnv;
@@ -92,7 +93,6 @@ namespace QuanLiTrungTamAnhNgu
             int idpt = Global.PhieuThuID;
            
             
-            sotien = Convert.ToDecimal(lbTraTien.Text);
             if (txtHocVien.Text == " " ||
               txtLopHoc.Text == ""
                &&(rdTienMat.Checked == false && rdThe.Checked == false))
@@ -195,8 +195,9 @@ namespace QuanLiTrungTamAnhNgu
             txtHocVien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[2])?.ToString()) ?? "";
             Global.HocVienID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[7])?.ToString());
             Global.PhuongThucThanhToanID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[5])?.ToString());
-            double tiendefault = Convert.ToDouble(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString());
-            lbSoTien.Text = Convert.ToString(tiendefault);
+            int? hocphi = lopHoc.getHocPhi(Global.LopHocID);
+            lbSoTien.Text = Convert.ToString(hocphi);
+            
             ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6])?.ToString());
         }
 

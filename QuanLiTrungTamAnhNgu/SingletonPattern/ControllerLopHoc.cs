@@ -31,5 +31,16 @@ namespace QuanLiTrungTamAnhNgu.SingletonPattern
             adapter.Fill(table);
             return table;
         }
+
+        public int? getHocPhi(int id) {
+            SqlCommand command = new SqlCommand("select LopHoc.HocPhi from LopHoc where LopHoc.LopHocId = @lopHocId", mydb.getConnection);
+            command.CommandType = CommandType.Text;
+            command.Parameters.Add("@lopHocId", SqlDbType.Int).Value = id;
+
+            mydb.openConnection();
+            int value = Convert.ToInt32(command.ExecuteScalar());
+            return value;
+           
+        }
     }
 }

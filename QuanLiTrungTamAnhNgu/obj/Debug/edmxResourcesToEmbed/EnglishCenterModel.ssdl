@@ -114,7 +114,7 @@
     <Property Name="PhanQuyenId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'EC2.dbo.view_ListGiaoVien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="view_ListGiaoVien">
     <Key>
       <PropertyRef Name="NhanVienId" />
@@ -364,7 +364,7 @@ warning 6002: The table/view 'EC2.dbo.view_ListGiaoVien' does not have a primary
           <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
           <Property Name="SoTien" Type="money" />
-          <Property Name="Ten_PTTT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhuongThucThanhToanId" Type="int" />
           <Property Name="NgayThanhToan" Type="date" />
           <Property Name="HocVienId" Type="int" Nullable="false" />
         </RowType>
@@ -433,6 +433,9 @@ warning 6002: The table/view 'EC2.dbo.view_ListGiaoVien' does not have a primary
     <Parameter Name="idpttt" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_demSoLuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lopHocId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getHocPhi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="lopHocId" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_KiemTraTaiKhoanHV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
