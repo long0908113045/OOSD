@@ -14,16 +14,7 @@ namespace QuanLiTrungTamAnhNgu
     
     public partial class PhuongThucThanhToan
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PhuongThucThanhToan()
-        {
-            this.PhieuThus = new HashSet<PhieuThu>();
-        }
-    
         public int PhuongThucThanhToanId { get; set; }
         public string Ten_PTTT { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuThu> PhieuThus { get; set; }
     }
 }

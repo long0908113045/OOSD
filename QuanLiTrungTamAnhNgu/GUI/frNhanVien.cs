@@ -171,7 +171,7 @@ namespace QuanLiTrungTamAnhNgu
             cbxChucVu.Items.Add("Kế Toán");
             cbxChucVu.Items.Add("Giáo Viên");
             cbxChucVu.Items.Add("Nhân Viên");
-            cbxChucVu.Items.Add("Admin");
+            cbxChucVu.Items.Add("Quản Lý");
 
         }
         private void Load_CbTimChucVu()
@@ -207,9 +207,5 @@ namespace QuanLiTrungTamAnhNgu
                 MessageBox.Show("Không Tìm Thấy ");
         }
 
-        private void bttThemNV_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
