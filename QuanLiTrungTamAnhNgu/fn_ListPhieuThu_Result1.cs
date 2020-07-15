@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu
 {
     using System;
     
-    public partial class fn_ListPhieuThu_Result
+    public partial class fn_ListPhieuThu_Result1
     {
         public int PhieuThuId { get; set; }
         public string Ma_HV { get; set; }

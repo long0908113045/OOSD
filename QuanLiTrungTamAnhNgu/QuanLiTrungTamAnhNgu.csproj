@@ -144,6 +144,9 @@
     <Compile Include="fn_ListPhieuThu_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="fn_ListPhieuThu_Result1.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="fn_LoadLevel_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -263,12 +266,6 @@
     <Compile Include="SingletonPattern\ControllerLopHoc.cs" />
     <Compile Include="SingletonPattern\My_DB.cs" />
     <Compile Include="SingletonPattern\ControllerNhanVien.cs" />
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="sp_TimHocVienTheoTen_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -279,9 +276,6 @@
     <Compile Include="StatePattern\LopHocStartState.cs" />
     <Compile Include="StatePattern\LopHocState.cs" />
     <Compile Include="StatePattern\LopHocStopState.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TaikhoanGiaoVien.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>

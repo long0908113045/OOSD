@@ -925,7 +925,7 @@ AS
     s.HoTen_HV,
     NhanVien.HoTen_NV,
     p.SoTien,
-    p.PhuongThucThanhToanId,
+    PhuongThucThanhToan.Ten_PTTT,
     p.NgayThanhToan,
     s.HocVienId
   FROM HocVien s
@@ -933,6 +933,8 @@ AS
     ON s.HocVienId = p.HocVienId
   JOIN NhanVien
     ON NhanVien.NhanVienId = p.NhanVienId
+	JOIN PhuongThucThanhToan
+    ON p.PhuongThucThanhToanId = PhuongThucThanhToan.PhuongThucThanhToanId
   WHERE p.LopHocId = @idlh
   AND s.TrangThai LIKE '1')
 GO

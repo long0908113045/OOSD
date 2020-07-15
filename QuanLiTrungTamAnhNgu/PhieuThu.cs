@@ -25,5 +25,6 @@ namespace QuanLiTrungTamAnhNgu
         public virtual HocVien HocVien { get; set; }
         public virtual LopHoc LopHoc { get; set; }
         public virtual NhanVien NhanVien { get; set; }
+        public virtual PhuongThucThanhToan PhuongThucThanhToan { get; set; }
     }
 }

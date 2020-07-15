@@ -83,16 +83,6 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListNhanVien_Result>("[EnglishCenterEntities].[fn_ListNhanVien]()");
         }
     
-        [DbFunction("EnglishCenterEntities", "fn_ListPhieuThu")]
-        public virtual IQueryable<fn_ListPhieuThu_Result> fn_ListPhieuThu(Nullable<int> idlh)
-        {
-            var idlhParameter = idlh.HasValue ?
-                new ObjectParameter("idlh", idlh) :
-                new ObjectParameter("idlh", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListPhieuThu_Result>("[EnglishCenterEntities].[fn_ListPhieuThu](@idlh)", idlhParameter);
-        }
-    
         [DbFunction("EnglishCenterEntities", "fn_LoadLevel")]
         public virtual IQueryable<fn_LoadLevel_Result> fn_LoadLevel()
         {
@@ -568,6 +558,16 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("id_nv", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
+        }
+    
+        [DbFunction("EnglishCenterEntities", "fn_ListPhieuThu")]
+        public virtual IQueryable<fn_ListPhieuThu_Result1> fn_ListPhieuThu(Nullable<int> idlh)
+        {
+            var idlhParameter = idlh.HasValue ?
+                new ObjectParameter("idlh", idlh) :
+                new ObjectParameter("idlh", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListPhieuThu_Result1>("[EnglishCenterEntities].[fn_ListPhieuThu](@idlh)", idlhParameter);
         }
     }
 }

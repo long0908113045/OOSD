@@ -195,17 +195,9 @@ namespace QuanLiTrungTamAnhNgu
             txtHocVien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[2])?.ToString()) ?? "";
             Global.HocVienID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[7])?.ToString());
             Global.PhuongThucThanhToanID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[5])?.ToString());
-            int tiendefault = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString());
-            ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6])?.ToString());
-            int discosunt = Convert.ToInt32(txtDiscount.Text);
-
-            double tienThanhToan = tiendefault * (100 - discosunt) / 100;
-
+            double tiendefault = Convert.ToDouble(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString());
             lbSoTien.Text = Convert.ToString(tiendefault);
-            lbTraTien.Text = Convert.ToString(tienThanhToan);
-
-            
-
+            ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6])?.ToString());
         }
 
         private void btnTimKiemHocVIen_Click(object sender, EventArgs e)
