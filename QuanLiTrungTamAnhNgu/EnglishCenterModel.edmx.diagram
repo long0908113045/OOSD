@@ -4,18 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6b85010cf34444cabdf54d7fe2ee6e0f" Name="Diagram1">
-        <EntityTypeShape EntityType="EnglishCenterModel.HocVien" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+      <Diagram DiagramId="6af8219585d24c9fa329f85ec723906e" Name="Diagram1">
+        <EntityTypeShape EntityType="EnglishCenterModel.HocVien" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.KhoaHoc" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.Level" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.LopHoc" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.NhanVien" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.PhanQuyen" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.PhieuThu" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.sysdiagram" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.PhieuThu" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.PhuongThucThanhToan" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.sysdiagram" Width="1.5" PointX="2.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="EnglishCenterModel.TaikhoanGiaoVien" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.TaiKhoanHocVien" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="EnglishCenterModel.view_ListGiaoVien" Width="1.5" PointX="7.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.TaiKhoanHocVien" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnglishCenterModel.view_ListGiaoVien" Width="1.5" PointX="8.75" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="EnglishCenterModel.fk_PT_HV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_TK_HV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_LH_KH" ManuallyRouted="false" />
@@ -26,6 +27,7 @@
         <AssociationConnector Association="EnglishCenterModel.fk_TKGV_GV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_PQ_GV" ManuallyRouted="false" />
         <AssociationConnector Association="EnglishCenterModel.fk_PQ_HV" ManuallyRouted="false" />
+        <AssociationConnector Association="EnglishCenterModel.FK_PhuongThucThanhToan" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

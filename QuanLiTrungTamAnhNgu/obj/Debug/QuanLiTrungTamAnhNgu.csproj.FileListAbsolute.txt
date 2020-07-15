@@ -2583,7 +2583,6 @@ C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramew
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramework.xml
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csprojAssemblyReference.cache
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frDangNhap.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frGiaoVien.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frHocVien.resources
@@ -2840,3 +2839,4 @@ E:\E\Học kì 6\Thiết kế phần mềm hướng đối tượng\. ĐỒ ÁN\
 E:\E\Học kì 6\Thiết kế phần mềm hướng đối tượng\. ĐỒ ÁN\Ngan\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csproj.GenerateResource.cache
 E:\E\Học kì 6\Thiết kế phần mềm hướng đối tượng\. ĐỒ ÁN\Ngan\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.exe.licenses
 E:\E\Học kì 6\Thiết kế phần mềm hướng đối tượng\. ĐỒ ÁN\Ngan\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csproj.CoreCompileInputs.cache
+C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csprojAssemblyReference.cache

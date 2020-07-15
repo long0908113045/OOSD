@@ -10,11 +10,11 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
     {
         public int PhieuThuId { get; set; }
         public DateTime NgayThanhToan { get; set; }
-        public string PhuongThucThanhToan { get; set; }
         public int HocVienId { get; set; }
         public int LopHocId { get; set; }
         public decimal SoTien { get; set; }
         public int NhanVienId { get; set; }
+        public int PhuongThucThanhToanId { get; set; }
 
         //public PhieuThuModel(DateTime ngayThanhToan, string phuongThucThanhToan, int hocVienId, int lopHocId, decimal soTien, int nhanVienId)
         //{
@@ -36,7 +36,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
         }
         public bool ThuTien()
         {
-            if (context.sp_CapNhatPhieuThu(PhieuThuId, NgayThanhToan, PhuongThucThanhToan, SoTien, HocVienId, LopHocId, NhanVienId) != 0)
+            if (context.sp_CapNhatPhieuThu(PhieuThuId, NgayThanhToan, SoTien, HocVienId, LopHocId, NhanVienId, PhuongThucThanhToanId) != 0)
             {
                 return true;
             }

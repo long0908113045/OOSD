@@ -149,7 +149,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             cbxChucVu.Items.Add("Kế Toán");
             cbxChucVu.Items.Add("Giáo Viên");
-            cbxChucVu.Items.Add("Admin");
+            cbxChucVu.Items.Add("Quản lý ");
             cbxChucVu.Items.Add("Học Viên");
         }
 

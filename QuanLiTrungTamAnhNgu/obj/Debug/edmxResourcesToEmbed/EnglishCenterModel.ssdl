@@ -57,12 +57,12 @@
     <Property Name="NhanVienId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Ma_NV" Type="nvarchar" MaxLength="50" />
     <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="SDT_NV" Type="nvarchar" MaxLength="50" />
     <Property Name="CMND" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
-    <Property Name="ChucVuId" Type="int" />
   </EntityType>
   <EntityType Name="PhanQuyen">
     <Key>
@@ -82,6 +82,13 @@
     <Property Name="SoTien" Type="money" />
     <Property Name="NhanVienId" Type="int" />
     <Property Name="PhuongThucThanhToanId" Type="int" />
+  </EntityType>
+  <EntityType Name="PhuongThucThanhToan">
+    <Key>
+      <PropertyRef Name="PhuongThucThanhToanId" />
+    </Key>
+    <Property Name="PhuongThucThanhToanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten_PTTT" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -159,6 +166,18 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
       </Principal>
       <Dependent Role="LopHoc">
         <PropertyRef Name="NhanVienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhuongThucThanhToan">
+    <End Role="PhuongThucThanhToan" Type="Self.PhuongThucThanhToan" Multiplicity="0..1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuongThucThanhToan">
+        <PropertyRef Name="PhuongThucThanhToanId" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="PhuongThucThanhToanId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -247,16 +266,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
     </ReferentialConstraint>
   </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="fn_ListChucVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="ChucVuId" Type="int" Nullable="false" />
-          <Property Name="Ten_CV" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
   <Function Name="fn_ListHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <ReturnType>
       <CollectionType>
@@ -366,7 +375,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
           <Property Name="SoTien" Type="money" />
-          <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhuongThucThanhToanId" Type="int" />
           <Property Name="NgayThanhToan" Type="date" />
           <Property Name="HocVienId" Type="int" Nullable="false" />
         </RowType>
@@ -418,7 +427,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
           <Property Name="SoTien" Type="money" />
-          <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ten_PTTT" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NgayThanhToan" Type="date" />
           <Property Name="HocVienId" Type="int" Nullable="false" />
         </RowType>
@@ -434,11 +443,11 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
   <Function Name="sp_CapNhatPhieuThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idpt" Type="int" Mode="In" />
     <Parameter Name="ngaythanhtoan" Type="smalldatetime" Mode="In" />
-    <Parameter Name="phuongthucthanhtoan" Type="nvarchar" Mode="In" />
     <Parameter Name="sotien" Type="numeric" Mode="In" />
     <Parameter Name="idhv" Type="int" Mode="In" />
     <Parameter Name="idlh" Type="int" Mode="In" />
     <Parameter Name="idnv" Type="int" Mode="In" />
+    <Parameter Name="idpttt" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -596,6 +605,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhieuThu" EntityType="Self.PhieuThu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhuongThucThanhToan" EntityType="Self.PhuongThucThanhToan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaikhoanGiaoVien" EntityType="Self.TaikhoanGiaoVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoanHocVien" EntityType="Self.TaiKhoanHocVien" Schema="dbo" store:Type="Tables" />
@@ -617,6 +627,10 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
     <AssociationSet Name="fk_LH_NV" Association="Self.fk_LH_NV">
       <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="LopHoc" EntitySet="LopHoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhuongThucThanhToan" Association="Self.FK_PhuongThucThanhToan">
+      <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToan" />
+      <End Role="PhieuThu" EntitySet="PhieuThu" />
     </AssociationSet>
     <AssociationSet Name="fk_PQ_GV" Association="Self.fk_PQ_GV">
       <End Role="PhanQuyen" EntitySet="PhanQuyen" />

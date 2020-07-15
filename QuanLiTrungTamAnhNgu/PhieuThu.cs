@@ -16,7 +16,6 @@ namespace QuanLiTrungTamAnhNgu
     {
         public int PhieuThuId { get; set; }
         public Nullable<System.DateTime> NgayThanhToan { get; set; }
-        public string PhuongThucThanhToan { get; set; }
         public int HocVienId { get; set; }
         public int LopHocId { get; set; }
         public Nullable<decimal> SoTien { get; set; }
@@ -26,5 +25,6 @@ namespace QuanLiTrungTamAnhNgu
         public virtual HocVien HocVien { get; set; }
         public virtual LopHoc LopHoc { get; set; }
         public virtual NhanVien NhanVien { get; set; }
+        public virtual PhuongThucThanhToan PhuongThucThanhToan { get; set; }
     }
 }

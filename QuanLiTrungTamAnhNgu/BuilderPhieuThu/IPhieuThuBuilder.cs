@@ -10,7 +10,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
     {
         IPhieuThuBuilder PhieuThuId(int phieuThuId);
         IPhieuThuBuilder NgayThanhToan(DateTime ngayThanhToan);
-        IPhieuThuBuilder PhuongThucThanhToan(string phuongThucThanhToan);
+        IPhieuThuBuilder PhuongThucThanhToanId(int phuongThucThanhToan);
         IPhieuThuBuilder HocVienId(int hocVienId);
         IPhieuThuBuilder LopHocId(int lopHocId);
         IPhieuThuBuilder SoTien(decimal soTien);

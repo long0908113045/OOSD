@@ -42,9 +42,9 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
             return this;
         }
 
-        public IPhieuThuBuilder PhuongThucThanhToan(string phuongThucThanhToan)
+        public IPhieuThuBuilder PhuongThucThanhToanId(int phuongThucThanhToan)
         {
-            this.PhieuThu.PhuongThucThanhToan = phuongThucThanhToan;
+            this.PhieuThu.PhuongThucThanhToanId = phuongThucThanhToan;
             return this;
         }
 

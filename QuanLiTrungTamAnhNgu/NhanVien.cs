@@ -31,7 +31,6 @@ namespace QuanLiTrungTamAnhNgu
         public string CMND { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
         public string TrangThai { get; set; }
-        public Nullable<int> ChucVuId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LopHoc> LopHocs { get; set; }

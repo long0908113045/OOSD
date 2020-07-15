@@ -34,6 +34,7 @@ namespace QuanLiTrungTamAnhNgu
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<PhieuThu> PhieuThus { get; set; }
+        public virtual DbSet<PhuongThucThanhToan> PhuongThucThanhToans { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaikhoanGiaoVien> TaikhoanGiaoViens { get; set; }
         public virtual DbSet<TaiKhoanHocVien> TaiKhoanHocViens { get; set; }
@@ -144,7 +145,7 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
     
-        public virtual int sp_CapNhatPhieuThu(Nullable<int> idpt, Nullable<System.DateTime> ngaythanhtoan, string phuongthucthanhtoan, Nullable<decimal> sotien, Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv)
+        public virtual int sp_CapNhatPhieuThu(Nullable<int> idpt, Nullable<System.DateTime> ngaythanhtoan, Nullable<decimal> sotien, Nullable<int> idhv, Nullable<int> idlh, Nullable<int> idnv, Nullable<int> idpttt)
         {
             var idptParameter = idpt.HasValue ?
                 new ObjectParameter("idpt", idpt) :
@@ -153,10 +154,6 @@ namespace QuanLiTrungTamAnhNgu
             var ngaythanhtoanParameter = ngaythanhtoan.HasValue ?
                 new ObjectParameter("ngaythanhtoan", ngaythanhtoan) :
                 new ObjectParameter("ngaythanhtoan", typeof(System.DateTime));
-    
-            var phuongthucthanhtoanParameter = phuongthucthanhtoan != null ?
-                new ObjectParameter("phuongthucthanhtoan", phuongthucthanhtoan) :
-                new ObjectParameter("phuongthucthanhtoan", typeof(string));
     
             var sotienParameter = sotien.HasValue ?
                 new ObjectParameter("sotien", sotien) :
@@ -174,7 +171,11 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("idnv", idnv) :
                 new ObjectParameter("idnv", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatPhieuThu", idptParameter, ngaythanhtoanParameter, phuongthucthanhtoanParameter, sotienParameter, idhvParameter, idlhParameter, idnvParameter);
+            var idptttParameter = idpttt.HasValue ?
+                new ObjectParameter("idpttt", idpttt) :
+                new ObjectParameter("idpttt", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatPhieuThu", idptParameter, ngaythanhtoanParameter, sotienParameter, idhvParameter, idlhParameter, idnvParameter, idptttParameter);
         }
     
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -671,12 +672,6 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("id_nv", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
-        }
-    
-        [DbFunction("EnglishCenterEntities", "fn_ListChucVu")]
-        public virtual IQueryable<fn_ListChucVu_Result> fn_ListChucVu()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ListChucVu_Result>("[EnglishCenterEntities].[fn_ListChucVu]()");
         }
     }
 }

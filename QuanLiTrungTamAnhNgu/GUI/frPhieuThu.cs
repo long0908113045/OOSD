@@ -22,7 +22,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         EnglishCenterEntities context = new EnglishCenterEntities();
         LopHocStartState lopHocStartState = new LopHocStartState();
-        string phuongthucthanhtoan;
+        int idpttt;
         int idhv;
         int idnv;
         int idlh;
@@ -90,16 +90,21 @@ namespace QuanLiTrungTamAnhNgu
             idlh = Global.LopHocID;
             idnv = Global.NhanVienID;
             int idpt = Global.PhieuThuID;
-            phuongthucthanhtoan = txtPhuongThucThanhToan.Text;
-            sotien = Convert.ToDecimal(txtSoTien.Text);
+           
+            
+            sotien = Convert.ToDecimal(lbTraTien.Text);
             if (txtHocVien.Text == " " ||
               txtLopHoc.Text == ""
-              )
+               &&(rdTienMat.Checked == false && rdThe.Checked == false))
             {
                 MessageBox.Show("Bạn chưa điền đủ thông tin!", "Thanh Toán", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
+                if (rdThe.Checked == true)
+                    idpttt = 2;
+                if (rdTienMat.Checked == true)
+                    idpttt = 1;
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn thanh toán ?", "Thanh Toán.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -107,7 +112,7 @@ namespace QuanLiTrungTamAnhNgu
                                                                                             .LopHocId(idlh)
                                                                                             .NhanVienId(idnv)
                                                                                             .NgayThanhToan(ngaythanhtoan.Date)
-                                                                                            .PhuongThucThanhToan(phuongthucthanhtoan)
+                                                                                            .PhuongThucThanhToanId(idpttt)
                                                                                             .SoTien(sotien)
                                                                                             .build();
                     if (phieu.ThuTien())
@@ -189,9 +194,17 @@ namespace QuanLiTrungTamAnhNgu
             Global.PhieuThuID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[0])?.ToString());
             txtHocVien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[2])?.ToString()) ?? "";
             Global.HocVienID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[7])?.ToString());
-            txtPhuongThucThanhToan.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[5])?.ToString()) ?? "";
-            txtSoTien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString()) ?? "";
+            Global.PhuongThucThanhToanID = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[5])?.ToString());
+            int tiendefault = Convert.ToInt32(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString());
             ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6])?.ToString());
+            int discosunt = Convert.ToInt32(txtDiscount.Text);
+
+            double tienThanhToan = tiendefault * (100 - discosunt) / 100;
+
+            lbSoTien.Text = Convert.ToString(tiendefault);
+            lbTraTien.Text = Convert.ToString(tienThanhToan);
+
+            
 
         }
 
@@ -232,8 +245,9 @@ namespace QuanLiTrungTamAnhNgu
 
         private void btnRefreshnv_Click(object sender, EventArgs e)
         {
-            txtSoTien.Text = "";
-            txtPhuongThucThanhToan.Text = "";
+            lbSoTien.Text = "0000";
+            rdTienMat.Checked = false;
+            rdThe.Checked = false;
             dateTimePicker1.Value = DateTime.Now;
             Load_PhieuThu();
         }
@@ -245,6 +259,11 @@ namespace QuanLiTrungTamAnhNgu
                                   select lophoc).FirstOrDefault();
             string soluongdangky = (gvPhieuThu.RowCount).ToString();
             lbSoLuong.Text = soluongdangky + "/" + thongtinlophoc.SoLuongHocVien.ToString();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

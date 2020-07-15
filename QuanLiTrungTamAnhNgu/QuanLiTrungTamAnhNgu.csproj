@@ -123,9 +123,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EnglishCenterModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="fn_ListChucVu_Result.cs">
-      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="fn_ListHocVienCuaLopHoc_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
@@ -254,6 +251,9 @@
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PhieuThu.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhuongThucThanhToan.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />

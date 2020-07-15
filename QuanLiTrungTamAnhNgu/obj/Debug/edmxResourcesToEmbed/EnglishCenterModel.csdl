@@ -67,7 +67,7 @@
     <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhuongThucThanhToanId" Type="Int32" />
     <Property Name="NgayThanhToan" Type="DateTime" />
     <Property Name="HocVienId" Type="Int32" Nullable="false" />
   </ComplexType>
@@ -98,7 +98,7 @@
     <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_PTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NgayThanhToan" Type="DateTime" />
     <Property Name="HocVienId" Type="Int32" Nullable="false" />
   </ComplexType>
@@ -176,7 +176,6 @@
     <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_NV" FromRole="NhanVien" ToRole="LopHoc" />
     <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_NV" FromRole="NhanVien" ToRole="PhieuThu" />
     <NavigationProperty Name="TaikhoanGiaoViens" Relationship="Self.fk_TKGV_GV" FromRole="NhanVien" ToRole="TaikhoanGiaoVien" />
-    <Property Name="ChucVuId" Type="Int32" />
   </EntityType>
   <EntityType Name="PhanQuyen">
     <Key>
@@ -193,15 +192,23 @@
     </Key>
     <Property Name="PhieuThuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NgayThanhToan" Type="DateTime" Precision="0" />
-    <Property Name="PhuongThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HocVienId" Type="Int32" Nullable="false" />
     <Property Name="LopHocId" Type="Int32" Nullable="false" />
     <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="NhanVienId" Type="Int32" />
+    <Property Name="PhuongThucThanhToanId" Type="Int32" />
     <NavigationProperty Name="HocVien" Relationship="Self.fk_PT_HV" FromRole="PhieuThu" ToRole="HocVien" />
     <NavigationProperty Name="LopHoc" Relationship="Self.fk_PT_LH" FromRole="PhieuThu" ToRole="LopHoc" />
     <NavigationProperty Name="NhanVien" Relationship="Self.fk_PT_NV" FromRole="PhieuThu" ToRole="NhanVien" />
-    <Property Name="PhuongThucThanhToanId" Type="Int32" />
+    <NavigationProperty Name="PhuongThucThanhToan" Relationship="Self.FK_PhuongThucThanhToan" FromRole="PhieuThu" ToRole="PhuongThucThanhToan" />
+  </EntityType>
+  <EntityType Name="PhuongThucThanhToan">
+    <Key>
+      <PropertyRef Name="PhuongThucThanhToanId" />
+    </Key>
+    <Property Name="PhuongThucThanhToanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_PTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PhieuThus" Relationship="Self.FK_PhuongThucThanhToan" FromRole="PhuongThucThanhToan" ToRole="PhieuThu" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -368,6 +375,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PhuongThucThanhToan">
+    <End Role="PhuongThucThanhToan" Type="Self.PhuongThucThanhToan" Multiplicity="0..1" />
+    <End Role="PhieuThu" Type="Self.PhieuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuongThucThanhToan">
+        <PropertyRef Name="PhuongThucThanhToanId" />
+      </Principal>
+      <Dependent Role="PhieuThu">
+        <PropertyRef Name="PhuongThucThanhToanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="EnglishCenterEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="HocViens" EntityType="Self.HocVien" />
     <EntitySet Name="KhoaHocs" EntityType="Self.KhoaHoc" />
@@ -376,6 +395,7 @@
     <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
     <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
     <EntitySet Name="PhieuThus" EntityType="Self.PhieuThu" />
+    <EntitySet Name="PhuongThucThanhToans" EntityType="Self.PhuongThucThanhToan" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TaikhoanGiaoViens" EntityType="Self.TaikhoanGiaoVien" />
     <EntitySet Name="TaiKhoanHocViens" EntityType="Self.TaiKhoanHocVien" />
@@ -420,6 +440,10 @@
       <End Role="PhanQuyen" EntitySet="PhanQuyens" />
       <End Role="TaiKhoanHocVien" EntitySet="TaiKhoanHocViens" />
     </AssociationSet>
+    <AssociationSet Name="FK_PhuongThucThanhToan" Association="Self.FK_PhuongThucThanhToan">
+      <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToans" />
+      <End Role="PhieuThu" EntitySet="PhieuThus" />
+    </AssociationSet>
     <FunctionImport Name="fn_ListHocVien" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVien_Result)" />
     <FunctionImport Name="fn_ListHocVienCuaLopHoc" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListHocVienCuaLopHoc_Result)">
       <Parameter Name="idlh" Mode="In" Type="Int32" />
@@ -450,11 +474,11 @@
     <FunctionImport Name="sp_CapNhatPhieuThu">
       <Parameter Name="idpt" Mode="In" Type="Int32" />
       <Parameter Name="ngaythanhtoan" Mode="In" Type="DateTime" />
-      <Parameter Name="phuongthucthanhtoan" Mode="In" Type="String" />
       <Parameter Name="sotien" Mode="In" Type="Decimal" />
       <Parameter Name="idhv" Mode="In" Type="Int32" />
       <Parameter Name="idlh" Mode="In" Type="Int32" />
       <Parameter Name="idnv" Mode="In" Type="Int32" />
+      <Parameter Name="idpttt" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_creatediagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -604,7 +628,6 @@
     <FunctionImport Name="sp_XoaNhanVien">
       <Parameter Name="id_nv" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="fn_ListChucVu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListChucVu_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -636,9 +659,5 @@
     <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
     <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="fn_ListChucVu_Result">
-    <Property Type="Int32" Name="ChucVuId" Nullable="false" />
-    <Property Type="String" Name="Ten_CV" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

@@ -925,7 +925,7 @@ AS
     s.HoTen_HV,
     NhanVien.HoTen_NV,
     p.SoTien,
-    p.PhuongThucThanhToan,
+    p.PhuongThucThanhToanId,
     p.NgayThanhToan,
     s.HocVienId
   FROM HocVien s
@@ -946,20 +946,20 @@ GO
 
 CREATE PROC sp_CapNhatPhieuThu @idpt int,
 @ngaythanhtoan smalldatetime,
-@phuongthucthanhtoan nvarchar(50),
 @sotien numeric(18, 0),
 @idhv int,
 @idlh int,
-@idnv int
+@idnv int,
+@idpttt int
 AS
 BEGIN
   BEGIN TRY
     BEGIN TRAN;
       UPDATE PhieuThu
       SET NgayThanhToan = @ngaythanhtoan,
-          PhuongThucThanhToan = @phuongthucthanhtoan,
           SoTien = @sotien,
-          NhanVienId = @idnv
+          NhanVienId = @idnv,
+		  PhuongThucThanhToanId = @idpttt 
       WHERE HocVienId = @idhv
       AND LopHocId = @idlh
     COMMIT TRAN;
@@ -985,7 +985,7 @@ AS
     s.HoTen_HV,
     NhanVien.HoTen_NV,
     p.SoTien,
-    p.PhuongThucThanhToan,
+    PhuongThucThanhToan.Ten_PTTT,
     p.NgayThanhToan,
     s.HocVienId
   FROM HocVien s
@@ -993,6 +993,8 @@ AS
     ON s.HocVienId = p.HocVienId
   JOIN NhanVien
     ON NhanVien.NhanVienId = p.NhanVienId
+	JOIN PhuongThucThanhToan
+    ON p.PhuongThucThanhToanId = PhuongThucThanhToan.PhuongThucThanhToanId
   WHERE p.LopHocId = @idlh
   AND s.TrangThai LIKE '1'
   AND s.HoTen_HV LIKE '%' + @ten + '%')

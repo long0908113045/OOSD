@@ -13,7 +13,7 @@ namespace QuanLiTrungTamAnhNgu
         public static int HocVienID;
         public static int LopHocID;
         public static int PhieuThuID;
-
+        public static int PhuongThucThanhToanID;
 
     }
 }

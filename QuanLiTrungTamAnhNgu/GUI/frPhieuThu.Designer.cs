@@ -39,8 +39,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnThanhToan = new DevExpress.XtraEditors.SimpleButton();
-            this.txtPhuongThucThanhToan = new DevExpress.XtraEditors.TextEdit();
-            this.txtSoTien = new DevExpress.XtraEditors.TextEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,14 +65,19 @@
             this.gvHocVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbSoTien = new System.Windows.Forms.Label();
+            this.rdTienMat = new System.Windows.Forms.RadioButton();
+            this.rdThe = new System.Windows.Forms.RadioButton();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbTraTien = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhuongThucThanhToan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLopHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -90,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvHocVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -99,7 +103,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(243, 766);
+            this.panelControl1.Size = new System.Drawing.Size(243, 824);
             this.panelControl1.TabIndex = 6;
             // 
             // treeViewListLH
@@ -107,7 +111,7 @@
             this.treeViewListLH.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeViewListLH.Location = new System.Drawing.Point(2, 2);
             this.treeViewListLH.Name = "treeViewListLH";
-            this.treeViewListLH.Size = new System.Drawing.Size(239, 762);
+            this.treeViewListLH.Size = new System.Drawing.Size(239, 820);
             this.treeViewListLH.TabIndex = 1;
             this.treeViewListLH.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewListLH_AfterSelect);
             // 
@@ -116,7 +120,7 @@
             this.treeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList.Location = new System.Drawing.Point(2, 2);
             this.treeList.Name = "treeList";
-            this.treeList.Size = new System.Drawing.Size(239, 762);
+            this.treeList.Size = new System.Drawing.Size(239, 820);
             this.treeList.TabIndex = 0;
             // 
             // panel2
@@ -132,17 +136,18 @@
             // 
             this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl2.Controls.Add(this.txtDiscount);
+            this.panelControl2.Controls.Add(this.label12);
+            this.panelControl2.Controls.Add(this.rdThe);
+            this.panelControl2.Controls.Add(this.rdTienMat);
+            this.panelControl2.Controls.Add(this.lbSoTien);
             this.panelControl2.Controls.Add(this.lbSoLuong);
             this.panelControl2.Controls.Add(this.label10);
             this.panelControl2.Controls.Add(this.label9);
             this.panelControl2.Controls.Add(this.dateTimePicker1);
-            this.panelControl2.Controls.Add(this.btnThanhToan);
-            this.panelControl2.Controls.Add(this.txtPhuongThucThanhToan);
-            this.panelControl2.Controls.Add(this.txtSoTien);
             this.panelControl2.Controls.Add(this.label7);
             this.panelControl2.Controls.Add(this.label6);
             this.panelControl2.Controls.Add(this.label2);
-            this.panelControl2.Controls.Add(this.bttDangKy);
             this.panelControl2.Controls.Add(this.txtLopHoc);
             this.panelControl2.Controls.Add(this.txtHocVien);
             this.panelControl2.Controls.Add(this.label4);
@@ -150,7 +155,7 @@
             this.panelControl2.Controls.Add(this.label1);
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1072, 205);
+            this.panelControl2.Size = new System.Drawing.Size(1072, 287);
             this.panelControl2.TabIndex = 9;
             // 
             // lbSoLuong
@@ -176,7 +181,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(492, 85);
+            this.label9.Location = new System.Drawing.Point(492, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(154, 25);
             this.label9.TabIndex = 41;
@@ -185,7 +190,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(738, 79);
+            this.dateTimePicker1.Location = new System.Drawing.Point(761, 39);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(233, 33);
             this.dateTimePicker1.TabIndex = 40;
@@ -198,36 +203,18 @@
             this.btnThanhToan.Appearance.Options.UseForeColor = true;
             this.btnThanhToan.AutoSize = true;
             this.btnThanhToan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.ImageOptions.Image")));
-            this.btnThanhToan.Location = new System.Drawing.Point(881, 120);
+            this.btnThanhToan.Location = new System.Drawing.Point(893, 267);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(147, 36);
             this.btnThanhToan.TabIndex = 39;
             this.btnThanhToan.Text = "Thanh Toán";
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
-            // txtPhuongThucThanhToan
-            // 
-            this.txtPhuongThucThanhToan.Location = new System.Drawing.Point(738, 37);
-            this.txtPhuongThucThanhToan.Name = "txtPhuongThucThanhToan";
-            this.txtPhuongThucThanhToan.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhuongThucThanhToan.Properties.Appearance.Options.UseFont = true;
-            this.txtPhuongThucThanhToan.Size = new System.Drawing.Size(233, 32);
-            this.txtPhuongThucThanhToan.TabIndex = 38;
-            // 
-            // txtSoTien
-            // 
-            this.txtSoTien.Location = new System.Drawing.Point(738, 125);
-            this.txtSoTien.Name = "txtSoTien";
-            this.txtSoTien.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoTien.Properties.Appearance.Options.UseFont = true;
-            this.txtSoTien.Size = new System.Drawing.Size(137, 32);
-            this.txtSoTien.TabIndex = 37;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(492, 44);
+            this.label7.Location = new System.Drawing.Point(492, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(217, 25);
             this.label7.TabIndex = 36;
@@ -237,11 +224,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(492, 120);
+            this.label6.Location = new System.Drawing.Point(492, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 25);
+            this.label6.Size = new System.Drawing.Size(79, 25);
             this.label6.TabIndex = 35;
-            this.label6.Text = "Số tiền";
+            this.label6.Text = "Số tiền:";
             // 
             // label2
             // 
@@ -261,7 +248,7 @@
             this.bttDangKy.Appearance.Options.UseForeColor = true;
             this.bttDangKy.AutoSize = true;
             this.bttDangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttDangKy.ImageOptions.Image")));
-            this.bttDangKy.Location = new System.Drawing.Point(148, 164);
+            this.bttDangKy.Location = new System.Drawing.Point(434, 225);
             this.bttDangKy.Name = "bttDangKy";
             this.bttDangKy.Size = new System.Drawing.Size(133, 36);
             this.bttDangKy.TabIndex = 30;
@@ -327,9 +314,9 @@
             this.panelControl5.Controls.Add(this.txtPhieuThu);
             this.panelControl5.Controls.Add(this.label8);
             this.panelControl5.Controls.Add(this.gcPhieuThu);
-            this.panelControl5.Location = new System.Drawing.Point(756, 216);
+            this.panelControl5.Location = new System.Drawing.Point(756, 309);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(561, 538);
+            this.panelControl5.Size = new System.Drawing.Size(561, 503);
             this.panelControl5.TabIndex = 14;
             // 
             // btnRefreshnv
@@ -388,7 +375,7 @@
             this.gcPhieuThu.Location = new System.Drawing.Point(9, 93);
             this.gcPhieuThu.MainView = this.gvPhieuThu;
             this.gcPhieuThu.Name = "gcPhieuThu";
-            this.gcPhieuThu.Size = new System.Drawing.Size(545, 386);
+            this.gcPhieuThu.Size = new System.Drawing.Size(545, 351);
             this.gcPhieuThu.TabIndex = 1;
             this.gcPhieuThu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPhieuThu,
@@ -415,9 +402,9 @@
             this.panelControl4.Controls.Add(this.txtTimTen);
             this.panelControl4.Controls.Add(this.label5);
             this.panelControl4.Controls.Add(this.gcHocVien);
-            this.panelControl4.Location = new System.Drawing.Point(247, 216);
+            this.panelControl4.Location = new System.Drawing.Point(247, 309);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(503, 538);
+            this.panelControl4.Size = new System.Drawing.Size(503, 503);
             this.panelControl4.TabIndex = 13;
             // 
             // btnRefreshv
@@ -477,7 +464,7 @@
             this.gcHocVien.Location = new System.Drawing.Point(9, 93);
             this.gcHocVien.MainView = this.gvHocVien;
             this.gcHocVien.Name = "gcHocVien";
-            this.gcHocVien.Size = new System.Drawing.Size(486, 386);
+            this.gcHocVien.Size = new System.Drawing.Size(486, 351);
             this.gcHocVien.TabIndex = 0;
             this.gcHocVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvHocVien,
@@ -499,20 +486,98 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.lbTraTien);
             this.panel1.Controls.Add(this.panelControl4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panelControl5);
             this.panel1.Controls.Add(this.panelControl1);
+            this.panel1.Controls.Add(this.btnThanhToan);
+            this.panel1.Controls.Add(this.bttDangKy);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 766);
+            this.panel1.Size = new System.Drawing.Size(1315, 824);
             this.panel1.TabIndex = 0;
+            // 
+            // lbSoTien
+            // 
+            this.lbSoTien.AutoSize = true;
+            this.lbSoTien.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSoTien.Location = new System.Drawing.Point(756, 87);
+            this.lbSoTien.Name = "lbSoTien";
+            this.lbSoTien.Size = new System.Drawing.Size(89, 26);
+            this.lbSoTien.TabIndex = 44;
+            this.lbSoTien.Text = "lbSotien";
+            // 
+            // rdTienMat
+            // 
+            this.rdTienMat.AutoSize = true;
+            this.rdTienMat.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdTienMat.Location = new System.Drawing.Point(761, 125);
+            this.rdTienMat.Name = "rdTienMat";
+            this.rdTienMat.Size = new System.Drawing.Size(114, 30);
+            this.rdTienMat.TabIndex = 46;
+            this.rdTienMat.TabStop = true;
+            this.rdTienMat.Text = "Tiền mặt";
+            this.rdTienMat.UseVisualStyleBackColor = true;
+            // 
+            // rdThe
+            // 
+            this.rdThe.AutoSize = true;
+            this.rdThe.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdThe.Location = new System.Drawing.Point(881, 124);
+            this.rdThe.Name = "rdThe";
+            this.rdThe.Size = new System.Drawing.Size(126, 30);
+            this.rdThe.TabIndex = 47;
+            this.rdThe.TabStop = true;
+            this.rdThe.Text = "Thẻ/ Card";
+            this.rdThe.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(735, 211);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(174, 25);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Số tiền thanh toán:";
+            // 
+            // lbTraTien
+            // 
+            this.lbTraTien.AutoSize = true;
+            this.lbTraTien.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTraTien.Location = new System.Drawing.Point(999, 211);
+            this.lbTraTien.Name = "lbTraTien";
+            this.lbTraTien.Size = new System.Drawing.Size(102, 26);
+            this.lbTraTien.TabIndex = 49;
+            this.lbTraTien.Text = "lbTraTien";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(492, 172);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(97, 25);
+            this.label12.TabIndex = 49;
+            this.label12.Text = "Discount:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(761, 165);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiscount.Properties.Appearance.Options.UseFont = true;
+            this.txtDiscount.Size = new System.Drawing.Size(280, 32);
+            this.txtDiscount.TabIndex = 50;
             // 
             // frPhieuThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1327, 778);
+            this.ClientSize = new System.Drawing.Size(1327, 836);
             this.Controls.Add(this.panel1);
             this.Name = "frPhieuThu";
             this.Text = "Phiếu Thu";
@@ -524,8 +589,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhuongThucThanhToan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLopHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
@@ -543,6 +606,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvHocVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -557,8 +622,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private DevExpress.XtraEditors.SimpleButton btnThanhToan;
-        private DevExpress.XtraEditors.TextEdit txtPhuongThucThanhToan;
-        private DevExpress.XtraEditors.TextEdit txtSoTien;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
@@ -587,5 +650,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbSoLuong;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbTraTien;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RadioButton rdThe;
+        private System.Windows.Forms.RadioButton rdTienMat;
+        private System.Windows.Forms.Label lbSoTien;
+        private System.Windows.Forms.Label label12;
+        private DevExpress.XtraEditors.TextEdit txtDiscount;
     }
 }

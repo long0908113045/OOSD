@@ -74,7 +74,7 @@
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.EditValue = "admin@gmail.com";
+            this.txtTaiKhoan.EditValue = "longmap@gmail.com";
             this.txtTaiKhoan.Location = new System.Drawing.Point(473, 98);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

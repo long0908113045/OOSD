@@ -18,7 +18,7 @@ namespace QuanLiTrungTamAnhNgu
         public string HoTen_HV { get; set; }
         public string HoTen_NV { get; set; }
         public Nullable<decimal> SoTien { get; set; }
-        public string PhuongThucThanhToan { get; set; }
+        public Nullable<int> PhuongThucThanhToanId { get; set; }
         public Nullable<System.DateTime> NgayThanhToan { get; set; }
         public int HocVienId { get; set; }
     }
