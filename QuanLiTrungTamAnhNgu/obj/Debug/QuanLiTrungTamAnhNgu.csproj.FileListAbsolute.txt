@@ -2584,7 +2584,6 @@ C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramew
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramework.xml
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csprojAssemblyReference.cache
-C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.Form1.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frDangNhap.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frGiaoVien.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frHocVien.resources

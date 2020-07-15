@@ -123,6 +123,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EnglishCenterModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="fn_ListChucVu_Result.cs">
+      <DependentUpon>EnglishCenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="fn_ListHocVienCuaLopHoc_Result.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>

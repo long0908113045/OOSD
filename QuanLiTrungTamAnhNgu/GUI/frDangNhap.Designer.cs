@@ -81,7 +81,6 @@
             this.txtTaiKhoan.Properties.Appearance.Options.UseFont = true;
             this.txtTaiKhoan.Size = new System.Drawing.Size(125, 32);
             this.txtTaiKhoan.TabIndex = 3;
-            this.txtTaiKhoan.EditValueChanged += new System.EventHandler(this.txtTaiKhoan_EditValueChanged);
             // 
             // txtMatKhau
             // 

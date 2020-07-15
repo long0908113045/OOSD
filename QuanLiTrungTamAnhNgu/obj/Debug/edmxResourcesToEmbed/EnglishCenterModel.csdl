@@ -176,6 +176,7 @@
     <NavigationProperty Name="LopHocs" Relationship="Self.fk_LH_NV" FromRole="NhanVien" ToRole="LopHoc" />
     <NavigationProperty Name="PhieuThus" Relationship="Self.fk_PT_NV" FromRole="NhanVien" ToRole="PhieuThu" />
     <NavigationProperty Name="TaikhoanGiaoViens" Relationship="Self.fk_TKGV_GV" FromRole="NhanVien" ToRole="TaikhoanGiaoVien" />
+    <Property Name="ChucVuId" Type="Int32" />
   </EntityType>
   <EntityType Name="PhanQuyen">
     <Key>
@@ -200,6 +201,7 @@
     <NavigationProperty Name="HocVien" Relationship="Self.fk_PT_HV" FromRole="PhieuThu" ToRole="HocVien" />
     <NavigationProperty Name="LopHoc" Relationship="Self.fk_PT_LH" FromRole="PhieuThu" ToRole="LopHoc" />
     <NavigationProperty Name="NhanVien" Relationship="Self.fk_PT_NV" FromRole="PhieuThu" ToRole="NhanVien" />
+    <Property Name="PhuongThucThanhToanId" Type="Int32" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -602,6 +604,7 @@
     <FunctionImport Name="sp_XoaNhanVien">
       <Parameter Name="id_nv" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="fn_ListChucVu" IsComposable="true" ReturnType="Collection(EnglishCenterModel.fn_ListChucVu_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -633,5 +636,9 @@
     <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="Birthday" Nullable="true" Precision="23" />
     <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="fn_ListChucVu_Result">
+    <Property Type="Int32" Name="ChucVuId" Nullable="false" />
+    <Property Type="String" Name="Ten_CV" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

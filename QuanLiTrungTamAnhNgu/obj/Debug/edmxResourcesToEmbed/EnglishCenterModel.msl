@@ -58,10 +58,10 @@
     <EntitySetMapping Name="NhanViens">
       <EntityTypeMapping TypeName="EnglishCenterModel.NhanVien">
         <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="ChucVuId" ColumnName="ChucVuId" />
           <ScalarProperty Name="NhanVienId" ColumnName="NhanVienId" />
           <ScalarProperty Name="Ma_NV" ColumnName="Ma_NV" />
           <ScalarProperty Name="HoTen_NV" ColumnName="HoTen_NV" />
-          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="SDT_NV" ColumnName="SDT_NV" />
           <ScalarProperty Name="CMND" ColumnName="CMND" />
@@ -81,9 +81,9 @@
     <EntitySetMapping Name="PhieuThus">
       <EntityTypeMapping TypeName="EnglishCenterModel.PhieuThu">
         <MappingFragment StoreEntitySet="PhieuThu">
+          <ScalarProperty Name="PhuongThucThanhToanId" ColumnName="PhuongThucThanhToanId" />
           <ScalarProperty Name="PhieuThuId" ColumnName="PhieuThuId" />
           <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
-          <ScalarProperty Name="PhuongThucThanhToan" ColumnName="PhuongThucThanhToan" />
           <ScalarProperty Name="HocVienId" ColumnName="HocVienId" />
           <ScalarProperty Name="LopHocId" ColumnName="LopHocId" />
           <ScalarProperty Name="SoTien" ColumnName="SoTien" />
@@ -351,5 +351,13 @@
     <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
     <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
     <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
+    <FunctionImportMapping FunctionImportName="fn_ListChucVu" FunctionName="EnglishCenterModel.Store.fn_ListChucVu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EnglishCenterModel.fn_ListChucVu_Result">
+          <ScalarProperty Name="ChucVuId" ColumnName="ChucVuId" />
+          <ScalarProperty Name="Ten_CV" ColumnName="Ten_CV" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

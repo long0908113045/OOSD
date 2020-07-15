@@ -57,12 +57,12 @@
     <Property Name="NhanVienId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Ma_NV" Type="nvarchar" MaxLength="50" />
     <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
-    <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="SDT_NV" Type="nvarchar" MaxLength="50" />
     <Property Name="CMND" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChucVuId" Type="int" />
   </EntityType>
   <EntityType Name="PhanQuyen">
     <Key>
@@ -77,11 +77,11 @@
     </Key>
     <Property Name="PhieuThuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NgayThanhToan" Type="date" />
-    <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="50" />
     <Property Name="HocVienId" Type="int" Nullable="false" />
     <Property Name="LopHocId" Type="int" Nullable="false" />
     <Property Name="SoTien" Type="money" />
     <Property Name="NhanVienId" Type="int" />
+    <Property Name="PhuongThucThanhToanId" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -116,24 +116,6 @@
     <Property Name="PassWords" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PhanQuyenId" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'EnglishCenter.dbo.dsHocVien' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dsHocVien">
-          <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
-          <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
-          <Property Name="SDT_HV" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'EnglishCenter.dbo.dsLop' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dsLop">
-          <Property Name="Ma_LH" Type="nvarchar" MaxLength="100" />
-          <Property Name="Ten_LH" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThoiGianBatDau_LH" Type="date" />
-          <Property Name="ThoiGianKetThuc_LH" Type="date" />
-          <Property Name="HocPhi" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="SoBuoiHoc" Type="int" />
-          <Property Name="KhungGioHoc" Type="nvarchar(max)" />
-        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="view_ListGiaoVien">
@@ -265,6 +247,16 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
     </ReferentialConstraint>
   </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fn_ListChucVu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ChucVuId" Type="int" Nullable="false" />
+          <Property Name="Ten_CV" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <Function Name="fn_ListHocVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <ReturnType>
       <CollectionType>

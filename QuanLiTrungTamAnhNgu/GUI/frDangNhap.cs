@@ -50,6 +50,7 @@ namespace QuanLiTrungTamAnhNgu
                         Global.HocVienID = Convert.ToInt32(idhv.Value);
                         if (Convert.ToInt32(idpq.Value) == 4)
                         {
+                            SplashScreenManager.ShowForm(typeof(frWait));
                             Form frm = this.CheckFormExist(typeof(frListAdmin));
                             if (frm != null)
                             {
@@ -59,11 +60,10 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frListAdmin f = new frListAdmin();
-                                this.Hide();
-                                f.ShowDialog();
-                                this.Show();
+                                f.Show();
 
                             }
+                            SplashScreenManager.CloseForm();
                         }
                     }
                 }
@@ -81,6 +81,7 @@ namespace QuanLiTrungTamAnhNgu
                         Global.NhanVienID = Convert.ToInt32(idnv.Value);
                         if (Convert.ToInt32(idpq.Value) == 1)
                         {
+                            SplashScreenManager.ShowForm(typeof(frWait));
                             Form frm = this.CheckFormExist(typeof(frMain));
                             if (frm != null)
                             {
@@ -90,15 +91,15 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frMain f = new frMain();
-                                this.Hide();
-                                f.ShowDialog();
-                                this.Show();
+                                f.Show();
 
                             }
+                            SplashScreenManager.CloseForm();
                         }
                         else if (Convert.ToInt32(idpq.Value) == 3)
                         {
 
+                            SplashScreenManager.ShowForm(typeof(frWait));
                             Form frm = this.CheckFormExist(typeof(frKeToan));
                             if (frm != null)
                             {
@@ -109,15 +110,15 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frKeToan f = new frKeToan();
-                                this.Hide();
-                                f.ShowDialog();
-                                this.Show();
+                                f.Show();
 
                             }
+                            SplashScreenManager.CloseForm();
                         }
                         else if (Convert.ToInt32(idpq.Value) == 2)
                         {
 
+                            SplashScreenManager.ShowForm(typeof(frWait));
                             Form frm = this.CheckFormExist(typeof(frGiaoVien));
                             if (frm != null)
                             {
@@ -128,10 +129,10 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frGiaoVien f = new frGiaoVien();
-                                this.Hide();
-                                f.ShowDialog();
-                                this.Show();
+                                f.Show();
+
                             }
+                            SplashScreenManager.CloseForm();
                         }
                     }
                 }
@@ -166,9 +167,15 @@ namespace QuanLiTrungTamAnhNgu
             return null;
         }
 
-        private void txtTaiKhoan_EditValueChanged(object sender, EventArgs e)
-        {
+        //private void Load_CbChucVu(LookUpEdit lookUpEdit)
+        //{
+        //    lookUpEdit.Properties.DataSource = (from cv in context.fn_ListChucVu()
+        //                                        select new { cv.Ten_CV, cv.ChucVuId }).ToList();
+        //    lookUpEdit.Properties.DisplayMember = "Ten_KH";
+        //    lookUpEdit.Properties.ValueMember = "KhoaHocId";
+        //    lookUpEdit.Properties.PopulateColumns();
+        //    lookUpEdit.Properties.Columns["KhoaHocId"].Visible = false;
+        //}
 
-        }
     }
 }
