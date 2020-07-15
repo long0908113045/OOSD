@@ -3057,3 +3057,4 @@ C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanL
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csproj.CopyComplete
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.exe
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.pdb
+C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csprojAssemblyReference.cache

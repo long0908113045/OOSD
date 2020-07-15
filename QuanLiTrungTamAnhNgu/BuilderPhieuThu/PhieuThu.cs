@@ -1,5 +1,8 @@
-﻿using System;
+﻿using QuanLiTrungTamAnhNgu.SingletonPattern;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +11,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
 {
     class PhieuThu
     {
+        EnglishCenterEntities context = new EnglishCenterEntities();
         public int PhieuThuId { get; set; }
         public DateTime NgayThanhToan { get; set; }
         public int HocVienId { get; set; }
@@ -25,7 +29,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
         //    this.SoTien = soTien;
         //    this.NhanVienId = nhanVienId;
         //}
-        EnglishCenterEntities context = new EnglishCenterEntities();
+        
         public bool DangKyLopHoc()
         {
             if (context.sp_ThemPhieuThu(HocVienId, LopHocId, NhanVienId) != -1)
@@ -35,7 +39,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPhieuThu
             return false;
         }
         public bool ThuTien()
-        {
+        {           
             if (context.sp_CapNhatPhieuThu(PhieuThuId, NgayThanhToan, SoTien, HocVienId, LopHocId, NhanVienId, PhuongThucThanhToanId) != 0)
             {
                 return true;

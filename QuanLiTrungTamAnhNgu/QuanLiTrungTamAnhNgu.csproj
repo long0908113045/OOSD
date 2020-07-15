@@ -273,6 +273,10 @@
     <Compile Include="StatePattern\LopHocStartState.cs" />
     <Compile Include="StatePattern\LopHocState.cs" />
     <Compile Include="StatePattern\LopHocStopState.cs" />
+    <Compile Include="StrategyPattern\PhuongThucThanhToanStrategy.cs" />
+    <Compile Include="StrategyPattern\ThanhToanList.cs" />
+    <Compile Include="StrategyPattern\ThanhToanThe.cs" />
+    <Compile Include="StrategyPattern\ThanhToanTienMat.cs" />
     <Compile Include="TaikhoanGiaoVien.cs">
       <DependentUpon>EnglishCenterModel.tt</DependentUpon>
     </Compile>

@@ -60,7 +60,7 @@ namespace QuanLiTrungTamAnhNgu
             Global.LopHocID = Convert.ToInt32(e.Node.Tag);
             txtLopHoc.Text = e.Node.Text;
             Load_PhieuThu();
-            LopHocContext lhcontext = new LopHocContext();
+            LopHocContext lhcontext = new LopHocContext(Global.LopHocID);
             Load_ThongTinLopHoc();
             if (lhcontext.Request())
             {
@@ -91,8 +91,9 @@ namespace QuanLiTrungTamAnhNgu
             idlh = Global.LopHocID;
             idnv = Global.NhanVienID;
             int idpt = Global.PhieuThuID;
-           
-            
+            sotien = Convert.ToDecimal(lbSoTien.Text);
+
+
             if (txtHocVien.Text == " " ||
               txtLopHoc.Text == ""
                &&(rdTienMat.Checked == false && rdThe.Checked == false))
@@ -133,7 +134,7 @@ namespace QuanLiTrungTamAnhNgu
             idhv = Global.HocVienID;
             idlh = Global.LopHocID;
             idnv = Global.NhanVienID;
-            LopHocContext lhcontext = new LopHocContext();
+            LopHocContext lhcontext = new LopHocContext(idlh);
             if (lhcontext.Request())
             {
                 if (txtHocVien.Text == " " || txtLopHoc.Text == "")

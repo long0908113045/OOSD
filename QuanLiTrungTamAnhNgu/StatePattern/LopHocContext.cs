@@ -11,11 +11,14 @@ namespace QuanLiTrungTamAnhNgu.StatePattern
         EnglishCenterEntities context = new EnglishCenterEntities();
         private LopHocState state;
         
-        public LopHocContext()
+        public LopHocContext(int LopHocID)
         {
-            var count = context.sp_demSoLuong(Global.LopHocID);
-            int ordercount = count.SingleOrDefault().Value;
-            if(ordercount<=2)
+            int SoLuongHoVien = Convert.ToInt32((from lophoc in context.fn_ListLopHoc()
+                                  where lophoc.LopHocId == Global.LopHocID
+                                  select lophoc.SoLuongHocVien).FirstOrDefault().Value);
+            int count = context.sp_demSoLuong(LopHocID).SingleOrDefault().Value;
+            
+            if(count < SoLuongHoVien)
             {
                 this.state = new LopHocStartState();
             }
