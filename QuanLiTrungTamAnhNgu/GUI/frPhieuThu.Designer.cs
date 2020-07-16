@@ -34,8 +34,6 @@
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
-            this.label12 = new System.Windows.Forms.Label();
             this.rdThe = new System.Windows.Forms.RadioButton();
             this.rdTienMat = new System.Windows.Forms.RadioButton();
             this.lbSoTien = new System.Windows.Forms.Label();
@@ -76,7 +74,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLopHoc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -134,8 +131,6 @@
             // 
             this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelControl2.Controls.Add(this.txtDiscount);
-            this.panelControl2.Controls.Add(this.label12);
             this.panelControl2.Controls.Add(this.rdThe);
             this.panelControl2.Controls.Add(this.rdTienMat);
             this.panelControl2.Controls.Add(this.lbSoTien);
@@ -155,26 +150,6 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1072, 287);
             this.panelControl2.TabIndex = 9;
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(761, 165);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiscount.Properties.Appearance.Options.UseFont = true;
-            this.txtDiscount.Size = new System.Drawing.Size(280, 32);
-            this.txtDiscount.TabIndex = 50;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(492, 172);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(97, 25);
-            this.label12.TabIndex = 49;
-            this.label12.Text = "Discount:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // rdThe
             // 
@@ -333,7 +308,7 @@
             this.btnThanhToan.Appearance.Options.UseForeColor = true;
             this.btnThanhToan.AutoSize = true;
             this.btnThanhToan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.ImageOptions.Image")));
-            this.btnThanhToan.Location = new System.Drawing.Point(893, 267);
+            this.btnThanhToan.Location = new System.Drawing.Point(1004, 225);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(147, 36);
             this.btnThanhToan.TabIndex = 39;
@@ -348,7 +323,7 @@
             this.bttDangKy.Appearance.Options.UseForeColor = true;
             this.bttDangKy.AutoSize = true;
             this.bttDangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bttDangKy.ImageOptions.Image")));
-            this.bttDangKy.Location = new System.Drawing.Point(434, 225);
+            this.bttDangKy.Location = new System.Drawing.Point(391, 224);
             this.bttDangKy.Name = "bttDangKy";
             this.bttDangKy.Size = new System.Drawing.Size(133, 36);
             this.bttDangKy.TabIndex = 30;
@@ -565,7 +540,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLopHoc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHocVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
@@ -629,7 +603,5 @@
         private System.Windows.Forms.RadioButton rdThe;
         private System.Windows.Forms.RadioButton rdTienMat;
         private System.Windows.Forms.Label lbSoTien;
-        private System.Windows.Forms.Label label12;
-        private DevExpress.XtraEditors.TextEdit txtDiscount;
     }
 }

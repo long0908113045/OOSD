@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using QuanLiTrungTamAnhNgu.StatePattern;
 using QuanLiTrungTamAnhNgu.SingletonPattern;
+using QuanLiTrungTamAnhNgu.StrategyPattern;
 
 namespace QuanLiTrungTamAnhNgu
 {
@@ -60,6 +61,7 @@ namespace QuanLiTrungTamAnhNgu
             Global.LopHocID = Convert.ToInt32(e.Node.Tag);
             txtLopHoc.Text = e.Node.Text;
             Load_PhieuThu();
+            //state Pattern
             LopHocContext lhcontext = new LopHocContext(Global.LopHocID);
             Load_ThongTinLopHoc();
             if (lhcontext.Request())
@@ -92,7 +94,7 @@ namespace QuanLiTrungTamAnhNgu
             idnv = Global.NhanVienID;
             int idpt = Global.PhieuThuID;
             sotien = Convert.ToDecimal(lbSoTien.Text);
-
+            
 
             if (txtHocVien.Text == " " ||
               txtLopHoc.Text == ""
@@ -102,13 +104,25 @@ namespace QuanLiTrungTamAnhNgu
             }
             else
             {
+                ThanhToanList PhuongThuc = new ThanhToanList();
                 if (rdThe.Checked == true)
+                {
                     idpttt = 2;
+                    //strategyPattern
+                    PhuongThuc.setPhuongThucStrategy(new ThanhToanThe());
+                    sotien = PhuongThuc.ThanhToan(sotien);
+                }
                 if (rdTienMat.Checked == true)
+                {
                     idpttt = 1;
+                    PhuongThuc.setPhuongThucStrategy(new ThanhToanTienMat());
+                    sotien = PhuongThuc.ThanhToan(sotien);                   
+                }
+                
                 DialogResult dialogResult = MessageBox.Show("Bạn muốn thanh toán ?", "Thanh Toán.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    //build Pattern
                     BuilderPhieuThu.PhieuThu phieu = new BuilderPhieuThu.PhieuThuBuilder().HocVienId(idhv)
                                                                                             .LopHocId(idlh)
                                                                                             .NhanVienId(idnv)
@@ -134,6 +148,7 @@ namespace QuanLiTrungTamAnhNgu
             idhv = Global.HocVienID;
             idlh = Global.LopHocID;
             idnv = Global.NhanVienID;
+            //state Pattern
             LopHocContext lhcontext = new LopHocContext(idlh);
             if (lhcontext.Request())
             {

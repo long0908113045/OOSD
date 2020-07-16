@@ -60,7 +60,9 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frListAdmin f = new frListAdmin();
-                                f.Show();
+                                this.Hide();
+                                f.ShowDialog();
+                                this.Show();
 
                             }
                             SplashScreenManager.CloseForm();
@@ -91,7 +93,9 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frMain f = new frMain();
-                                f.Show();
+                                this.Hide();
+                                f.ShowDialog();
+                                this.Show();
 
                             }
                             SplashScreenManager.CloseForm();
@@ -110,7 +114,9 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frKeToan f = new frKeToan();
-                                f.Show();
+                                this.Hide();
+                                f.ShowDialog();
+                                this.Show();
 
                             }
                             SplashScreenManager.CloseForm();
@@ -129,7 +135,9 @@ namespace QuanLiTrungTamAnhNgu
                             {
 
                                 frGiaoVien f = new frGiaoVien();
-                                f.Show();
+                                this.Hide();
+                                f.ShowDialog();
+                                this.Show();
 
                             }
                             SplashScreenManager.CloseForm();
