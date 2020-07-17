@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu.SingletonPattern
 {
     public class ControllerGiaoVien
     {
-        My_DB mydb = new My_DB();
+        My_DB mydb = My_DB.getMy_DB;
 
         public DataTable showLopTheoGiaoVien(int idgv) {
 

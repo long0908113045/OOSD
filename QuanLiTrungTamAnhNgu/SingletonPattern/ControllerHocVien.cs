@@ -11,7 +11,7 @@ namespace QuanLiTrungTamAnhNgu.SingletonPattern
     class ControllerHocVien
     {
 
-        My_DB mydb = new My_DB();
+        My_DB mydb = My_DB.getMy_DB;
         public DataTable getListHocVien()
         {
             SqlCommand command = new SqlCommand("select * from fn_ListHocVien()", mydb.getConnection);

@@ -14,7 +14,7 @@ namespace QuanLiTrungTamAnhNgu
             this.WindowState = FormWindowState.Maximized;
         }
         EnglishCenterEntities context = new EnglishCenterEntities();
-        My_DB mydb = new My_DB();
+        My_DB mydb = My_DB.getMy_DB;
         ControllerNhanVien ctnhanvien = new ControllerNhanVien();
 
         string hoten;

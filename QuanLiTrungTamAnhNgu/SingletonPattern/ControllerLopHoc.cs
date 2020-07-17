@@ -10,7 +10,7 @@ namespace QuanLiTrungTamAnhNgu.SingletonPattern
 {
     class ControllerLopHoc
     {
-        My_DB mydb = new My_DB();
+        My_DB mydb = My_DB.getMy_DB;
         public DataTable getListHocVienCuaLop(int idlh)
         {
             SqlCommand command = new SqlCommand("select * from fn_ListHocVienCuaLopHoc(@idlh)", mydb.getConnection);

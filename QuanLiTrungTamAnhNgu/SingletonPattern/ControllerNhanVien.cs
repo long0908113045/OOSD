@@ -13,10 +13,10 @@ namespace QuanLiTrungTamAnhNgu.SingletonPattern
 {
     public class ControllerNhanVien
     {
-        My_DB mydb = new My_DB();
+        My_DB mydb = My_DB.getMy_DB;
         public DataTable getNhanVien()
         {
-            SqlCommand command = new SqlCommand("select * from fn_ListNhanVien()", mydb.getConnection);
+            SqlCommand command = new SqlCommand("select * from fn_ListNhanVien()", mydb.getConnection );
             command.CommandType = CommandType.Text;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
