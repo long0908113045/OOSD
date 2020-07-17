@@ -79,7 +79,7 @@
     <Property Name="NgayThanhToan" Type="date" />
     <Property Name="HocVienId" Type="int" Nullable="false" />
     <Property Name="LopHocId" Type="int" Nullable="false" />
-    <Property Name="SoTien" Type="money" />
+    <Property Name="SoTien" Type="decimal" Precision="18" Scale="0" />
     <Property Name="NhanVienId" Type="int" />
     <Property Name="PhuongThucThanhToanId" Type="int" />
   </EntityType>
@@ -363,7 +363,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
-          <Property Name="SoTien" Type="money" />
+          <Property Name="SoTien" Type="decimal" Precision="18" Scale="0" />
           <Property Name="PhuongThucThanhToanId" Type="int" />
           <Property Name="NgayThanhToan" Type="date" />
           <Property Name="HocVienId" Type="int" Nullable="false" />
@@ -415,7 +415,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="Ma_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_HV" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen_NV" Type="nvarchar" MaxLength="50" />
-          <Property Name="SoTien" Type="money" />
+          <Property Name="SoTien" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Ten_PTTT" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NgayThanhToan" Type="date" />
           <Property Name="HocVienId" Type="int" Nullable="false" />

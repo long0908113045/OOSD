@@ -194,7 +194,7 @@
     <Property Name="NgayThanhToan" Type="DateTime" Precision="0" />
     <Property Name="HocVienId" Type="Int32" Nullable="false" />
     <Property Name="LopHocId" Type="Int32" Nullable="false" />
-    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SoTien" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="NhanVienId" Type="Int32" />
     <Property Name="PhuongThucThanhToanId" Type="Int32" />
     <NavigationProperty Name="HocVien" Relationship="Self.fk_PT_HV" FromRole="PhieuThu" ToRole="HocVien" />

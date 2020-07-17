@@ -2812,7 +2812,6 @@ D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTru
 D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frMain.resources
 D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frNhanVien.resources
 D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frPhieuThu.resources
-D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frWait.resources
 D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.Properties.Resources.resources
 D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csproj.GenerateResource.cache
 D:\IT\NAM3_HK2\OOSD_Mr.T.Van\Final\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.exe.licenses

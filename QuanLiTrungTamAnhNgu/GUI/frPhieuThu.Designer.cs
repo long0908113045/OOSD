@@ -34,6 +34,8 @@
             this.treeList = new DevExpress.XtraTreeList.TreeList();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lbTraTien = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.rdThe = new System.Windows.Forms.RadioButton();
             this.rdTienMat = new System.Windows.Forms.RadioButton();
             this.lbSoTien = new System.Windows.Forms.Label();
@@ -131,6 +133,8 @@
             // 
             this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl2.Controls.Add(this.lbTraTien);
+            this.panelControl2.Controls.Add(this.label12);
             this.panelControl2.Controls.Add(this.rdThe);
             this.panelControl2.Controls.Add(this.rdTienMat);
             this.panelControl2.Controls.Add(this.lbSoTien);
@@ -151,6 +155,26 @@
             this.panelControl2.Size = new System.Drawing.Size(1072, 287);
             this.panelControl2.TabIndex = 9;
             // 
+            // lbTraTien
+            // 
+            this.lbTraTien.AutoSize = true;
+            this.lbTraTien.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTraTien.Location = new System.Drawing.Point(756, 183);
+            this.lbTraTien.Name = "lbTraTien";
+            this.lbTraTien.Size = new System.Drawing.Size(36, 25);
+            this.lbTraTien.TabIndex = 49;
+            this.lbTraTien.Text = "    ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(492, 183);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(216, 25);
+            this.label12.TabIndex = 48;
+            this.label12.Text = "Số tiền cần thanh toán: ";
+            // 
             // rdThe
             // 
             this.rdThe.AutoSize = true;
@@ -162,6 +186,7 @@
             this.rdThe.TabStop = true;
             this.rdThe.Text = "Thẻ/ Card";
             this.rdThe.UseVisualStyleBackColor = true;
+            this.rdThe.CheckedChanged += new System.EventHandler(this.rdThe_CheckedChanged);
             // 
             // rdTienMat
             // 
@@ -174,6 +199,7 @@
             this.rdTienMat.TabStop = true;
             this.rdTienMat.Text = "Tiền mặt";
             this.rdTienMat.UseVisualStyleBackColor = true;
+            this.rdTienMat.CheckedChanged += new System.EventHandler(this.rdTienMat_CheckedChanged);
             // 
             // lbSoTien
             // 
@@ -181,9 +207,9 @@
             this.lbSoTien.Font = new System.Drawing.Font("Times New Roman", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSoTien.Location = new System.Drawing.Point(756, 87);
             this.lbSoTien.Name = "lbSoTien";
-            this.lbSoTien.Size = new System.Drawing.Size(84, 25);
+            this.lbSoTien.Size = new System.Drawing.Size(30, 25);
             this.lbSoTien.TabIndex = 44;
-            this.lbSoTien.Text = "lbSotien";
+            this.lbSoTien.Text = "   ";
             // 
             // lbSoLuong
             // 
@@ -603,5 +629,7 @@
         private System.Windows.Forms.RadioButton rdThe;
         private System.Windows.Forms.RadioButton rdTienMat;
         private System.Windows.Forms.Label lbSoTien;
+        private System.Windows.Forms.Label lbTraTien;
+        private System.Windows.Forms.Label label12;
     }
 }

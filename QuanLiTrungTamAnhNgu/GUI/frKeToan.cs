@@ -30,7 +30,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void btnPhieuThu_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowForm(typeof(frWait));
+           
             Form frm = this.CheckFormExist(typeof(frPhieuThu));
             if (frm != null)
             {
@@ -44,7 +44,7 @@ namespace QuanLiTrungTamAnhNgu
                 f.MdiParent = this;
                 f.Show();
             }
-            SplashScreenManager.CloseForm();
+           
 
 
         }
@@ -52,7 +52,7 @@ namespace QuanLiTrungTamAnhNgu
         private void btnHocVien_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            SplashScreenManager.ShowForm(typeof(frWait));
+           
             Form frm = this.CheckFormExist(typeof(frHocVien));
             if (frm != null)
             {
@@ -67,13 +67,12 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
+          
         }
 
         private void btnLopHoc_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            SplashScreenManager.ShowForm(typeof(frWait));
             Form frm = this.CheckFormExist(typeof(frListLopHoc));
             if (frm != null)
             {
@@ -88,7 +87,6 @@ namespace QuanLiTrungTamAnhNgu
                 f.Show();
 
             }
-            SplashScreenManager.CloseForm();
         }
 
         private void btnThoat_ItemClick(object sender, ItemClickEventArgs e)

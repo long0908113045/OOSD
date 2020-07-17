@@ -50,7 +50,7 @@ namespace QuanLiTrungTamAnhNgu
                         Global.HocVienID = Convert.ToInt32(idhv.Value);
                         if (Convert.ToInt32(idpq.Value) == 4)
                         {
-                            SplashScreenManager.ShowForm(typeof(frWait));
+                         
                             Form frm = this.CheckFormExist(typeof(frListAdmin));
                             if (frm != null)
                             {
@@ -65,7 +65,7 @@ namespace QuanLiTrungTamAnhNgu
                                 this.Show();
 
                             }
-                            SplashScreenManager.CloseForm();
+                            
                         }
                     }
                 }
@@ -83,7 +83,7 @@ namespace QuanLiTrungTamAnhNgu
                         Global.NhanVienID = Convert.ToInt32(idnv.Value);
                         if (Convert.ToInt32(idpq.Value) == 1)
                         {
-                            SplashScreenManager.ShowForm(typeof(frWait));
+                            
                             Form frm = this.CheckFormExist(typeof(frMain));
                             if (frm != null)
                             {
@@ -98,12 +98,12 @@ namespace QuanLiTrungTamAnhNgu
                                 this.Show();
 
                             }
-                            SplashScreenManager.CloseForm();
+                           
                         }
                         else if (Convert.ToInt32(idpq.Value) == 3)
                         {
 
-                            SplashScreenManager.ShowForm(typeof(frWait));
+                           
                             Form frm = this.CheckFormExist(typeof(frKeToan));
                             if (frm != null)
                             {
@@ -119,12 +119,12 @@ namespace QuanLiTrungTamAnhNgu
                                 this.Show();
 
                             }
-                            SplashScreenManager.CloseForm();
+                          
                         }
                         else if (Convert.ToInt32(idpq.Value) == 2)
                         {
 
-                            SplashScreenManager.ShowForm(typeof(frWait));
+                          
                             Form frm = this.CheckFormExist(typeof(frGiaoVien));
                             if (frm != null)
                             {
@@ -140,7 +140,7 @@ namespace QuanLiTrungTamAnhNgu
                                 this.Show();
 
                             }
-                            SplashScreenManager.CloseForm();
+                           
                         }
                     }
                 }

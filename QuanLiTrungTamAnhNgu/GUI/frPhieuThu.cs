@@ -56,6 +56,16 @@ namespace QuanLiTrungTamAnhNgu
             treeViewListLH.ExpandAll();
         }
 
+        private void Load_ThongTinLopHoc()
+        {
+            var thongtinlophoc = (from lophoc in context.fn_ListLopHoc()
+                                  where lophoc.LopHocId == Global.LopHocID
+                                  select lophoc).FirstOrDefault();
+            string soluongdangky = (gvPhieuThu.RowCount).ToString();
+            lbSoLuong.Text = soluongdangky + "/" + thongtinlophoc.SoLuongHocVien.ToString();
+        }
+
+
         private void treeViewListLH_AfterSelect(object sender, TreeViewEventArgs e)
         {
             Global.LopHocID = Convert.ToInt32(e.Node.Tag);
@@ -66,7 +76,6 @@ namespace QuanLiTrungTamAnhNgu
             Load_ThongTinLopHoc();
             if (lhcontext.Request())
             {
-
                 bttDangKy.Enabled = true;
             }
             else
@@ -168,6 +177,7 @@ namespace QuanLiTrungTamAnhNgu
                             MessageBox.Show("Bạn đã thêm học viên thành công!", "Thêm học viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Load_HocVien();
                             Load_PhieuThu();
+                            Load_ThongTinLopHoc();
                         }
                         else
                         {
@@ -261,18 +271,33 @@ namespace QuanLiTrungTamAnhNgu
             Load_PhieuThu();
         }
 
-        private void Load_ThongTinLopHoc()
+        private void rdTienMat_CheckedChanged(object sender, EventArgs e)
         {
-            var thongtinlophoc = (from lophoc in context.fn_ListLopHoc()
-                                  where lophoc.LopHocId == Global.LopHocID
-                                  select lophoc).FirstOrDefault();
-            string soluongdangky = (gvPhieuThu.RowCount).ToString();
-            lbSoLuong.Text = soluongdangky + "/" + thongtinlophoc.SoLuongHocVien.ToString();
+            sotien = Convert.ToDecimal(lbSoTien.Text);
+            ThanhToanList PhuongThuc = new ThanhToanList();
+            if (rdTienMat.Checked == true)
+            {
+                idpttt = 1;
+                PhuongThuc.setPhuongThucStrategy(new ThanhToanTienMat());
+                sotien = PhuongThuc.ThanhToan(sotien);
+                lbTraTien.Text = Convert.ToString(sotien);
+            }
         }
 
-        private void label12_Click(object sender, EventArgs e)
+        private void rdThe_CheckedChanged(object sender, EventArgs e)
         {
-
+            sotien = Convert.ToDecimal(lbSoTien.Text);
+            ThanhToanList PhuongThuc = new ThanhToanList();
+            if (rdThe.Checked == true)
+            {
+                idpttt = 2;
+                //strategyPattern
+                PhuongThuc.setPhuongThucStrategy(new ThanhToanThe());
+                sotien = PhuongThuc.ThanhToan(sotien);
+                lbTraTien.Text = Convert.ToString(sotien);
+            }
         }
     }
 }
+
+ 
