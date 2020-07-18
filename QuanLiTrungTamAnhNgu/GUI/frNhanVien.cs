@@ -51,6 +51,8 @@ namespace QuanLiTrungTamAnhNgu
                     BuilderPattern.ControllerNhanVien controllerNhanVien = new BuilderPattern.ControllerNhanVien(nhanVien);
                     if (controllerNhanVien.themNhanVien())
                     {
+
+
                         MessageBox.Show("Nhân viên đã được thêm vào", "Thêm nhân viên.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Load_NV();
                     }

@@ -66,7 +66,7 @@
     <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SoTien" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="PhuongThucThanhToanId" Type="Int32" />
     <Property Name="NgayThanhToan" Type="DateTime" />
     <Property Name="HocVienId" Type="Int32" Nullable="false" />
@@ -97,7 +97,7 @@
     <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SoTien" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Ten_PTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NgayThanhToan" Type="DateTime" />
     <Property Name="HocVienId" Type="Int32" Nullable="false" />
@@ -466,6 +466,9 @@
     <FunctionImport Name="sp_demSoLuong" ReturnType="Collection(Int32)">
       <Parameter Name="lopHocId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_getHocPhi">
+      <Parameter Name="lopHocId" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_KiemTraTaiKhoanHV">
       <Parameter Name="idpq" Mode="InOut" Type="Int32" />
       <Parameter Name="idhv" Mode="InOut" Type="Int32" />
@@ -557,14 +560,6 @@
       <Parameter Name="idlh" Mode="In" Type="Int32" />
       <Parameter Name="idnv" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_ThemTaiKhoanNV">
-      <Parameter Name="nhanvienid" Mode="In" Type="Int32" />
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="chucvu" Mode="In" Type="String" />
-      <Parameter Name="passwords" Mode="In" Type="String" />
-      <Parameter Name="trangthai" Mode="In" Type="String" />
-      <Parameter Name="phanquyenid" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_TimHocVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimHocVienTheoTen_Result)">
       <Parameter Name="ten" Mode="In" Type="String" />
     </FunctionImport>
@@ -586,9 +581,6 @@
     </FunctionImport>
     <FunctionImport Name="sp_XoaNhanVien">
       <Parameter Name="id_nv" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_getHocPhi">
-      <Parameter Name="lopHocId" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_TimHocVienTheoTen_Result">

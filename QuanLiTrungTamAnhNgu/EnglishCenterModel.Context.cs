@@ -165,6 +165,15 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_demSoLuong", lopHocIdParameter);
         }
     
+        public virtual int sp_getHocPhi(Nullable<int> lopHocId)
+        {
+            var lopHocIdParameter = lopHocId.HasValue ?
+                new ObjectParameter("lopHocId", lopHocId) :
+                new ObjectParameter("lopHocId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_getHocPhi", lopHocIdParameter);
+        }
+    
         public virtual int sp_KiemTraTaiKhoanHV(ObjectParameter idpq, ObjectParameter idhv, string name, string pass)
         {
             var nameParameter = name != null ?
@@ -474,35 +483,6 @@ namespace QuanLiTrungTamAnhNgu
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemPhieuThu", idhvParameter, idlhParameter, idnvParameter);
         }
     
-        public virtual int sp_ThemTaiKhoanNV(Nullable<int> nhanvienid, string username, string chucvu, string passwords, string trangthai, Nullable<int> phanquyenid)
-        {
-            var nhanvienidParameter = nhanvienid.HasValue ?
-                new ObjectParameter("nhanvienid", nhanvienid) :
-                new ObjectParameter("nhanvienid", typeof(int));
-    
-            var usernameParameter = username != null ?
-                new ObjectParameter("username", username) :
-                new ObjectParameter("username", typeof(string));
-    
-            var chucvuParameter = chucvu != null ?
-                new ObjectParameter("chucvu", chucvu) :
-                new ObjectParameter("chucvu", typeof(string));
-    
-            var passwordsParameter = passwords != null ?
-                new ObjectParameter("passwords", passwords) :
-                new ObjectParameter("passwords", typeof(string));
-    
-            var trangthaiParameter = trangthai != null ?
-                new ObjectParameter("trangthai", trangthai) :
-                new ObjectParameter("trangthai", typeof(string));
-    
-            var phanquyenidParameter = phanquyenid.HasValue ?
-                new ObjectParameter("phanquyenid", phanquyenid) :
-                new ObjectParameter("phanquyenid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV", nhanvienidParameter, usernameParameter, chucvuParameter, passwordsParameter, trangthaiParameter, phanquyenidParameter);
-        }
-    
         public virtual ObjectResult<sp_TimHocVienTheoTen_Result> sp_TimHocVienTheoTen(string ten)
         {
             var tenParameter = ten != null ?
@@ -568,15 +548,6 @@ namespace QuanLiTrungTamAnhNgu
                 new ObjectParameter("id_nv", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_XoaNhanVien", id_nvParameter);
-        }
-    
-        public virtual int sp_getHocPhi(Nullable<int> lopHocId)
-        {
-            var lopHocIdParameter = lopHocId.HasValue ?
-                new ObjectParameter("lopHocId", lopHocId) :
-                new ObjectParameter("lopHocId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_getHocPhi", lopHocIdParameter);
         }
     }
 }

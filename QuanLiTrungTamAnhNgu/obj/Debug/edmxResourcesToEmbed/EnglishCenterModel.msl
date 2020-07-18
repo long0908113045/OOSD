@@ -277,6 +277,7 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_CapNhatPhieuThu" FunctionName="EnglishCenterModel.Store.sp_CapNhatPhieuThu" />
     <FunctionImportMapping FunctionImportName="sp_demSoLuong" FunctionName="EnglishCenterModel.Store.sp_demSoLuong" />
+    <FunctionImportMapping FunctionImportName="sp_getHocPhi" FunctionName="EnglishCenterModel.Store.sp_getHocPhi" />
     <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanHV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanHV" />
     <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
     <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
@@ -290,7 +291,6 @@
     <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
     <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
     <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
-    <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_ThemTaiKhoanNV" />
     <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
       <ResultMapping>
         <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimHocVienTheoTen_Result">
@@ -324,6 +324,5 @@
     <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
     <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
     <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
-    <FunctionImportMapping FunctionImportName="sp_getHocPhi" FunctionName="EnglishCenterModel.Store.sp_getHocPhi" />
   </EntityContainerMapping>
 </Mapping>

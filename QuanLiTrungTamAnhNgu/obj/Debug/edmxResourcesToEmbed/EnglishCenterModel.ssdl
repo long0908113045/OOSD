@@ -529,14 +529,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
     <Parameter Name="idlh" Type="int" Mode="In" />
     <Parameter Name="idnv" Type="int" Mode="In" />
   </Function>
-  <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="nhanvienid" Type="int" Mode="In" />
-    <Parameter Name="username" Type="nvarchar" Mode="In" />
-    <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
-    <Parameter Name="passwords" Type="nvarchar" Mode="In" />
-    <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
-    <Parameter Name="phanquyenid" Type="int" Mode="In" />
-  </Function>
   <Function Name="sp_TimHocVienTheoTen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten" Type="nvarchar" Mode="In" />
   </Function>

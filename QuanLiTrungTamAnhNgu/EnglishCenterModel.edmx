@@ -534,14 +534,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Parameter Name="idlh" Type="int" Mode="In" />
           <Parameter Name="idnv" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="nhanvienid" Type="int" Mode="In" />
-          <Parameter Name="username" Type="nvarchar" Mode="In" />
-          <Parameter Name="chucvu" Type="nvarchar" Mode="In" />
-          <Parameter Name="passwords" Type="nvarchar" Mode="In" />
-          <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
-          <Parameter Name="phanquyenid" Type="int" Mode="In" />
-        </Function>
         <Function Name="sp_TimHocVienTheoTen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten" Type="nvarchar" Mode="In" />
         </Function>
@@ -697,7 +689,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SoTien" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="PhuongThucThanhToanId" Type="Int32" />
           <Property Name="NgayThanhToan" Type="DateTime" />
           <Property Name="HocVienId" Type="Int32" Nullable="false" />
@@ -728,7 +720,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <Property Name="Ma_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTen_HV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HoTen_NV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SoTien" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Ten_PTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NgayThanhToan" Type="DateTime" />
           <Property Name="HocVienId" Type="Int32" Nullable="false" />
@@ -1097,6 +1089,9 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImport Name="sp_demSoLuong" ReturnType="Collection(Int32)">
           <Parameter Name="lopHocId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_getHocPhi">
+          <Parameter Name="lopHocId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_KiemTraTaiKhoanHV">
             <Parameter Name="idpq" Mode="InOut" Type="Int32" />
             <Parameter Name="idhv" Mode="InOut" Type="Int32" />
@@ -1188,14 +1183,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
             <Parameter Name="idlh" Mode="In" Type="Int32" />
             <Parameter Name="idnv" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_ThemTaiKhoanNV">
-            <Parameter Name="nhanvienid" Mode="In" Type="Int32" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="chucvu" Mode="In" Type="String" />
-            <Parameter Name="passwords" Mode="In" Type="String" />
-            <Parameter Name="trangthai" Mode="In" Type="String" />
-            <Parameter Name="phanquyenid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_TimHocVienTheoTen" ReturnType="Collection(EnglishCenterModel.sp_TimHocVienTheoTen_Result)">
           <Parameter Name="ten" Mode="In" Type="String" />
           </FunctionImport>
@@ -1217,9 +1204,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           </FunctionImport>
           <FunctionImport Name="sp_XoaNhanVien">
           <Parameter Name="id_nv" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getHocPhi">
-          <Parameter Name="lopHocId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_TimHocVienTheoTen_Result">
@@ -1524,6 +1508,7 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_CapNhatPhieuThu" FunctionName="EnglishCenterModel.Store.sp_CapNhatPhieuThu" />
           <FunctionImportMapping FunctionImportName="sp_demSoLuong" FunctionName="EnglishCenterModel.Store.sp_demSoLuong" />
+          <FunctionImportMapping FunctionImportName="sp_getHocPhi" FunctionName="EnglishCenterModel.Store.sp_getHocPhi" />
           <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanHV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanHV" />
           <FunctionImportMapping FunctionImportName="sp_KiemTraTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_KiemTraTaiKhoanNV" />
           <FunctionImportMapping FunctionImportName="sp_SuaHocVien" FunctionName="EnglishCenterModel.Store.sp_SuaHocVien" />
@@ -1537,7 +1522,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImportMapping FunctionImportName="sp_ThemLopHoc" FunctionName="EnglishCenterModel.Store.sp_ThemLopHoc" />
           <FunctionImportMapping FunctionImportName="sp_ThemNhanVien" FunctionName="EnglishCenterModel.Store.sp_ThemNhanVien" />
           <FunctionImportMapping FunctionImportName="sp_ThemPhieuThu" FunctionName="EnglishCenterModel.Store.sp_ThemPhieuThu" />
-          <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV" FunctionName="EnglishCenterModel.Store.sp_ThemTaiKhoanNV" />
           <FunctionImportMapping FunctionImportName="sp_TimHocVienTheoTen" FunctionName="EnglishCenterModel.Store.sp_TimHocVienTheoTen">
             <ResultMapping>
               <ComplexTypeMapping TypeName="EnglishCenterModel.sp_TimHocVienTheoTen_Result">
@@ -1571,7 +1555,6 @@ warning 6002: The table/view 'EnglishCenter.dbo.view_ListGiaoVien' does not have
           <FunctionImportMapping FunctionImportName="sp_XoaLevel" FunctionName="EnglishCenterModel.Store.sp_XoaLevel" />
           <FunctionImportMapping FunctionImportName="sp_XoaLopHoc" FunctionName="EnglishCenterModel.Store.sp_XoaLopHoc" />
           <FunctionImportMapping FunctionImportName="sp_XoaNhanVien" FunctionName="EnglishCenterModel.Store.sp_XoaNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_getHocPhi" FunctionName="EnglishCenterModel.Store.sp_getHocPhi" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
