@@ -154,7 +154,7 @@
             // 
             // btnThemAdmin
             // 
-            this.btnThemAdmin.Caption = "Danh sách Admin";
+            this.btnThemAdmin.Caption = "Danh sách Quản Lý";
             this.btnThemAdmin.Id = 47;
             this.btnThemAdmin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemAdmin.ImageOptions.Image")));
             this.btnThemAdmin.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThemAdmin.ImageOptions.LargeImage")));

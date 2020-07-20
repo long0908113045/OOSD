@@ -28,7 +28,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
             {
                 nhanVien = buildDirector.Construct(new NhanVienBuilder(), nhanVien.Manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
             }
-            if (nhanVien.chucvu == "Admin")
+            if (nhanVien.chucvu == "Quản Lý")
             {
                 nhanVien = buildDirector.Construct(new AdminBuilder(), nhanVien.Manv, nhanVien.hoten, nhanVien.email, nhanVien.sdt, nhanVien.cmnd, nhanVien.ngaysinh);
             }

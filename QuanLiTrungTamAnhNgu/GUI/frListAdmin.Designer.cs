@@ -169,7 +169,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(254, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Danh Sách Admin";
+            this.label1.Text = "Danh Sách Quản Lý";
             // 
             // gcAdmin
             // 

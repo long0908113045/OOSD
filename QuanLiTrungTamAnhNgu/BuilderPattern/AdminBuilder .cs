@@ -12,7 +12,7 @@ namespace QuanLiTrungTamAnhNgu.BuilderPattern
         public AdminBuilder()
         {
             nhanvien = new NhanViens();
-            nhanvien.chucvu = "Admin";
+            nhanvien.chucvu = "Quản Lý";
         }
         public NhanViens GetNhanVien()
         {

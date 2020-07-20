@@ -2595,7 +2595,6 @@ C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungT
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frMain.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frNhanVien.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frPhieuThu.resources
-C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frWait.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.Properties.Resources.resources
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csproj.GenerateResource.cache
 C:\Users\thanh\Documents\GitHub\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.exe.licenses

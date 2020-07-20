@@ -26,7 +26,7 @@ namespace QuanLiTrungTamAnhNgu
        
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            gcAdmin.DataSource = context.sp_TimNhanVienTheoTen(txtGV.Text.ToUpper(), "Admin");
+            gcAdmin.DataSource = context.sp_TimNhanVienTheoTen(txtGV.Text.ToUpper(), "Quản Lý");
             gvAdmin.Columns[0].Visible = false;
             gvAdmin.Columns[1].Caption = "Mã Nhân Viên";
             gvAdmin.Columns[2].Caption = "Họ Tên";
@@ -44,7 +44,7 @@ namespace QuanLiTrungTamAnhNgu
         {
             if (rdTheoTen.Checked == true)
             {
-                gcAdmin.DataSource = (from nv in context.sp_TimNhanVienTheoTen("", "Admin")
+                gcAdmin.DataSource = (from nv in context.sp_TimNhanVienTheoTen("", "Quản Lý")
                                        select nv).OrderBy(n=>n.HoTen_NV).ToList();
                 gvAdmin.Columns[0].Visible = false;
                 gvAdmin.Columns[1].Caption = "Mã Nhân Viên";
@@ -58,7 +58,7 @@ namespace QuanLiTrungTamAnhNgu
             }
             if (rdNgay.Checked == true)
             {
-                gcAdmin.DataSource = (from nv in context.sp_TimNhanVienTheoTen("", "Admin")
+                gcAdmin.DataSource = (from nv in context.sp_TimNhanVienTheoTen("", "Quản Lý")
                                       select nv).OrderBy(n => n.Birthday).ToList();
                 gvAdmin.Columns[0].Visible = false;
                 gvAdmin.Columns[1].Caption = "Mã Nhân Viên";
@@ -73,7 +73,7 @@ namespace QuanLiTrungTamAnhNgu
         }
         private void Load_Admin()
         {
-            gcAdmin.DataSource = (from nv in context.sp_TimNhanVienTheoTen("", "Admin")
+            gcAdmin.DataSource = (from nv in context.sp_TimNhanVienTheoTen("", "Quản Lý")
                                   select nv).ToList();
             gvAdmin.Columns[0].Visible = false;
             gvAdmin.Columns[1].Caption = "Mã Nhân Viên";
