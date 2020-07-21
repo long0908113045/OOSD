@@ -63,6 +63,7 @@ namespace QuanLiTrungTamAnhNgu
                                   select lophoc).FirstOrDefault();
             string soluongdangky = (gvPhieuThu.RowCount).ToString();
             lbSoLuong.Text = soluongdangky + "/" + thongtinlophoc.SoLuongHocVien.ToString();
+            lbSoTien.Text = thongtinlophoc.HocPhi.ToString();
         }
 
 
