@@ -101,9 +101,10 @@ namespace QuanLiTrungTamAnhNgu
             idhv = Global.HocVienID;
             idlh = Global.LopHocID;
             idnv = Global.NhanVienID;
-            int idpt = Global.PhieuThuID;
-            sotien = Convert.ToDecimal(lbSoTien.Text);
-            
+            int idpt = Global.PhieuThuID;           
+            try { sotien = Convert.ToDecimal(lbSoTien.Text); }
+            catch (FormatException fe) { MessageBox.Show("Your string is not in the correct format, " + fe.Message.ToString()); return; }
+
 
             if (txtHocVien.Text == " " ||
               txtLopHoc.Text == ""
@@ -273,7 +274,8 @@ namespace QuanLiTrungTamAnhNgu
 
         private void rdTienMat_CheckedChanged(object sender, EventArgs e)
         {
-            sotien = Convert.ToDecimal(lbSoTien.Text);
+            try { sotien = Convert.ToDecimal(lbSoTien.Text); }
+            catch (FormatException fe) { MessageBox.Show("Your string is not in the correct format, " + fe.Message.ToString()); return; }
             ThanhToanList PhuongThuc = new ThanhToanList();
             if (rdTienMat.Checked == true)
             {
@@ -286,7 +288,9 @@ namespace QuanLiTrungTamAnhNgu
 
         private void rdThe_CheckedChanged(object sender, EventArgs e)
         {
-            sotien = Convert.ToDecimal(lbSoTien.Text);
+            try { sotien = Convert.ToDecimal(lbSoTien.Text); }
+            catch(FormatException fe) { MessageBox.Show("Your string is not in the correct format, "+ fe.Message.ToString()); return ; }
+            
             ThanhToanList PhuongThuc = new ThanhToanList();
             if (rdThe.Checked == true)
             {

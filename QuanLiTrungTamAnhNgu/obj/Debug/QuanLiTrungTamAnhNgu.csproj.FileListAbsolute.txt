@@ -2830,7 +2830,6 @@ C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanL
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frMain.resources
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frNhanVien.resources
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frPhieuThu.resources
-C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.frWait.resources
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.Properties.Resources.resources
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.csproj.GenerateResource.cache
 C:\Users\Long\OneDrive\Máy tính\OOSD\OOSD\QuanLiTrungTamAnhNgu\obj\Debug\QuanLiTrungTamAnhNgu.exe.licenses
