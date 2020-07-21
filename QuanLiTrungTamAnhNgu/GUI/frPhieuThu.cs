@@ -104,52 +104,57 @@ namespace QuanLiTrungTamAnhNgu
             int idpt = Global.PhieuThuID;           
             try { sotien = Convert.ToDecimal(lbSoTien.Text); }
             catch (FormatException fe) { MessageBox.Show("Your string is not in the correct format, " + fe.Message.ToString()); return; }
-
-
-            if (txtHocVien.Text == " " ||
-              txtLopHoc.Text == ""
-               &&(rdTienMat.Checked == false && rdThe.Checked == false))
+            if (lbTraTien.Text == " ")
             {
-                MessageBox.Show("Bạn chưa điền đủ thông tin!", "Thanh Toán", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (txtHocVien.Text == " " ||
+             txtLopHoc.Text == ""
+              && (rdTienMat.Checked == false && rdThe.Checked == false))
+                {
+                    MessageBox.Show("Bạn chưa điền đủ thông tin!", "Thanh Toán", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    ThanhToanList PhuongThuc = new ThanhToanList();
+                    if (rdThe.Checked == true)
+                    {
+                        idpttt = 2;
+                        //strategyPattern
+                        PhuongThuc.setPhuongThucStrategy(new ThanhToanThe());
+                        sotien = PhuongThuc.ThanhToan(sotien);
+                    }
+                    if (rdTienMat.Checked == true)
+                    {
+                        idpttt = 1;
+                        PhuongThuc.setPhuongThucStrategy(new ThanhToanTienMat());
+                        sotien = PhuongThuc.ThanhToan(sotien);
+                    }
+
+                    DialogResult dialogResult = MessageBox.Show("Bạn muốn thanh toán ?", "Thanh Toán.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //build Pattern
+                        BuilderPhieuThu.PhieuThu phieu = new BuilderPhieuThu.PhieuThuBuilder().HocVienId(idhv)
+                                                                                                .LopHocId(idlh)
+                                                                                                .NhanVienId(idnv)
+                                                                                                .NgayThanhToan(ngaythanhtoan.Date)
+                                                                                                .PhuongThucThanhToanId(idpttt)
+                                                                                                .SoTien(sotien)
+                                                                                                .build();
+                        if (phieu.ThuTien())
+                        {
+                            MessageBox.Show("Bạn đã thanh toán  thành công!", "Thanh Toán.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Load_PhieuThu();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lỗi ");
+                        }
+                    }
+                }
             }
             else
             {
-                ThanhToanList PhuongThuc = new ThanhToanList();
-                if (rdThe.Checked == true)
-                {
-                    idpttt = 2;
-                    //strategyPattern
-                    PhuongThuc.setPhuongThucStrategy(new ThanhToanThe());
-                    sotien = PhuongThuc.ThanhToan(sotien);
-                }
-                if (rdTienMat.Checked == true)
-                {
-                    idpttt = 1;
-                    PhuongThuc.setPhuongThucStrategy(new ThanhToanTienMat());
-                    sotien = PhuongThuc.ThanhToan(sotien);                   
-                }
-                
-                DialogResult dialogResult = MessageBox.Show("Bạn muốn thanh toán ?", "Thanh Toán.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    //build Pattern
-                    BuilderPhieuThu.PhieuThu phieu = new BuilderPhieuThu.PhieuThuBuilder().HocVienId(idhv)
-                                                                                            .LopHocId(idlh)
-                                                                                            .NhanVienId(idnv)
-                                                                                            .NgayThanhToan(ngaythanhtoan.Date)
-                                                                                            .PhuongThucThanhToanId(idpttt)
-                                                                                            .SoTien(sotien)
-                                                                                            .build();
-                    if (phieu.ThuTien())
-                    {
-                        MessageBox.Show("Bạn đã thanh toán  thành công!", "Thanh Toán.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Load_PhieuThu();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Lỗi ");
-                    }
-                }
+                MessageBox.Show("Bạn đã thanh toán học phí!");
             }
         }
 
@@ -226,6 +231,7 @@ namespace QuanLiTrungTamAnhNgu
             lbSoTien.Text = Convert.ToString(hocphi);
             
             ngaythanhtoan = Convert.ToDateTime(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[6])?.ToString());
+            lbTraTien.Text = Convert.ToString(gvPhieuThu.GetRowCellValue(gvPhieuThu.FocusedRowHandle, gvPhieuThu.Columns[4])?.ToString());
         }
 
         private void btnTimKiemHocVIen_Click(object sender, EventArgs e)
